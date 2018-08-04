@@ -86,6 +86,10 @@
             @endif
 <div> -->
 
+
+  <p>Eerste paragraaf van Bas</p>
+
+
     <div id="app" v-cloak>
      
         <main  class="py-4">
