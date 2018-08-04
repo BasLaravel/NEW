@@ -91,6 +91,7 @@
   <p>tweede paragraaf van Bas</p>
   <p>derde paragraaf van Bas</p>
   <p>vierde paragraaf van Bas</p>
+  <p>vijfde paragraaf van Bas</p>
 
 
     <div id="app" v-cloak>
