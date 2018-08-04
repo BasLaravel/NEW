@@ -88,6 +88,7 @@
 
 
   <p>Deze paragraaf is automatisch geintegreerd via github</p>
+  <p>Deze paragraaf is ook automatisch geintegreerd via github</p>
 
 
 
