@@ -87,11 +87,8 @@
 <div> -->
 
 
-  <p>Eerste paragraaf van Bas</p>
-  <p>tweede paragraaf van Bas</p>
-  <p>derde paragraaf van Bas</p>
-  <p>vierde paragraaf van Bas</p>
-  <p>vijfde paragraaf van Bas</p>
+  <p>Deze paragraaf is automatisch geintegreerd via github</p>
+
 
 
     <div id="app" v-cloak>
