@@ -28,6 +28,6 @@ class PleaseConfirmYourEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.confirm-email');
+        return $this->markdown('emails.confirm-email',['user' => $this->user]);
     }
 }

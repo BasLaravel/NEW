@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index');
+
+//api bol.com
+Route::get('/api', 'API\LaptopsController@feed');
+Route::get('/api/feed', 'API\LaptopsController@databasefeeder');

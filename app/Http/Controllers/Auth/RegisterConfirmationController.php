@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\user;
+use App\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,7 +25,7 @@ class RegisterConfirmationController extends Controller
        
     
                // session()->flash('message', 'Uw account is geactiveerd');
-                return redirect('/');
+            return redirect('/');
         }
     
 }
