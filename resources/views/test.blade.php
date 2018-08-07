@@ -1,7 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.master)
 
 @section('content')
 
-<p>test</p>
+
+
+
+
+
+
 
 @endsection

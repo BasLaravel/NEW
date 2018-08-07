@@ -18,6 +18,13 @@ class CreateLaptopsTable extends Migration
             $table->bigInteger('product_id')->unique();
             $table->bigInteger('ean')->unique();
             $table->string('title');
+
+                //in de toekomst bijvoegen:
+            // $table->mediumInteger('prijs');
+            // $table->mediumInteger('levertijd');
+            // $table->boolean('leverbaar');
+            
+            
             $table->string('specsTag');
             $table->string('summary');
             $table->longText('short_description');
