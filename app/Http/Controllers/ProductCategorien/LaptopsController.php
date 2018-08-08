@@ -17,9 +17,13 @@ class LaptopsController extends Controller
     {
 
         $laptops = Laptop::all();
+        $merken = Laptop::select('specsTag')->distinct()->get();
       
 
-        return view('product_categorien.laptops.index',['laptops' => $laptops]);
+        return view('product_categorien.laptops.index',[
+            'laptops' => $laptops,
+            'merken' => $merken
+        ]);
     }
 
     /**
