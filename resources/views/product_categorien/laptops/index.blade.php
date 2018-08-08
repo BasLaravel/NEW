@@ -2,7 +2,13 @@
 
 @section('content')
 
+<div class="search-box">
+    
+        <search-laptop-merk></search-laptop-merk>
+   
+</div>
 
+<div class="container">
     @foreach($laptops as $laptop)
     <hr>
     <div class="row mt-5">
@@ -18,12 +24,8 @@
         </div>
     </div>
     @endforeach
-
-<div class="search-menu">
-    <div>
-        <search-laptop-merk></search-laptop-merk>
-    </div>
 </div>
+
 
 
 <script>
@@ -32,24 +34,30 @@ Vue.component('search-laptop-merk', {
 
 props:[],
 
+
     data() {
         return {
+            checked_names:[]
            
         }
     },
 
-    template:'<p>sdfdsfdsfdsfdsfds</p>',
+    template: `
+    <div><input type="checkbox" id="acer" value="acer" v-model="checked_names"  @click="searchByBrand">
+    <label for="acer">Acer</label><br>
+    <input type="checkbox" id="apple" value="apple" v-model="checked_names" @click="test" >
+    <label for="apple">Apple</label><br>
+    <input type="checkbox" id="asus" value="asus">
+    <label for="asus">ASUS</label>
+  <br></div>`,
+
 
     methods: {
-        getAllNotifications(){
-            axios.get('/profiles/'+this.attribuutuserid+'/notifications')
+        searchByBrand(){
+            
+            axios.post('/laptops/'+this.checked_names)
             .then((response) => {
-                    if(response.data.length != 0){
-                        this.standaardmessage=false;
-                        this.showbell=true;
-                        this.data=response.data;
-                        flash({message:'Uw heeft notificaties', danger:'0'});
-                            }else{this.standaardmessage=true;}
+                  
             })
             .catch((error) => {
             });
@@ -60,11 +68,16 @@ props:[],
         .catch((error) => {
             });
        
-       } 
+       } ,
+
+       test(){
+           console.log(this.checked_names);
+       }
 
    },
 
    created(){
+     
   
    },
 

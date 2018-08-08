@@ -23,8 +23,8 @@ Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index');
 Route::get('/api/laptops', 'API\LaptopsController@feed');
 
 // producten laptops
-
 Route::get('/laptops', 'ProductCategorien\LaptopsController@index')->name('laptops.index');
 Route::get('/laptops/{laptop}', 'ProductCategorien\LaptopsController@show')->name('laptops.show');
 
+Route::post('/laptops/{searchbrand}', 'ProductCategorien\LaptopSearchController@searchByBrand');
 

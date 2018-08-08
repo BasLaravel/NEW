@@ -21,10 +21,16 @@
     <!-- Styles -->
 
     <style>
-    .menu-search{
+    .search-box{
       position:absolute;
-      right:0;
-      top:300px;
+      
+      left:10px;
+      top:200px;
+      height:200px;
+      
+    
+      border: 1px solid black;
+      border-radius: 5px;
     }
     
     </style>
@@ -104,7 +110,7 @@
      
         <main  class="py-4">
           
-          <div id="app" class="container">
+          <div id="app">
             @yield('content')
           </div>
 
