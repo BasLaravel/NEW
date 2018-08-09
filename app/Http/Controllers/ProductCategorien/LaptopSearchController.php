@@ -26,11 +26,11 @@ class LaptopSearchController extends Controller
 
     public function searchByScreenDiameter(Request $request )
     {
-
-        $laptops = Laptop::whereIn('screen_diameter',$request->screendiameter)->orderBy('specsTag','asc')->get();
+//dd($request->screendiameter);
+        $laptopss = Laptop::whereIn('screen_diameter',$request->screendiameter)->get();
         $screendiameter = Laptop::select('screen_diameter')->distinct()->get();;
         $merken = Laptop::select('specsTag')->distinct()->get();
-      
+      dd($laptopss);
         return view('product_categorien.laptops.index',[
             'laptops' => $laptops,
             'merken' => $merken,

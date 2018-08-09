@@ -17,7 +17,7 @@ class LaptopsController extends Controller
      */
     public function feed()
     {
-        Cache::forget('laptops');
+       // Cache::forget('laptops');
 
         if (Cache::has('laptops')) {
 
@@ -63,15 +63,16 @@ class LaptopsController extends Controller
 
             $toExplode = $data['products'][$i]['summary'];
             $array = explode("|",$toExplode);
-            
+            $screendiameter = trim($array[1]," ");
+            $processor = trim($array[0], " ");
 
             Laptop::create([
             'product_id' => $data['products'][$i]['id'],
             'ean' => $data['products'][$i]['ean'],
             'title'=> $data['products'][$i]['title'],
             'specsTag' => $data['products'][$i]['specsTag'],
-            'processor' => $array[0],
-            'screen_diameter'=> $array[1],
+            'processor' => $processor,
+            'screen_diameter'=> $screendiameter,
             'short_description'=> $data['products'][$i]['shortDescription'],
             'long_description'=> $data['products'][$i]['longDescription'],
             'image_large'=> $data['products'][$i]['images'][5]['url'],
