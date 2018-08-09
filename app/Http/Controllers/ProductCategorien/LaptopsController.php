@@ -17,13 +17,15 @@ class LaptopsController extends Controller
     {
        
         $laptops = Laptop::all();
-        $screendiameter = Laptop::select('screen_diameter')->distinct()->get();;
-        $merken = Laptop::select('specsTag')->distinct()->get();
+        $screendiameter = Laptop::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();;
+        $processor = Laptop::select('processor')->distinct()->orderBy('processor','desc')->get();;
+        $merken = Laptop::select('specsTag')->distinct()->orderBy('specsTag')->get();
       
         return view('product_categorien.laptops.index',[
             'laptops' => $laptops,
             'merken' => $merken,
-            'screendiameter' => $screendiameter
+            'screendiameter' => $screendiameter,
+            'processor' => $processor
         ]);
     }
 

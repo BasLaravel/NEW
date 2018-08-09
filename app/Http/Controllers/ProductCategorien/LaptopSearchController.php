@@ -11,32 +11,53 @@ class LaptopSearchController extends Controller
     public function searchByBrand(Request $request )
     {
 
-           // dd($request->merken);
         $laptops = Laptop::whereIn('specsTag',$request->merken)->orderBy('specsTag','asc')->get();
-        $screendiameter = Laptop::select('screen_diameter')->distinct()->get();;
-        $merken = Laptop::select('specsTag')->distinct()->get();
+        $screendiameter = Laptop::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();
+        $processor = Laptop::select('processor')->distinct()->orderBy('processor','desc')->get();
+        $merken = Laptop::select('specsTag')->distinct()->orderBy('specsTag')->get();
 
-           
-        return view('product_categorien.laptops.search',[
-            'laptops' => $laptops,
-            'merken' => $merken,
-            'screendiameter' => $screendiameter
-            ]);
-    }
-
-    public function searchByScreenDiameter(Request $request )
-    {
-//dd($request->screendiameter);
-        $laptopss = Laptop::whereIn('screen_diameter',$request->screendiameter)->get();
-        $screendiameter = Laptop::select('screen_diameter')->distinct()->get();;
-        $merken = Laptop::select('specsTag')->distinct()->get();
-      dd($laptopss);
         return view('product_categorien.laptops.index',[
             'laptops' => $laptops,
             'merken' => $merken,
-            'screendiameter' => $screendiameter
+            'screendiameter' => $screendiameter,
+            'processor' => $processor
+            ]);
+    }
+
+
+    public function searchByScreenDiameter(Request $request )
+    {
+
+        $laptops = Laptop::whereIn('screen_diameter',$request->screendiameter)->get();
+        $screendiameter = Laptop::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();
+        $processor = Laptop::select('processor')->distinct()->orderBy('processor','desc')->get();
+        $merken = Laptop::select('specsTag')->distinct()->orderBy('specsTag')->get();
+     
+        return view('product_categorien.laptops.index',[
+            'laptops' => $laptops,
+            'merken' => $merken,
+            'screendiameter' => $screendiameter,
+            'processor' => $processor
         ]);
     }
+
+    
+    public function searchByProcessor(Request $request )
+    {
+
+        $laptops = Laptop::whereIn('processor',$request->processor)->get();
+        $screendiameter = Laptop::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();
+        $processor = Laptop::select('processor')->distinct()->orderBy('processor','desc')->get();;
+        $merken = Laptop::select('specsTag')->distinct()->orderBy('specsTag')->get();
+      
+        return view('product_categorien.laptops.index',[
+            'laptops' => $laptops,
+            'merken' => $merken,
+            'screendiameter' => $screendiameter,
+            'processor' => $processor
+        ]);
+    }
+
 
 
 

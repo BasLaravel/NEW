@@ -24,7 +24,7 @@
     .search-box{
       position:absolute;
       
-      left:10px;
+      left:20px;
       top:200px;
     
       

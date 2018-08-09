@@ -3,8 +3,9 @@
 @section('content')
 <div class="search-box">
 
-    <form  method="POST" action="/laptops/search/bybrand">
+    <form class="mb-5"  method="POST" action="/laptops/search/bybrand">
     @csrf
+    <h6>Merk</h6>
      @foreach($merken as $merk)
     <div class="form-check">
         <input class="form-check-input" type="checkbox" id="{{$merk['specsTag']}}" name="merken[]" value="{{$merk['specsTag']}}"
@@ -15,13 +16,26 @@
     </form>   
 
 
-      <form  method="POST" action="/laptops/search/byscreendiameter">
+      <form class="mb-5"  method="POST" action="/laptops/search/byscreendiameter">
     @csrf
+    <h6>Diameter</h6>
      @foreach($screendiameter as $screendiameter)
     <div class="form-check">
         <input class="form-check-input" type="checkbox" id="{{$screendiameter->screen_diameter}}" name="screendiameter[]" 
         value="{{$screendiameter->screen_diameter}}" onchange='this.form.submit()'>{{$screendiameter->screen_diameter}}
         <label class="form-check-label" for="{{$screendiameter->screen_diameter}}"></label>
+    </div>
+     @endforeach    
+    </form>   
+
+        <form class="mb-5"  method="POST" action="/laptops/search/byprocessor">
+    @csrf
+    <h6>Processor</h6>
+     @foreach($processor as $processor)
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="{{$processor->processor}}" name="processor[]" 
+        value="{{$processor->processor}}" onchange='this.form.submit()'>{{$processor->processor}}
+        <label class="form-check-label" for="{{$processor->processor}}"></label>
     </div>
      @endforeach    
     </form>   
@@ -41,7 +55,7 @@
             <img class="card-img-top" src="{{$laptop->image_large}}"  alt="Product image cap">
         </div>
         <div class="col-8">
-            <h5 class="card-title">{{$laptop->screendiameter}}</h5>
+            <h5 class="card-title">{{$laptop->title}}</h5>
             <p class="card-text">{{ str_limit($laptop->short_description, $limit = 250, $end ='...')}} 
                 <a href="{{ route('laptops.show', [$laptop->id]) }}">Meer...</a>
             </p>
