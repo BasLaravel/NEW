@@ -26,7 +26,10 @@ class CreateLaptopsTable extends Migration
             
             
             $table->string('specsTag');
-            $table->string('summary');
+            $table->string('screen_diameter');
+            $table->string('processor');
+
+
             $table->longText('short_description');
             $table->longText('long_description');
             $table->string('image_large')->nullable();

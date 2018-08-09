@@ -1,12 +1,37 @@
 @extends('master')
 
 @section('content')
-
 <div class="search-box">
-    
-        <search-laptop-merk></search-laptop-merk>
-   
-</div>
+
+    <form  method="POST" action="/laptops/search/bybrand">
+    @csrf
+     @foreach($merken as $merk)
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="{{$merk['specsTag']}}" name="merken[]" value="{{$merk['specsTag']}}"
+        onchange='this.form.submit()'>{{$merk['specsTag']}}
+        <label class="form-check-label" for="{{$merk['specsTag']}}"></label>
+    </div>
+     @endforeach    
+    </form>   
+
+
+      <form  method="POST" action="/laptops/search/byscreendiameter">
+    @csrf
+     @foreach($screendiameter as $screendiameter)
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="{{$screendiameter->screen_diameter}}" name="screendiameter[]" 
+        value="{{$screendiameter->screen_diameter}}" onchange='this.form.submit()'>{{$screendiameter->screen_diameter}}
+        <label class="form-check-label" for="{{$screendiameter->screen_diameter}}"></label>
+    </div>
+     @endforeach    
+    </form>   
+
+
+
+ </div>
+
+
+
 
 <div class="container">
     @foreach($laptops as $laptop)
@@ -16,7 +41,7 @@
             <img class="card-img-top" src="{{$laptop->image_large}}"  alt="Product image cap">
         </div>
         <div class="col-8">
-            <h5 class="card-title">{{$laptop->title}}</h5>
+            <h5 class="card-title">{{$laptop->screendiameter}}</h5>
             <p class="card-text">{{ str_limit($laptop->short_description, $limit = 250, $end ='...')}} 
                 <a href="{{ route('laptops.show', [$laptop->id]) }}">Meer...</a>
             </p>
@@ -29,94 +54,100 @@
 
 
 <script>
-Vue.component('search-laptop-merk', {
+// wordt niet gebruikt kan eventueel weg.
+// <div class="search-box">
+    
+//     <search-laptop-merk></search-laptop-merk>
+
+// </div>
+// Vue.component('search-laptop-merk', {
 
 
-props:[],
+// props:[],
 
 
-    data() {
-        return {
-            checked_names:[]
+//     data() {
+//         return {
+//             checked_names:[]
            
-        }
-    },
+//         }
+//     },
 
-    template: `
-    <div><input type="checkbox" id="acer" value="acer" v-model="checked_names"  @click="searchByBrand">
-    <label for="acer">Acer</label><br>
-    <input type="checkbox" id="apple" value="apple" v-model="checked_names" @click="test" >
-    <label for="apple">Apple</label><br>
-    <input type="checkbox" id="asus" value="asus">
-    <label for="asus">ASUS</label>
-  <br></div>`,
+//     template: `
+//     <div><input type="checkbox" id="acer" value="acer" v-model="checked_names"  @click="searchByBrand">
+//     <label for="acer">Acer</label><br>
+//     <input type="checkbox" id="apple" value="apple" v-model="checked_names" @click="test" >
+//     <label for="apple">Apple</label><br>
+//     <input type="checkbox" id="asus" value="asus">
+//     <label for="asus">ASUS</label>
+//   <br></div>`,
 
 
-    methods: {
-        searchByBrand(){
+//     methods: {
+//         searchByBrand(){
             
-            axios.post('/laptops/'+this.checked_names)
-            .then((response) => {
+//             axios.post('/laptops/'+this.checked_names)
+//             .then((response) => {
                   
-            })
-            .catch((error) => {
-            });
-        },
+//             })
+//             .catch((error) => {
+//             });
+//         },
 
-       markAsRead(notifications_id){
-        axios.delete('/profiles/'+this.attribuutuserid+'/notifications/'+notifications_id)
-        .catch((error) => {
-            });
+//        markAsRead(notifications_id){
+//         axios.delete('/profiles/'+this.attribuutuserid+'/notifications/'+notifications_id)
+//         .catch((error) => {
+//             });
        
-       } ,
+//        } ,
 
-       test(){
-           console.log(this.checked_names);
-       }
+//        test(){
+//            console.log(this.checked_names);
+//        }
 
-   },
+//    },
 
-   created(){
+//    created(){
      
   
-   },
+//    },
 
-   mounted() {
-            console.log('Component mounted.')
-        }
-
-
-});
-
-new Vue({
-    el:'#app',
+//    mounted() {
+//             console.log('Component mounted.')
+//         }
 
 
-    data:{
+// });
+
+// new Vue({
+//     el:'#app',
+
+
+//     data:{
       
      
        
-  },
+//   },
 
 
- methods:{
+//  methods:{
 
 
-},
+// },
 
-created(){
+// created(){
  
 
-}
+// }
 
 
 
 
-});
+// });
 
 
 
-</script>
+// </script>
 
 
 @endsection

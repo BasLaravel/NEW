@@ -25,6 +25,7 @@ Route::get('/api/laptops', 'API\LaptopsController@feed');
 // producten laptops
 Route::get('/laptops', 'ProductCategorien\LaptopsController@index')->name('laptops.index');
 Route::get('/laptops/{laptop}', 'ProductCategorien\LaptopsController@show')->name('laptops.show');
-
-Route::post('/laptops/{searchbrand}', 'ProductCategorien\LaptopSearchController@searchByBrand');
+Route::post('/laptops/search/bybrand', 'ProductCategorien\LaptopSearchController@searchByBrand');
+Route::post('/laptops/search/byscreendiameter', 'ProductCategorien\LaptopSearchController@searchByScreenDiameter');
+Route::post('/laptops/search/byprocessor', 'ProductCategorien\LaptopSearchController@searchByProcessor');
 
