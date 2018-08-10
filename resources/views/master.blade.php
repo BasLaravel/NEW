@@ -18,7 +18,7 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/NEW/css/style.css">
 
     <!-- Styles -->
 
@@ -27,7 +27,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="navbar-header ml-0 mt-4">
-    <a class="navbar-brand" href="index.php"><img class = "Logo" src="/img/LogoNEW.png" alt="" style = "max-width:175px;max-height:175px;">
+    <a class="navbar-brand" href="index.php"><img class = "Logo" src="/NEW/img/LogoNEW.png" alt="" style = "max-width:175px;max-height:175px;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,8 @@
       @endauth
       </li>
       <li class="nav-item dropdown" id= "dropdown1">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <div class="itemcount">0</div><img src="/img/Winkelwagentje.png" alt="" style="max-width:49px;max-height:49px;"></a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false"> <div class="itemcount">0</div><img src="/NEW/img/Winkelwagentje.png" alt="" style="max-width:49px;max-height:49px;"></a>
         <div id= "dropdown-menu4" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Naar Winkelwagentje</a>
         </div>
@@ -75,13 +76,15 @@
 </nav>
 <nav class="navbar2 navbar-expand-lg navbar-dark">
   <div class="navbar-header">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+    aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto ml-auto">
-      <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" 
+      aria-haspopup="true" aria-expanded="false">
        Categorieën
       </a>
         <ul class="dropdown-menu" id=dropdown-menu1 aria-labelledby="navbarDropdownMenuLink">
@@ -217,7 +220,8 @@
         </ul>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="false" 
+        aria-expanded="true">
           Cadeaus & inspiratie
         </a>
 
@@ -260,8 +264,9 @@
   </div>
 </nav>
 
-<center><div class=""><img src="/img/plaatje.png" alt="" style="max-width:500px;"><br>
-<h4 style="color:#018179;">Voor <strong style="color:#f39200;">23:59</strong> besteld, morgen <strong style="color:#f39200;">GRATIS</strong> in huis.</h4> </div></center>
+<center><div class=""><img src="/NEW/img/plaatje.png" alt="" style="max-width:500px;"><br>
+<h4 style="color:#018179;">Voor <strong style="color:#f39200;">23:59</strong> besteld, morgen <strong 
+style="color:#f39200;">GRATIS</strong> in huis.</h4> </div></center>
 
 
 
@@ -315,10 +320,10 @@
         © 2018 - NEW B.V <br>
         Beoordeling van klanten:
         <div class="item4">
-        <a href="#"><img src="/img/Facebook.png" alt="" style = "max-width:20px;"></a>
-        <a href="#"><img src="/img/Linkedin.png" alt="" style = "max-width:40px;"></a>
-        <a href="#"><img src="/img/Twitter.png" alt="" style = "max-width:30px;"></a>
-        <a href="#"><img src="/img/Youtube.png" alt="" style = "max-width:50px;"></a>
+        <a href="#"><img src="/NEW/img/Facebook.png" alt="" style = "max-width:20px;"></a>
+        <a href="#"><img src="/NEW/img/Linkedin.png" alt="" style = "max-width:40px;"></a>
+        <a href="#"><img src="/NEW/img/Twitter.png" alt="" style = "max-width:30px;"></a>
+        <a href="#"><img src="/NEW/img/Youtube.png" alt="" style = "max-width:50px;"></a>
         </div>
       </div>
     </footer></center>
