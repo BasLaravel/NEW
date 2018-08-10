@@ -22,10 +22,12 @@
 
     <style>
     .search-box{
-      position:absolute;
-      
-      left:20px;
-      top:200px;
+      position:fixed;
+
+      overflow-y: scroll;
+      margin-left:40px;
+      top:20px;
+    height:85%;
     
       
     }
