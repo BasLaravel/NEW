@@ -1,42 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\API;
-
+use Illuminate\Database\Seeder;
 use App\Laptop;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class LaptopsController extends Controller
+class LaptopsTableSeeder extends Seeder
 {
     /**
-     * Display a listing of the resource.
+     * Run the database seeds.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function feed()
+    public function run()
     {
-        //Cache::forget('monitoren');
-//dd(Cache::get('monitoren'));
-        if (Cache::has('monitor')) {
+         // Cache::forget('laptops');
+
+         if (Cache::has('laptops')) {
 
             echo "<p>De laptopsCollectie staat in de Cache</p>";
-            $data = Cache::get('monitor');
-            dd($data['products']);
-            //dd($data['products'][88]['offerData']['offers'][0]['price']);
+            $data = Cache::get('laptops');
+            //dd($data);
 
         }else{
 
             try{
-                //$apiUrl = 'https://api.bol.com/catalog/v4/lists/?ids=10460&limit=100&apikey=A1588DB3C75F426196E5C3A7A64887A9&MediaEntry=true&includeAttributes=true&format=json';  
+               // $apiUrl = 'https://api.bol.com/catalog/v4/lists/?ids=4770&limit=100&apikey=A1588DB3C75F426196E5C3A7A64887A9&MediaEntry=true&includeAttributes=true&format=json';  
             
                 $data = json_decode(file_get_contents($apiUrl), true);
             
-                $moni = Cache::forever('monitor', $data);
+                $laptops = Cache::forever('laptops', $data);
             
                 echo "<p>De gegevens ontvangen van de API (laptops.bol.com) en zijn in de cache gezet.</p>";
-                dd($moni);
+
                } catch(\Exception $e){
                     return $e->getMessage();
                }
@@ -47,12 +41,9 @@ class LaptopsController extends Controller
             echo "<p>Er staan minstens 1 rij in webshop.laptops. Om de gegevens vanuit de cache in te laden in de db. Maak de db leeg.</p>";
         
         }else{
-
             $this->databasefeeder();
             echo "<p>de key laptops in de cache zijn geladen in webshop.laptops</p>";
         }
-
-
     }
         
 
@@ -73,6 +64,7 @@ class LaptopsController extends Controller
             'product_id' => $data['products'][$i]['id'],
             'ean' => $data['products'][$i]['ean'],
             'title'=> $data['products'][$i]['title'],
+            'price' => $data['products'][$i]['offerData']['offers'][0]['price'],
             'specsTag' => $data['products'][$i]['specsTag'],
             'processor' => (isset($processor))? $processor : null,
             'screen_diameter'=> (isset($screendiameter))? $screendiameter : null,
@@ -87,90 +79,5 @@ class LaptopsController extends Controller
 
 
 
-
-        
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Laptop  $laptop
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Laptop $laptop)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Laptop  $laptop
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Laptop $laptop)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Laptop  $laptop
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Laptop $laptop)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Laptop  $laptop
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Laptop $laptop)
-    {
-        //
     }
 }

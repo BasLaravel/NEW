@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\ProductCategorien;
 
-use App\Laptop;
 use Illuminate\Http\Request;
+use App\Desktop;
 use App\Http\Controllers\Controller;
 
-class LaptopsController extends Controller
+class DesktopsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,25 +15,17 @@ class LaptopsController extends Controller
      */
     public function index()
     {
-        $laptops = Laptop::all()->sortBy('specsTag');
-        $min=$laptops->min('price');
-        $max=$laptops->max('price');
-        $avg=round(($min+$max)/2);
-        $screendiameter = Laptop::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();;
-        $processor = Laptop::select('processor')->distinct()->orderBy('processor','desc')->get();;
-        $merken = Laptop::select('specsTag')->distinct()->orderBy('specsTag')->get();
-        $priced=0;
+        $desktops = Desktop::all()->sortBy('specsTag');
+        //$screendiameter = Laptop::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();;
+        $processor = Desktop::select('processor')->distinct()->orderBy('processor','desc')->get();;
+        $merken = Desktop::select('specsTag')->distinct()->orderBy('specsTag')->get();
       
-        return view('product_categorien.laptops.index',[
-            'laptops' => $laptops,
+        return view('product_categorien.desktops.index',[
+            'desktops' => $desktops,
             'merken' => $merken,
-            'screendiameter' => $screendiameter,
-            'processor' => $processor,
-            'min' => round($min),
-            'max' => round($max),
-            'avg' => round($avg),
-            'priced' => $priced   
-         ]);
+            //'screendiameter' => $screendiameter,
+            'processor' => $processor
+        ]);
     }
 
     /**
@@ -63,10 +55,9 @@ class LaptopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Laptop $laptop)
+    public function show(Desktop $desktop)
     {
-
-        return view('product_categorien.laptops.show',['laptop' => $laptop]);
+        return view('product_categorien.desktops.show',['desktop' => $desktop]);
     }
 
     /**

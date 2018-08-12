@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('master');
-});
+})->name('home');
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
@@ -24,8 +24,15 @@ Route::get('/api/laptops', 'API\LaptopsController@feed');
 
 // producten laptops
 Route::get('/laptops', 'ProductCategorien\LaptopsController@index')->name('laptops.index');
+Route::post('/laptops', 'ProductCategorien\LaptopSearchController@search')->name('laptops.index');
 Route::get('/laptops/{laptop}', 'ProductCategorien\LaptopsController@show')->name('laptops.show');
-Route::post('/laptops/search/bybrand', 'ProductCategorien\LaptopSearchController@searchByBrand');
-Route::post('/laptops/search/byscreendiameter', 'ProductCategorien\LaptopSearchController@searchByScreenDiameter');
-Route::post('/laptops/search/byprocessor', 'ProductCategorien\LaptopSearchController@searchByProcessor');
 
+// producten desktops
+Route::get('/desktops', 'ProductCategorien\DesktopsController@index')->name('desktops.index');
+Route::post('/desktops', 'ProductCategorien\DesktopSearchController@search')->name('desktops.index');
+Route::get('/desktops/{desktop}', 'ProductCategorien\DesktopsController@show')->name('desktops.show');
+
+// producten monitors
+Route::get('/monitors', 'ProductCategorien\MonitorsController@index')->name('monitors.index');
+Route::post('/monitors', 'ProductCategorien\MonitorSearchController@search')->name('monitors.index');
+Route::get('/monitors/{monitor}', 'ProductCategorien\MonitorsController@show')->name('monitors.show');

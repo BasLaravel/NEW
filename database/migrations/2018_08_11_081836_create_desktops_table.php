@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLaptopsTable extends Migration
+class CreateDesktopsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateLaptopsTable extends Migration
      */
     public function up()
     {
-        Schema::create('laptops', function (Blueprint $table) {
+        Schema::create('desktops', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('product_id')->unique();
             $table->bigInteger('ean')->unique();
-            $table->string('title');
+            $table->mediumText('title');
             $table->double('price', 8, 2);
 
                 //in de toekomst bijvoegen:
@@ -25,12 +25,8 @@ class CreateLaptopsTable extends Migration
             // $table->mediumInteger('levertijd');
             // $table->boolean('leverbaar');
             
-            
             $table->string('specsTag');
-            $table->string('screen_diameter');
             $table->string('processor');
-
-
             $table->longText('short_description');
             $table->longText('long_description');
             $table->string('image_large')->nullable();
@@ -41,6 +37,7 @@ class CreateLaptopsTable extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      *
@@ -48,6 +45,6 @@ class CreateLaptopsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laptops');
+        Schema::dropIfExists('desktops');
     }
 }

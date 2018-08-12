@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLaptopsTable extends Migration
+class CreateMonitorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateLaptopsTable extends Migration
      */
     public function up()
     {
-        Schema::create('laptops', function (Blueprint $table) {
+        Schema::create('monitors', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('product_id')->unique();
             $table->bigInteger('ean')->unique();
-            $table->string('title');
+            $table->mediumText('title');
+            $table->mediumText('subtitle')->nullable();;
             $table->double('price', 8, 2);
 
                 //in de toekomst bijvoegen:
@@ -27,8 +28,8 @@ class CreateLaptopsTable extends Migration
             
             
             $table->string('specsTag');
-            $table->string('screen_diameter');
-            $table->string('processor');
+            $table->string('screen_diameter')->nullable();;
+            $table->string('resolution')->nullable();;
 
 
             $table->longText('short_description');
@@ -48,6 +49,6 @@ class CreateLaptopsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laptops');
+        Schema::dropIfExists('monitors');
     }
 }

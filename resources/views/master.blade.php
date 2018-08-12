@@ -27,7 +27,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="navbar-header ml-0 mt-4">
-    <a class="navbar-brand" href="index.php"><img class = "Logo" src="/img/LogoNEW.png" alt="" style = "max-width:175px;max-height:175px;">
+    <a class="navbar-brand" href="{{ route('home')}}"><img class = "Logo" src="{{asset('img/LogoNEW.png')}}" alt="" style = "max-width:175px;max-height:175px;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@
       </select> </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item"><a class="navbar-brand" href="#"><img src="/img/login.png" alt="" style="max-width:50px;max-height:40px;"></a></li>
+      <li class="nav-item"><a class="navbar-brand" href="#"><img src="{{asset('img/login.png')}}" alt="" style="max-width:50px;max-height:40px;"></a></li>
     <li class="nav-item">
       @auth
           <a class="nav-link" href="{{ url('/home') }}">Home</a>
@@ -65,7 +65,8 @@
       @endauth
       </li>
       <li class="nav-item dropdown" id= "dropdown1">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <div class="itemcount">0</div><img src="/img/Winkelwagentje.png" alt="" style="max-width:49px;max-height:49px;"></a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <div class="itemcount">0</div><img src="{{asset('img/Winkelwagentje.png')}}"
+         alt="" style="max-width:49px;max-height:49px;"></a>
         <div id= "dropdown-menu4" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Naar Winkelwagentje</a>
         </div>
@@ -87,9 +88,9 @@
         <ul class="dropdown-menu" id=dropdown-menu1 aria-labelledby="navbarDropdownMenuLink">
           <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Computers & tablets</a>
             <ul class="dropdown-menu">
-               <li><a class="dropdown-item" href="/laptops">Laptop</a></li>
-               <li><a class="dropdown-item" href="#">Desktop</a></li>
-               <li><a class="dropdown-item" href="#">Monitoren</a></li>
+               <li><a class="dropdown-item" href="{{ route('laptops.index')}}">Laptop</a></li>
+               <li><a class="dropdown-item" href="{{ route('desktops.index')}}">Desktop</a></li>
+               <li><a class="dropdown-item" href="{{ route('monitors.index')}}">Monitoren</a></li>
                <li><a class="dropdown-item" href="#">Randapparatuur</a></li>
                <li><a class="dropdown-item" href="#">Tablets</a></li>
                <li><a class="dropdown-item" href="#">E-readers</a></li>
@@ -260,7 +261,7 @@
   </div>
 </nav>
 
-<center><div class=""><img src="/img/plaatje.png" alt="" style="max-width:500px;"><br>
+<center><div class=""><img src="{{asset('img/plaatje.png')}}" alt="" style="max-width:500px;"><br>
 <h4 style="color:#018179;">Voor <strong style="color:#f39200;">23:59</strong> besteld, morgen <strong style="color:#f39200;">GRATIS</strong> in huis.</h4> </div></center>
 
 
@@ -315,10 +316,10 @@
         © 2018 - NEW B.V <br>
         Beoordeling van klanten:
         <div class="item4">
-        <a href="#"><img src="/img/Facebook.png" alt="" style = "max-width:20px;"></a>
-        <a href="#"><img src="/img/Linkedin.png" alt="" style = "max-width:40px;"></a>
-        <a href="#"><img src="/img/Twitter.png" alt="" style = "max-width:30px;"></a>
-        <a href="#"><img src="/img/Youtube.png" alt="" style = "max-width:50px;"></a>
+        <a href="#"><img src="{{asset('img/Facebook.png')}}" alt="" style = "max-width:20px;"></a>
+        <a href="#"><img src="{{asset('img/Linkedin.png')}}" alt="" style = "max-width:40px;"></a>
+        <a href="#"><img src="{{asset('img/Twitter.png')}}" alt="" style = "max-width:30px;"></a>
+        <a href="#"><img src="{{asset('img/Youtube.png')}}" alt="" style = "max-width:50px;"></a>
         </div>
       </div>
     </footer></center>
