@@ -15,6 +15,7 @@ class CreateLaptopsTable extends Migration
     {
         Schema::create('laptops', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('categorie');
             $table->bigInteger('product_id')->unique();
             $table->bigInteger('ean')->unique();
             $table->string('title');

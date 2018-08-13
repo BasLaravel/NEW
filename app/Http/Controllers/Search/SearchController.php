@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Search;
 
 use App\Laptop;
+use App\Desktop;
+use App\Monitor;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,32 +18,20 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        //dd($request->search);
-        //$q = $request->search;
-       // $q=explode(" ",$string);
-        $a = array('apple');
-        //dd($q);
+        $arr  =[];
+         $i=0;
+        $model = array("Laptop","Desktop","Monitor");
+        $q= $request->search;
+    
+       foreach($model as $key => $value){
+            $class = "App\\".$value;
+            $arr[$i] = $class::search($q)->get();
+            $i++;
+       }
 
-        $search=Laptop::selectRaw("MATCH(title,short_description) AGAINST(? IN BOOLEAN MODE) AS score", $a)
-        >whereRaw("MATCH (title, short_description) AGAINST (? IN BOOLEAN MODE)", $a)
-        ->orderByDesc('score')->get();
-
-     
-
-dd($search);
-
-
-
-
-        // $search = \DB::select(\DB::raw("SELECT *, MATCH(title, short_description) AGAINST('$q') as score
-        // FROM laptops
-        // WHERE MATCH(title, short_description) AGAINST('$q') AND 
-        // WHERE score > 1
-        // order by score desc
-        // LIMIT 3;"));
-
+//dd($arr);
         return view('search_results',[
-            'search' => $search,
+            'search' => $arr,
             ]);
        
 

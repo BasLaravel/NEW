@@ -15,6 +15,7 @@ class CreateMonitorsTable extends Migration
     {
         Schema::create('monitors', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('categorie');
             $table->bigInteger('product_id')->unique();
             $table->bigInteger('ean')->unique();
             $table->mediumText('title');
@@ -40,6 +41,8 @@ class CreateMonitorsTable extends Migration
             $table->string('image_3')->nullable();
             $table->timestamps();
         });
+
+        DB::statement('ALTER TABLE monitors ADD FULLTEXT fulltext_index (title, short_description)');
     }
 
     /**

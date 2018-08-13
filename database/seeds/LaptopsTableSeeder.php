@@ -62,6 +62,7 @@ class LaptopsTableSeeder extends Seeder
 
             Laptop::create([
             'product_id' => $data['products'][$i]['id'],
+            'categorie' => 'laptops',
             'ean' => $data['products'][$i]['ean'],
             'title'=> $data['products'][$i]['title'],
             'price' => $data['products'][$i]['offerData']['offers'][0]['price'],

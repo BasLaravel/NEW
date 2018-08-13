@@ -66,6 +66,7 @@ class MonitorsTableSeeder extends Seeder
 
             Monitor::create([
             'product_id' => $data['products'][$i]['id'],
+            'categorie' => 'monitors',
             'ean' => $data['products'][$i]['ean'],
             'title'=> $data['products'][$i]['title'],
             'subtitle'=> (isset($data['products'][$i]['subtitle']))? $data['products'][$i]['subtitle'] : null,
