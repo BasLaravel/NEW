@@ -13,8 +13,8 @@ class MonitorSearchController extends Controller
         //dd($request->processor);
 
         $old=[];
-        $screendiameter = Monitor::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();
-        $resolution = Monitor::select('resolution')->distinct()->orderBy('resolution','asc')->get();
+        $screendiameter = Monitor::select('screen_diameter')->whereNotNull('screen_diameter')->distinct()->orderBy('screen_diameter')->get();
+        $resolution = Monitor::select('resolution')->whereNotNull('resolution')->distinct()->orderBy('resolution','asc')->get();
         $merken = Monitor::select('specsTag')->distinct()->orderBy('specsTag')->get();
 
         if(!isset($request->brand)){

@@ -22,6 +22,9 @@ Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index');
 //api bol.com
 Route::get('/api/laptops', 'API\LaptopsController@feed');
 
+//zoekfunctie
+Route::post('/search', 'Search\SearchController@index')->name('search.index');
+
 // producten laptops
 Route::get('/laptops', 'ProductCategorien\LaptopsController@index')->name('laptops.index');
 Route::post('/laptops', 'ProductCategorien\LaptopSearchController@search')->name('laptops.index');

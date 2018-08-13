@@ -23,7 +23,7 @@ class MonitorsTableSeeder extends Seeder
         }else{
 
             try{
-                // $apiUrl = 'https://api.bol.com/catalog/v4/lists/?ids=10460&limit=100&apikey=A1588DB3C75F426196E5C3A7A64887A9&MediaEntry=true&includeAttributes=true&format=json';  
+                 //$apiUrl = 'https://api.bol.com/catalog/v4/lists/?ids=10460&limit=100&apikey=A1588DB3C75F426196E5C3A7A64887A9&MediaEntry=true&includeAttributes=true&format=json';  
             
                 $data = json_decode(file_get_contents($apiUrl), true);
             
@@ -42,7 +42,7 @@ class MonitorsTableSeeder extends Seeder
         
         }else{
             $this->databasefeeder();
-            echo "<p>de key monitors in de cache zijn geladen in webshop.laptops</p>";
+            echo "<p>de key monitors in de cache is geladen in de database</p>";
         }
     }
         

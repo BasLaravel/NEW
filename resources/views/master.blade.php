@@ -37,8 +37,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li>
-      <form class="form-inline my-2 my-lg-0">
-        <input id= "inputlg" class="form-control ml-4 sm-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0"  method="POST" action="{{ route('search.index') }}">
+        @csrf
+        <input id= "inputlg" name="search" class="form-control ml-4 sm-2" type="search" placeholder="Search" aria-label="Search">
         <button id= "SearchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       </li>

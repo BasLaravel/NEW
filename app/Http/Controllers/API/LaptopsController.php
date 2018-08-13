@@ -23,7 +23,7 @@ class LaptopsController extends Controller
 
             echo "<p>De laptopsCollectie staat in de Cache</p>";
             $data = Cache::get('monitor');
-            dd($data['products']);
+            dd($data['products'][0]);
             //dd($data['products'][88]['offerData']['offers'][0]['price']);
 
         }else{

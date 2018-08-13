@@ -1,8 +1,8 @@
 <?php
 
-use App\Desktop;
-use Illuminate\Database\Seeder;
 
+use Illuminate\Database\Seeder;
+use App\Desktop;
 
 
 class DeskTopsTableSeeder extends Seeder
@@ -43,7 +43,7 @@ class DeskTopsTableSeeder extends Seeder
         }else{
 
             $this->databasefeeder();
-            echo "<p>de key desktops in de cache zijn geladen in Database</p>";
+            echo "<p>de key desktops in de cache is geladen in Database</p>";
         }
 
 

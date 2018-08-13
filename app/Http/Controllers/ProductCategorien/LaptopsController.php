@@ -19,7 +19,7 @@ class LaptopsController extends Controller
         $min=$laptops->min('price');
         $max=$laptops->max('price');
         $avg=round(($min+$max)/2);
-        $screendiameter = Laptop::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();;
+        $screendiameter = Laptop::select('screen_diameter')->whereNotNull('screen_diameter')->distinct()->orderBy('screen_diameter')->get();;
         $processor = Laptop::select('processor')->distinct()->orderBy('processor','desc')->get();;
         $merken = Laptop::select('specsTag')->distinct()->orderBy('specsTag')->get();
         $priced=0;

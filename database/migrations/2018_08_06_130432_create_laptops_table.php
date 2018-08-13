@@ -39,6 +39,10 @@ class CreateLaptopsTable extends Migration
             $table->string('image_3')->nullable();
             $table->timestamps();
         });
+
+        //DB::statement('ALTER TABLE laptops ADD FULLTEXT(title, short_description)');
+        DB::statement('ALTER TABLE laptops ADD FULLTEXT fulltext_index (title, short_description)');
+
     }
 
     /**

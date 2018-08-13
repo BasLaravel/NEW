@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Laptop extends Model
 {
     protected $guarded =[];
+
+    // protected $searchable = [
+    //     'title',
+    //     'short_description'
+    // ];
     // protected $appends=['screendiameter'];
 
 

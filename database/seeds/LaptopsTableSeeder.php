@@ -42,7 +42,7 @@ class LaptopsTableSeeder extends Seeder
         
         }else{
             $this->databasefeeder();
-            echo "<p>de key laptops in de cache zijn geladen in webshop.laptops</p>";
+            echo "<p>de key laptops in de cache is geladen in de database</p>";
         }
     }
         

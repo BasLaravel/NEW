@@ -1,31 +1,52 @@
 <?php
 
-namespace App\Http\Controllers\ProductCategorien;
+namespace App\Http\Controllers\Search;
 
-use App\Monitor;
+use App\Laptop;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MonitorsController extends Controller
+class SearchController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $monitors = Monitor::all()->sortBy('specsTag');
-        $screendiameter = Monitor::select('screen_diameter')->whereNotNull('screen_diameter')->distinct()->orderBy('screen_diameter')->get();;
-        $resolution = Monitor::select('resolution')->whereNotNull('resolution')->distinct()->orderBy('resolution','asc')->get();;
-        $merken = Monitor::select('specsTag')->distinct()->orderBy('specsTag')->get();
+        //dd($request->search);
+        //$q = $request->search;
+       // $q=explode(" ",$string);
+        $a = array('apple');
+        //dd($q);
+
+        $search=Laptop::selectRaw("MATCH(title,short_description) AGAINST(? IN BOOLEAN MODE) AS score", $a)
+        >whereRaw("MATCH (title, short_description) AGAINST (? IN BOOLEAN MODE)", $a)
+        ->orderByDesc('score')->get();
+
+     
+
+dd($search);
+
+
+
+
+        // $search = \DB::select(\DB::raw("SELECT *, MATCH(title, short_description) AGAINST('$q') as score
+        // FROM laptops
+        // WHERE MATCH(title, short_description) AGAINST('$q') AND 
+        // WHERE score > 1
+        // order by score desc
+        // LIMIT 3;"));
+
+        return view('search_results',[
+            'search' => $search,
+            ]);
+       
+
       
-        return view('product_categorien.monitors.index',[
-            'monitors' => $monitors,
-            'merken' => $merken,
-            'screendiameter' => $screendiameter,
-            'resolution' => $resolution
-        ]);
+  
     }
 
     /**
@@ -55,9 +76,9 @@ class MonitorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Monitor $monitor)
+    public function show($id)
     {
-        return view('product_categorien.monitors.show',['monitor' => $monitor]);
+        //
     }
 
     /**
