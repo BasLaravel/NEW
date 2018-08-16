@@ -8,20 +8,20 @@
         @foreach($merken as $merk)
         <div class="form-check">
             <input class="form-check-input" type="checkbox" id="{{$merk['specsTag']}}" name="brand[]" value="{{$merk['specsTag']}}"
-            onchange='this.form.submit()' {{(isset($old) && in_array($merk['specsTag'],$old))? 'checked':""}} >{{$merk['specsTag']}} 
+            onchange='this.form.submit()' {{(isset($old) && in_array($merk['specsTag'],$old))? 'checked':""}} >{{$merk['specsTag']}}
             <label class="form-check-label" for="{{$merk['specsTag']}}"></label>
         </div >
-        @endforeach 
+        @endforeach
 
         <h6 class="mt-5">Processor</h6>
         @foreach($processor as $processor)
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="{{$processor->processor}}" name="processor[]" 
+            <input class="form-check-input" type="checkbox" id="{{$processor->processor}}" name="processor[]"
             value="{{$processor->processor}}" onchange='this.form.submit()'
             {{(isset($old) && in_array($processor->processor,$old))? 'checked':""}}>{{$processor->processor}}
             <label class="form-check-label" for="{{$processor->processor}}"></label>
         </div>
-        @endforeach    
+        @endforeach
 
     </form>
 </div>
@@ -36,17 +36,17 @@
         </div>
         <div class="col-8">
             <h5 class="card-title">{{$desktop->title}}</h5>
-            <p class="card-text">{{ str_limit($desktop->short_description, $limit = 250, $end ='...')}} 
+            <p class="card-text">{{ str_limit($desktop->short_description, $limit = 250, $end ='...')}}
                 <a href="{{ route('desktops.show', [$desktop->id]) }}">Meer...</a>
             </p>
             <h5 align="right" class="card-title">{{$desktop->price}} Euro</h5>
-            <a href="#" class="btn btn-primary">In winkelwagen</a>  
+            <a href="#" class="btn btn-primary">In winkelwagen</a>
         </div>
     </div>
     <!-- opvulling als er 1 product wordt gevonden -->
     @if($loop->count == 1)
     <div style="height:350px;">
-        
+
     </div>
     @endif
     @empty

@@ -6,21 +6,21 @@
 
 <center><div class="container col-md-7 align-self-center">
   <h3 class="card-title">{{$laptop->title}}</h3>
-  <a class="link" href="#">
-    <p class="ratingstar2">&#10133;</p>
-    <p class="ratingstar2">&#10133;</p>
-    <p class="ratingstar2">&#10133;</p>
-    <p class="ratingstar2">&#10133;</p>
-    <p class="ratingstar">&#10133;</p>
-  Reviews</a>
-  <a class="link" href="#">Bekijk alle accessoires</a>
+  <!-- <a class="link" href="#">
+    <p class="ratingstar2">&#9733;</p>
+    <p class="ratingstar2">&#9733;</p>
+    <p class="ratingstar2">&#9733;</p>
+    <p class="ratingstar2">&#9733;</p>
+    <p class="ratingstar">&#9733;</p>
+  Reviews</a> -->
+  <!-- <a class="link" href="#">Bekijk alle accessoires</a> -->
   <div class="row mt-5">
       <div class="col-sm">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" ><img class="d-block w-100" src="{{$laptop->image_1}}" style="max-height:60px;"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"><img class="d-block w-100" src="{{$laptop->image_2}}" style="max-height:60px;"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"><img class="d-block w-100" src="{{$laptop->image_3}}" style="max-height:60px;"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" ><img class="d-block w-100" src="{{asset($laptop->image_1)}}" style="max-height:60px;"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"><img class="d-block w-100" src="{{asset($laptop->image_2)}}" style="max-height:60px;"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"><img class="d-block w-100" src="{{asset($laptop->image_3)}}" style="max-height:60px;"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -45,26 +45,26 @@
       </div>
       <div id="colom2" class="col-sm">
         <ul>
-        <li>Varianten: <select id="selectvar" class="select" name="NL">
+        <!-- <li>Varianten: <select id="selectvar" class="select" name="NL">
           <option value="NL">{{$laptop->summary}}</option>
-        </select></li><br>
-        <li><div class="price">
-          999,-
-        </div></li><br>
-        <li><a href="#" id="winkelwagenBTN" class="btn btn-primary">In winkelwagen <img src="/img/Winkelwagentje.png" alt="" style="max-width:50px;"></a></li><br>
+        </select></li><br> -->
+        <!-- <li><div class="price"> -->
+
+        <!-- </div></li><br> -->
+        <li><a href="{{route('addToCart', [$laptop->id])}}" id="winkelwagenBTN" class="btn btn-primary">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a></li><br>
         <li>&#10004;<a href="#">Voor 23.59 uur besteld, morgen gratis bezorgd</a></li>
         <li>&#10004;<a href="#">Morgen gratis ophalen bij 3.000+ ophaalpunten</a></li>
         <li>&#10004;<a href="#">Gratis binnen 30 dagen te retourneren</a></li>
-        <li><div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck1">
-  <label class="custom-control-label" for="customCheck1">Vergelijk dit produkt.</label>
+        <!-- <li><div class="custom-control custom-checkbox"> -->
+  <!-- <input type="checkbox" class="custom-control-input" id="customCheck1"> -->
+  <!-- <label class="custom-control-label" for="customCheck1">Vergelijk dit produkt.</label> -->
 </div></li>
       </ul>
       </div>
     </div><br><br><br>
     <div class="description">
       <h5>Beschrijving:</h5><br>
-        {{$laptop->short_description}}
+        {{!!$laptop->long_description!!}}
     </div><br>
     <table class="table">
     <tbody>
@@ -74,11 +74,11 @@
     </tr>
     <tr>
       <td><a href="#">Schermdiagonaal</a></td>
-      <td>{{$laptop->summary}}</td>
+      <td>{{$laptop->screen_diameter}}</td>
     </tr>
     <tr>
       <td><a href="#">Processor</a></td>
-      <td>Intel</td>
+      <td>{{$laptop->processor}}</td>
     </tr>
     <tr>
       <td><a href="#">Ram-geheugen</a></td>
@@ -92,17 +92,17 @@
       <td><a href="#">Opslagtype</a></td>
       <td>SSD</td>
     </tr>
-    <tr>
+    <!-- <tr>
       <td><a href="#">Bekijk alle specificaties</a></td>
       <td></td>
     </tr>
     <tr>
       <td></td>
       <td></td>
-    </tr>
+    </tr> -->
   </tbody>
 </table><br>
-<h3>Alternatieven</h3>
+<!-- <h3>Alternatieven</h3>
 <div class="card" style="width: 20rem;">
   <img class="card-img-top" src="{{$laptop->image_large}}" alt="Card image cap">
   <div class="card-body">
@@ -110,12 +110,12 @@
     <p class="card-text">{{ str_limit($laptop->short_description, $limit = 70, $end ='...')}}</p>
     <a href="#" class="">Ondek meer...</a><br>
     <a class="link" href="#">
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar">&#10133;</p>
-    Reviews</a>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar">&#9733;</p> -->
+    <!-- Reviews</a>
     <p class="card-text">
       <div class="price">999,-</div>
     </p>
@@ -128,11 +128,11 @@
     <p class="card-text">{{ str_limit($laptop->short_description, $limit = 70, $end ='...')}}</p>
     <a href="#" class="">Ondek meer...</a><br>
     <a class="link" href="#">
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar">&#10133;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar">&#9733;</p>
     Reviews</a>
     <p class="card-text">
       <div class="price">999,-</div>
@@ -146,32 +146,20 @@
     <p class="card-text">{{ str_limit($laptop->short_description, $limit = 70, $end ='...')}} </p>
     <a href="#" class="">Ondek meer...</a><br>
     <a class="link" href="#">
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar">&#10133;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar">&#9733;</p>
     Reviews</a>
     <p class="card-text">
       <div class="price">999,-</div>
     </p>
   </div>
-</div>
-<div class="reviews">
-<hr>
-<h5>Review</h5>
-<a class="link" href="#">Lees meer...</a>
-<hr>
-<h5>Review</h5>
-<a class="link" href="#">Lees meer...</a>
-<hr>
-<h5>Review</h5>
-<a class="link" href="#">Lees meer...</a>
-<hr>
-<a class="link" href="#">Meer reviews</a><br><br>
-</div>
-<h5>Specificaties</h5>
-<table class="table">
+</div> -->
+
+<!-- <h5>Specificaties</h5> -->
+<!-- <table class="table">
 <tbody>
 <tr>
   <th scope="row">Product  </th>
@@ -215,10 +203,6 @@
   <td></td>
   <td></td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
   <th scope="row">Beeldscherm</th>
   <td></td>
@@ -275,10 +259,6 @@
   <td></td>
   <td></td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
   <th>Processor</th>
   <td></td>
@@ -315,10 +295,6 @@
   <td><a href="#">&#10067; Cache</a></td>
   <td>6 MB</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Geheugen</th>
 <td></td>
@@ -343,10 +319,6 @@
 <td><a href="#">&#10067; Samenstelling geheugen</a></td>
 <td>2 x 4 GB</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Opslag</th>
 <td></td>
@@ -371,10 +343,6 @@
 <td><a href="#">&#10067; Formaat harde schijf</a></td>
 <td>M.2</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Videokaart</th>
 <td></td>
@@ -399,10 +367,6 @@
 <td><a href="#">&#10067; VR Ready</a></td>
 <td>--</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Draadloze verbindingen</th>
 <td></td>
@@ -427,10 +391,6 @@
 <td><a href="#">&#10067; Bluetooth-versie</a></td>
 <td>4.0</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Bedrade verbindingen</th>
 <td></td>
@@ -515,10 +475,6 @@
 <td><a href="#">&#10067; Optische aansluiting</a></td>
 <td>--</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Communicatie</th>
 <td></td>
@@ -531,10 +487,6 @@
 <td><a href="#">&#10067; Type dataverbinding</a></td>
 <td>Geen</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Audio</th>
 <td></td>
@@ -555,10 +507,6 @@
 <td><a href="#">&#10067; Ingebouwde microfoon</a></td>
 <td>&#10004;</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Camera</th>
 <td></td>
@@ -575,10 +523,6 @@
 <td><a href="#">&#10067; Beeld-definitie webcam</a></td>
 <td>HD Ready (720p)</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Bediening</th>
 <td></td>
@@ -623,10 +567,7 @@
 <td><a href="#">&#10067; Vingerafdruksensor</a></td>
 <td>--</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
+<tr>
 <th>Besturingsysteem</th>
 <td></td>
 </tr>
@@ -642,10 +583,7 @@
 <td><a href="#">&#10067; Taal besturingssysteem</a></td>
 <td>Nederlands, Engels, Duits, Meerdere talen in te stellen</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
+<tr>
 <th>Accu</th>
 <td></td>
 </tr>
@@ -664,10 +602,7 @@
 <td><a href="#">&#10067; Stroomconnector</a></td>
 <td>Standaard, Standaard USB</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
+<tr>
 <th>Gebruik</th>
 <td></td>
 </tr>
@@ -686,10 +621,6 @@
 <td><a href="#">&#10067; Veiligheidsklasse</a></td>
 <td>Basisklasse</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Overige</th>
 <td></td>
@@ -714,10 +645,6 @@
 <td><a href="#">&#10067; Kensington Lock</a></td>
 <td>--</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Fysieke eigenschappen</th>
 <td></td>
@@ -750,10 +677,6 @@
 <td><a href="#">&#10067; Bouwkwaliteit</a></td>
 <td>Basisklasse</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Software</th>
 <td></td>
@@ -767,8 +690,8 @@
 <td style="font-size:20px;">&#10004;</td>
 </tr>
 </tbody>
-</table><br>
-<a href="#" id="winkelwagenBTN" class="btn btn-primary">In winkelwagen <img src="/img/Winkelwagentje.png" alt="" style="max-width:50px;"></a>
+</table><br> -->
+<a href="{{route('addToCart',[$laptop->id])}}" id="winkelwagenBTN" class="btn btn-primary">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a>
 </div></center>
 
 

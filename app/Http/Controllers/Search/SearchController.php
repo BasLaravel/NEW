@@ -18,11 +18,13 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
+        //dd($request);
         $arr  =[];
          $i=0;
         $model = array("Laptop","Desktop","Monitor");
+
         $q= $request->search;
-    
+
        foreach($model as $key => $value){
             $class = "App\\".$value;
             $arr[$i] = $class::search($q)->get();
@@ -33,10 +35,10 @@ class SearchController extends Controller
         return view('search_results',[
             'search' => $arr,
             ]);
-       
 
-      
-  
+
+
+
     }
 
     /**

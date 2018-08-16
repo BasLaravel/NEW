@@ -8,45 +8,45 @@
         <input type="hidden" name ="old_price" value="{{$max+500}}">
         <h6 class="mt-5">Richtprijs</h6>
             <div  style="width:80%;">
-                <input id="prijs" type="range" min="{{$min}}" max="{{$max+500}}" name="price"  id="fader" 
+                <input id="prijs" type="range" min="{{$min}}" max="{{$max+500}}" name="price"  id="fader"
                  step="10" oninput="outputUpdate(value)" onmouseup='this.form.submit()'
-                 @if(isset($old['priced']) && ($old['priced']>10)) value={{$old['priced']}} 
-                @else value={{$max+500}} @endif 
+                 @if(isset($old['priced']) && ($old['priced']>10)) value={{$old['priced']}}
+                @else value={{$max+500}} @endif
                  >
                 <p style="display:flex;">
                     <output for="fader" id="price_low">{{$avg-100}}</output>
                     <output  for="fader" id="price_high" style="margin-left:auto;">{{$avg+100}}</output>
                 </p>
             </div>
-            
+
         <h6 class="mt-5">Merk</h6>
         @foreach($merken as $merk)
         <div class="form-check">
             <input class="form-check-input" type="checkbox" id="{{$merk['specsTag']}}" name="brand[]" value="{{$merk['specsTag']}}"
-            onchange='this.form.submit()' {{(isset($old) && in_array($merk['specsTag'],$old))? 'checked':""}} >{{$merk['specsTag']}} 
+            onchange='this.form.submit()' {{(isset($old) && in_array($merk['specsTag'],$old))? 'checked':""}} >{{$merk['specsTag']}}
             <label class="form-check-label" for="{{$merk['specsTag']}}"></label>
         </div >
-        @endforeach 
+        @endforeach
 
         <h6 class="mt-5">Diameter</h6>
         @foreach($screendiameter as $screendiameter)
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="{{$screendiameter->screen_diameter}}" name="screendiameter[]" 
+            <input class="form-check-input" type="checkbox" id="{{$screendiameter->screen_diameter}}" name="screendiameter[]"
             value="{{$screendiameter->screen_diameter}}" onchange='this.form.submit()'
             {{(isset($old) && in_array($screendiameter->screen_diameter,$old))? 'checked':""}}>{{$screendiameter->screen_diameter}}
             <label class="form-check-label" for="{{$screendiameter->screen_diameter}}"></label>
         </div>
-        @endforeach  
+        @endforeach
 
         <h6 class="mt-5">Processor</h6>
         @foreach($processor as $processor)
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="{{$processor->processor}}" name="processor[]" 
+            <input class="form-check-input" type="checkbox" id="{{$processor->processor}}" name="processor[]"
             value="{{$processor->processor}}" onchange='this.form.submit()'
             {{(isset($old) && in_array($processor->processor,$old))? 'checked':""}}>{{$processor->processor}}
             <label class="form-check-label" for="{{$processor->processor}}"></label>
         </div>
-        @endforeach    
+        @endforeach
 
     </form>
 </div>
@@ -61,17 +61,17 @@
         </div>
         <div class="col-8">
             <h5 class="card-title">{{$laptop->title}}</h5>
-            <p class="card-text">{{ str_limit($laptop->short_description, $limit = 250, $end ='...')}} 
+            <p class="card-text">{{str_limit($laptop->short_description, $limit = 250, $end ='...')}}
                 <a href="{{ route('laptops.show', [$laptop->id]) }}">Meer...</a>
             </p>
             <h5 align="right" class="card-title">{{$laptop->price}} Euro</h5>
-            <a href="#" class="btn btn-primary">In winkelwagen</a>  
+            <a href="{{route('addToCart',[$laptop->id])}}" class="btn btn-primary">In winkelwagen</a>
         </div>
     </div>
     <!-- opvulling als er 1 product wordt gevonden -->
     @if($loop->count == 1)
     <div style="height:350px;">
-        
+
     </div>
     @endif
     @empty
@@ -91,7 +91,7 @@ $(document).ready(function(){
     if(!{{$priced}}){
         $('#price_low').val("Alle prijzen");
          $('#price_high').hide();
-    }else {  
+    }else {
     $('#price_low').val({{$priced}}-100);
     $('#price_high').val(parseFloat({{$priced}})+parseFloat(100)).show();
    }
@@ -105,15 +105,15 @@ function outputUpdate(vol) {
         $('#price_low').val("Alle prijzen");
         $('#price_high').hide();
     }
-   
+
 }
 
 
 
 
 
-  
-	
+
+
 
 
 
@@ -123,13 +123,13 @@ function outputUpdate(vol) {
 //     document.querySelector('#f').style.backgroundColor = red;
 
 //     }else{
-//         document.querySelector('#volume').value = "alle prijzen"; 
+//         document.querySelector('#volume').value = "alle prijzen";
 //     }
-	
+
 // }
 // wordt niet gebruikt kan eventueel weg.
 // <div class="search-box">
-    
+
 //     <search-laptop-merk></search-laptop-merk>
 
 // </div>
@@ -142,7 +142,7 @@ function outputUpdate(vol) {
 //     data() {
 //         return {
 //             checked_names:[]
-           
+
 //         }
 //     },
 
@@ -158,10 +158,10 @@ function outputUpdate(vol) {
 
 //     methods: {
 //         searchByBrand(){
-            
+
 //             axios.post('/laptops/'+this.checked_names)
 //             .then((response) => {
-                  
+
 //             })
 //             .catch((error) => {
 //             });
@@ -171,7 +171,7 @@ function outputUpdate(vol) {
 //         axios.delete('/profiles/'+this.attribuutuserid+'/notifications/'+notifications_id)
 //         .catch((error) => {
 //             });
-       
+
 //        } ,
 
 //        test(){
@@ -181,8 +181,8 @@ function outputUpdate(vol) {
 //    },
 
 //    created(){
-     
-  
+
+
 //    },
 
 //    mounted() {
@@ -197,9 +197,9 @@ function outputUpdate(vol) {
 
 
 //     data:{
-      
-     
-       
+
+
+
 //   },
 
 
@@ -209,7 +209,7 @@ function outputUpdate(vol) {
 // },
 
 // created(){
- 
+
 
 // }
 

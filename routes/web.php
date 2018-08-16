@@ -39,3 +39,8 @@ Route::get('/desktops/{desktop}', 'ProductCategorien\DesktopsController@show')->
 Route::get('/monitors', 'ProductCategorien\MonitorsController@index')->name('monitors.index');
 Route::post('/monitors', 'ProductCategorien\MonitorSearchController@search')->name('monitors.index');
 Route::get('/monitors/{monitor}', 'ProductCategorien\MonitorsController@show')->name('monitors.show');
+
+//cart
+Route::get('/cart/add/{id}', 'CartController@addToCart')->name('addToCart');
+Route::get('/cart/delete/{id}', 'CartController@destroy')->name('cart.destroy');
+Route::get('/cart', 'CartController@index')->name('cart.index');
