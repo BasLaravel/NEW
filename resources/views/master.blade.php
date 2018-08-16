@@ -116,9 +116,9 @@
           <ul class="dropdown-menu" id=dropdown-menu1 aria-labelledby="navbarDropdownMenuLink">
             <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Computers & tablets</a>
               <ul class="dropdown-menu" id="dropdown-menu5">
-                 <li><a class="dropdown-item" href="/laptops">Laptop</a></li>
-                 <li><a class="dropdown-item" href="/desktops">Desktop</a></li>
-                 <li><a class="dropdown-item" href="/monitors">Monitoren</a></li>
+                 <li><a class="dropdown-item" href="{{route('laptops')}}">Laptop</a></li>
+                 <li><a class="dropdown-item" href="{{route('desktops')}}">Desktop</a></li>
+                 <li><a class="dropdown-item" href="{{route('monitors')}}">Monitoren</a></li>
                  <!-- <li><a class="dropdown-item" href="#">Randapparatuur</a></li>
                  <li><a class="dropdown-item" href="#">Tablets</a></li>
                  <li><a class="dropdown-item" href="#">E-readers</a></li>

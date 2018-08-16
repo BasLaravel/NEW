@@ -3,7 +3,7 @@
 
 @section('content')
 <div id="cart2" class="container align-self-center">
-  <p><h1 style="font-weight:bold;">Winkelwagentje <img src="/img/Winkelwagentje.png" style="max-width:100px;"> </h1></p>
+  <p><h1 style="font-weight:bold;">Winkelwagentje <img src="{{asset('img/Winkelwagentje.png')}}" style="max-width:100px;"> </h1></p>
 @if ($data->count() == 0)
 @else
 @foreach($data as $laptop)
