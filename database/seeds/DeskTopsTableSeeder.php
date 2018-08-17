@@ -19,16 +19,16 @@ class DeskTopsTableSeeder extends Seeder
          if (Cache::has('desktops')) {
 
             echo "<p>De desktopsCollectie staat in de Cache</p>";
-         
+
         }else{
 
             try{
                 $apiUrl = 'https://api.bol.com/catalog/v4/lists/?ids=10455&limit=100&apikey=A1588DB3C75F426196E5C3A7A64887A9&MediaEntry=true&includeAttributes=true&format=json';  
             
                 $data = json_decode(file_get_contents($apiUrl), true);
-            
+
                 $desktops = Cache::forever('desktops', $data);
-            
+
                 echo "<p>De gegevens ontvangen van de API (desktops.bol.com) en zijn in de cache gezet.</p>";
 
                } catch(\Exception $e){
@@ -39,7 +39,7 @@ class DeskTopsTableSeeder extends Seeder
         if(Desktop::count() > 0){
 
             echo "<p>Er staan minstens 1 rij in de table desktops. Om de gegevens vanuit de cache in te laden in de db. Maak de db leeg.</p>";
-        
+
         }else{
 
             $this->databasefeeder();
@@ -48,9 +48,9 @@ class DeskTopsTableSeeder extends Seeder
 
 
     }
-        
 
-    public function databasefeeder(){ 
+
+    public function databasefeeder(){
 
         $data = Cache::get('desktops');
         $arrLength = count($data['products']);
@@ -73,11 +73,9 @@ class DeskTopsTableSeeder extends Seeder
             'image_2'=> (isset($data['products'][$i]['media'][1]))? $data['products'][$i]['media'][1]['url'] : null,
             'image_3'=> (isset($data['products'][$i]['media'][2]))? $data['products'][$i]['media'][2]['url'] : null,
             ]);
-        } 
+        }
 
 
     }
-    
+
 }
-
-

@@ -4,6 +4,7 @@
   max-height: 55px;
   color: white;
 
+
 }
 
 .navbar2 {
@@ -14,8 +15,82 @@
 
 }
 
+.navcontainer{
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+
+}
+
+.nav-link {
+  color: white;
+
+}
+
 .Logo {
   top: 100px;
+
+}
+
+#shoppingcart p{
+  color: black;
+  font-size: 15px;
+
+}
+
+#shoppingcart h1{
+  color: black;
+  font-size: 20px;
+
+}
+
+#cart {
+  background:  white;
+  color: black;
+  padding: 5px;
+  margin: 5px;
+
+}
+
+#knop {
+  color: black;
+  font-size: 30px;
+  padding: 0px;
+  margin: 10px;
+
+}
+
+.beschrijving {
+  color: black;
+  font-size: 15px;
+
+}
+
+#prijs {
+  color: black;
+  font-weight: bold;
+
+}
+
+#loginBtn, #registerBtn,#navbarDropdown, #navbarDropdown2, #navbarDropdown7, #navbaritem, #navbaritem2 ,#navbaritem3, #navbaritem4 {
+  color: white;
+
+}
+
+#loginBtn:hover, #registerBtn:hover, #navbarDropdown2:hover, #navbarDropdown7:hover, #navbaritem:hover, #navbaritem2:hover, #navbaritem3:hover, #navbaritem4:hover {
+  color:  white;
+  background: #a0a0a0;
+
+}
+
+.nav-item .dropdown-menu {
+  top: 37px;
+
+}
+
+#dropdown-menu5, #dropdown-menu6, #dropdown-menu7, #dropdown-menu8, #dropdown-menu9, #dropdown-menu10, #dropdown-menu11, #dropdown-menu12, #dropdown-menu13  {
+  top: -10px;
+  left: 190px;
 
 }
 
@@ -33,10 +108,34 @@
 
 }
 
+#cart2 {
+  background: #f39200;
+  color: white;
+  max-width: 50%;
+  padding: 10px;
+  text-align: center;
+
+
+}
+
 #dropdown-menu4 {
   color: white;
   background: #f39200;
   float: right;
+  top: 55px;
+
+}
+
+
+#winkelwagenBTN2 {
+  color: black;
+  background: #f39200;
+
+}
+
+#winkelwagenBTN2:hover {
+  color: white;
+  background: #f39200;
 
 }
 
@@ -52,7 +151,7 @@
 }
 
 .nav-item .select {
-  border: none;
+  border:  #f39200 2px solid;
   padding: 10px;
   color: white;
   background: #018179;
@@ -74,10 +173,10 @@
 }
 
 .dropdown-submenu:hover .dropdown-menu {display: block;}
-
+/* 
 .dropdown:hover>#dropdown-menu1 {
   display: block;
-}
+} */
 
 .dropdown:hover>#dropdown-menu2 {
   display: block;
@@ -136,7 +235,7 @@
   margin-left: 40px;
   top: 100px;
   height: 85%;
-  width:200px
+  background: white;
 }
 
 .description {
@@ -321,6 +420,7 @@ footer {
 
 .dropdown-submenu {
   position: relative;
+
 }
 
 .dropdown-submenu a::after {

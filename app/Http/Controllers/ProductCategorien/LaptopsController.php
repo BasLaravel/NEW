@@ -70,7 +70,10 @@ class LaptopsController extends Controller
         $reviews = LaptopReview::where('laptop_id', $laptop->id)->orderBy('created_at', 'desc')->get();
 
        
-        return view('product_categorien.laptops.show',['laptop' => $laptop, 'reviews' => $reviews]);
+        return view('product_categorien.laptops.show',[
+            'laptop' => $laptop,
+            'reviews' => $reviews
+            ]);
     }
 
     /**

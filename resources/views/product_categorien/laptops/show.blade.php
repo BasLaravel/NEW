@@ -3,16 +3,187 @@
 @section('content')
 
 
+<div class="container">
+  <h3 class="card-title">{{$laptop->title}}</h3>
+  <!-- <a class="link" href="#">
+    <p class="ratingstar2">&#9733;</p>
+    <p class="ratingstar2">&#9733;</p>
+    <p class="ratingstar2">&#9733;</p>
+    <p class="ratingstar2">&#9733;</p>
+    <p class="ratingstar">&#9733;</p>
+  Reviews</a> -->
+  <!-- <a class="link" href="#">Bekijk alle accessoires</a> -->
+  <div class="row mt-5">
+      <div class="col-sm">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" ><img class="d-block w-100" src="{{asset($laptop->image_1)}}" style="max-height:60px;"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"><img class="d-block w-100" src="{{asset($laptop->image_2)}}" style="max-height:60px;"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"><img class="d-block w-100" src="{{asset($laptop->image_3)}}" style="max-height:60px;"></li>
+          </ol>
+          <div class="carousel-inner ">
+            <div class="carousel-item active">
+              <a href=""><img class="d-block w-100" src="{{$laptop->image_1}}" alt="First slide" style="max-height:270px;"></a>
+            </div>
+            <div class="carousel-item">
+              <a href=""><img class="d-block w-100" src="{{$laptop->image_2}}" alt="Second slide" style="max-height:270px;"></a>
+            </div>
+            <div class="carousel-item">
+              <a href=""><img class="d-block w-100" src="{{$laptop->image_3}}" alt="Third slide" style="max-height:270px;"></a>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div id="colom2" class="col-sm">
+        <ul>
+          <!-- <li>Varianten: <select id="selectvar" class="select" name="NL">
+            <option value="NL">{{$laptop->summary}}</option>
+          </select></li><br> -->
+          <!-- <li><div class="price"> -->
+
+          <!-- </div></li><br> -->
+          <li><a href="{{route('addToCart', [$laptop->id])}}" id="winkelwagenBTN" class="btn btn-primary">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a></li><br>
+          <li>&#10004;<a href="#">Voor 23.59 uur besteld, morgen gratis bezorgd</a></li>
+          <li>&#10004;<a href="#">Morgen gratis ophalen bij 3.000+ ophaalpunten</a></li>
+          <li>&#10004;<a href="#">Gratis binnen 30 dagen te retourneren</a></li>
+          <!-- <li><div class="custom-control custom-checkbox"> -->
+          <!-- <input type="checkbox" class="custom-control-input" id="customCheck1"> -->
+          <!-- <label class="custom-control-label" for="customCheck1">Vergelijk dit produkt.</label> -->
+          <!-- </div></li> -->
+       </ul>
+      </div>
+  </div><br><br><br><br><br><br>
+
+<div class="container">
+    <div class="description">
+      <h5>Beschrijving:</h5><br>
+        {{!!$laptop->long_description!!}}
+    </div><br>
+        <table class="table">
+        <tbody>
+        <tr>
+          <th>Beknopte specificaties</th>
+          <td></td>
+        </tr>
+        <tr>
+          <td><a href="#">Schermdiagonaal</a></td>
+          <td>{{$laptop->screen_diameter}}</td>
+        </tr>
+        <tr>
+          <td><a href="#">Processor</a></td>
+          <td>{{$laptop->processor}}</td>
+        </tr>
+        <!-- <tr>
+          <td><a href="#">Ram-geheugen</a></td>
+          <td>GB</td>
+        </tr>
+        <tr>
+          <td><a href="#">Videokaart</a></td>
+          <td>Nvidia GeForce</td>
+        </tr>
+        <tr>
+          <td><a href="#">Opslagtype</a></td>
+          <td>SSD</td>
+        </tr> -->
+        <!-- <tr>
+          <td><a href="#">Bekijk alle specificaties</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr> -->
+      </tbody>
+    </table><br>
+</div>
+
+
+  <!-- reviews-samenvatting -->
+  <div class="container">
+    <div class="row" >
+      <div class="card col-md-6 description">
+        <div class="card-body">
+          <h5 class="card-title">Gemiddeld cijfer: 7 | {{$laptop->title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">@if($reviews->count() > 0)
+              Totaal: {{$reviews->count()}} @if($reviews->count() == 1)review @else reviews @endif
+            @else Er zijn nog geen reviews 
+            @endif
+          </h6><br>
+          <p class="card-text">Gemiddeld cijfer Bedieningsgemak: 7</p>
+          <p class="card-text">Gemiddeld cijfer Gebruiksvriendelijkheid: 7</p>
+          <p class="card-text">Gemiddeld cijfer Snelheid: 7</p>
+          <p class="card-text">Gemiddeld cijfer Mogelijkheden: 7</p>
+          <a href="#" class="card-link">Geef een review</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<hr>
+
+<!-- alle-reviews -->
+<div class="container">
+@forelse($reviews as $review)
+  <div class="row mt-5 mb-5">
+      <div class="card col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Review door: {{$review->naam}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Gemiddels cijfer die deze gebruiker gaf: 8
+          </h6>
+          <p class="card-text">Cijfer Bedieningsgemak: {{$review->bedieningsgemak *2}}</p>
+          <p class="card-text">Cijfer Gebruiksvriendelijkheid: {{$review->gebruiksvriendelijkheid *2}}</p>
+          <p class="card-text">Cijfer Snelheid: {{$review->snelheid *2}}</p>
+          <p class="card-text">Cijfer Mogelijkheden: {{$review->mogelijkheid *2}}</p>
+          
+          <div class="card-header">
+              Plus -en Minpunten
+          </div>
+          <ul class="list-group list-group-flush">
+            <il class="list-group-item">+ {{$review->positieve_feedback_1}}</il>
+            <il class="list-group-item">+ {{$review->positieve_feedback_2}}</il>
+            <il class="list-group-item">+ {{$review->positieve_feedback_3}}</il>
+            <il class="list-group-item">- {{$review->negatieve_feedback_1}}</il>
+            <il class="list-group-item">- {{$review->negatieve_feedback_2}}</il>
+            <il class="list-group-item">- {{$review->negatieve_feedback_3}}</il>
+          </ul>
+
+          <div class="card-header">
+              Mening
+          </div>
+            <ul class="list-group list-group-flush">
+              <il class="list-group-item"> {{$review->mening}}</il>
+            </ul>
+        </div>
+      </div>
+  </div>
+@empty
+<p>Geen reviews gevonden.</p>
+@endforelse
+</div><br>
+
+<hr>
+
+@auth
 <!-- laptop-review-formulier -->
 <div class="container">
   <div class="row">
-    <form action="{{ route('laptops.review.store', [$laptop->id]) }}" method="POST">
+    <h2 class=>Geef uw mening en schrijf een review</h2>
+
+    <form class="mt-4" action="{{ route('laptops.review.store', [$laptop->id]) }}" method="POST">
     @csrf
       <div class="form-row mb-5">
         <div class="col-md-3">
           <p>1. Aanrader?</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 offset-1">
             <div class="form-check {{ $errors->has('aanrader') ? ' is-invalid' : '' }}">
               <input class="form-check-input" type="radio" name="aanrader" id="radio_raad_aan" value="1" required>
               <label class="form-check-label" for="radio_raadaan">
@@ -45,21 +216,21 @@
           <div class="col-sm-3 offset-sm-2"> 
             <div  id="r1" class="rating {{ $errors->has('aanrader') ? ' is-invalid' : '' }}">
               <p style="padding-left:7%">  <strong>Bedieningsgemak</strong>  </p>
-              <span>laag <input type="radio" name="be" id="str1" value="5" required><label for="str1"></label></span>
-              <span><input type="radio" name="be" id="str2" value="4" ><label for="str2"> </label></span>
+              <span>laag <input type="radio" name="be" id="str1" value="1" required><label for="str1"></label></span>
+              <span><input type="radio" name="be" id="str2" value="2" ><label for="str2"> </label></span>
               <span><input type="radio" name="be" id="str3" value="3"><label for="str3"></label></span>
-              <span><input type="radio" name="be" id="str4" value="2"><label for="str4"></label></span>
-              <span><input type="radio" name="be" id="str5" value="1"><label for="str5"></label> hoog</span>
+              <span><input type="radio" name="be" id="str4" value="4"><label for="str4"></label></span>
+              <span><input type="radio" name="be" id="str5" value="5"><label for="str5"></label> hoog</span>
             </div>
           </div>
           <div class="col-sm-3 offset-sm-1">
             <div id="r2" class="rating">
               <p style="padding-left:7%"> <strong>Gebruiksvriendelijkheid</strong>  </p>
-              <span>laag  <input type="radio" name="ge" id="ge1" value="5" required><label for="ge1"></label></span>
-              <span><input type="radio" name="ge" id="ge2" value="4"><label for="ge2"></label></span>
+              <span>laag  <input type="radio" name="ge" id="ge1" value="1" required><label for="ge1"></label></span>
+              <span><input type="radio" name="ge" id="ge2" value="2"><label for="ge2"></label></span>
               <span><input type="radio" name="ge" id="ge3" value="3"><label for="ge3"></label></span>
-              <span><input type="radio" name="ge" id="ge4" value="2"><label for="ge4"></label></span>
-              <span><input type="radio" name="ge" id="ge5" value="1"><label for="ge5"></label>  hoog</span>
+              <span><input type="radio" name="ge" id="ge4" value="4"><label for="ge4"></label></span>
+              <span><input type="radio" name="ge" id="ge5" value="5"><label for="ge5"></label>  hoog</span>
             </div>
           </div>
       </div>
@@ -67,21 +238,21 @@
           <div class="col-sm-3 offset-sm-4">
             <div class="rating">
               <p style="padding-left:7%">  <strong>Snelheid</strong>   </p>
-              <span>laag  <input type="radio" name="sn" id="str1" value="5" required><label for="str1"></label></span>
-              <span><input type="radio" name="sn" id="str2" value="4"><label for="str2"></label></span>
+              <span>laag  <input type="radio" name="sn" id="str1" value="1" required><label for="str1"></label></span>
+              <span><input type="radio" name="sn" id="str2" value="2"><label for="str2"></label></span>
               <span><input type="radio" name="sn" id="str3" value="3"><label for="str3"></label></span>
-              <span><input type="radio" name="sn" id="str4" value="2"><label for="str4"></label></span>
-              <span><input type="radio" name="sn" id="str5" value="1"><label for="str5"></label>  hoog</span>
+              <span><input type="radio" name="sn" id="str4" value="4"><label for="str4"></label></span>
+              <span><input type="radio" name="sn" id="str5" value="5"><label for="str5"></label>  hoog</span>
             </div>
           </div>
           <div class="col-sm-3 offset-sm-1">
             <div class="rating">
               <p style="padding-left:7%">  <strong>Mogelijkheden</strong>  </p>
-              <span>laag <input type="radio" name="mo" id="str1" value="5" required><label for="str1"></label></span>
-              <span><input type="radio" name="mo" id="str2" value="4"><label for="str2"></label></span>
+              <span>laag <input type="radio" name="mo" id="str1" value="1" required><label for="str1"></label></span>
+              <span><input type="radio" name="mo" id="str2" value="2"><label for="str2"></label></span>
               <span><input type="radio" name="mo" id="str3" value="3"><label for="str3"></label></span>
-              <span><input type="radio" name="mo" id="str4" value="2"><label for="str4"></label></span>
-              <span><input type="radio" name="mo" id="str5" value="1"><label for="str5"></label> hoog</span>
+              <span><input type="radio" name="mo" id="str4" value="4"><label for="str4"></label></span>
+              <span><input type="radio" name="mo" id="str5" value="5"><label for="str5"></label> hoog</span>
             </div>
           </div>
       </div>
@@ -98,7 +269,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text" style="background-color:#90EE90;">+</div>
             </div>
-            <input type="text" class="form-control" id="inlineFormInputGroup" name="postief_1" placeholder="positieve feedback">
+            <input type="text" class="form-control" id="inlineFormInputGroup" name="positief_1" placeholder="positieve feedback">
         </div>
       </div>
       <div class="col ml-3">
@@ -116,7 +287,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text" style="background-color:#90EE90;">+</div>
             </div>
-            <input type="text" class="form-control" id="inlineFormInputGroup" name="postief_2" placeholder="positieve feedback">
+            <input type="text" class="form-control" id="inlineFormInputGroup" name="positief_2" placeholder="positieve feedback">
         </div>
       </div>
       <div class="col ml-3">
@@ -134,7 +305,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text" style="background-color:#90EE90;">+</div>
             </div>
-            <input type="text" class="form-control" id="inlineFormInputGroup" name="postief_3" placeholder="positieve feedback">
+            <input type="text" class="form-control" id="inlineFormInputGroup" name="positief_3" placeholder="positieve feedback">
         </div>
       </div>
       <div class="col ml-3">
@@ -185,137 +356,16 @@
     </form>
   </div>
 </div>
-
-<!-- reviews-samenvatting -->
-<div class="container">
-<div class="row">
-
-  <div class="card col-md-6 offset-2">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
-
-
-
-</div>
+@else
+<p>Wilt u een review schrijven? <a href="{{route('login')}}">Log dan in...</a></p>
+@endauth
 
 
 
 
-</div>
-
-
-
-
-
-
-
-
-
-<center><div class="container col-md-7 align-self-center">
-  <h3 class="card-title">{{$laptop->title}}</h3>
-  <a class="link" href="#">
-    <p class="ratingstar2">&#10133;</p>
-    <p class="ratingstar2">&#10133;</p>
-    <p class="ratingstar2">&#10133;</p>
-    <p class="ratingstar2">&#10133;</p>
-    <p class="ratingstar">&#10133;</p>
-  Reviews</a>
-  <a class="link" href="#">Bekijk alle accessoires</a>
-  <div class="row mt-5">
-      <div class="col-sm">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" ><img class="d-block w-100" src="{{$laptop->image_1}}" style="max-height:60px;"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"><img class="d-block w-100" src="{{$laptop->image_2}}" style="max-height:60px;"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"><img class="d-block w-100" src="{{$laptop->image_3}}" style="max-height:60px;"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <a href=""><img class="d-block w-100" src="{{$laptop->image_1}}" alt="First slide" style="max-height:270px;"></a>
-            </div>
-            <div class="carousel-item">
-              <a href=""><img class="d-block w-100" src="{{$laptop->image_2}}" alt="Second slide" style="max-height:270px;"></a>
-            </div>
-            <div class="carousel-item">
-              <a href=""><img class="d-block w-100" src="{{$laptop->image_3}}" alt="Third slide" style="max-height:270px;"></a>
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-      <div id="colom2" class="col-sm">
-        <ul>
-        <li>Varianten: <select id="selectvar" class="select" name="NL">
-          <option value="NL">{{$laptop->summary}}</option>
-        </select></li><br>
-        <li><div class="price">
-          999,-
-        </div></li><br>
-        <li><a href="#" id="winkelwagenBTN" class="btn btn-primary">In winkelwagen <img src="/img/Winkelwagentje.png" alt="" style="max-width:50px;"></a></li><br>
-        <li>&#10004;<a href="#">Voor 23.59 uur besteld, morgen gratis bezorgd</a></li>
-        <li>&#10004;<a href="#">Morgen gratis ophalen bij 3.000+ ophaalpunten</a></li>
-        <li>&#10004;<a href="#">Gratis binnen 30 dagen te retourneren</a></li>
-        <li><div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck1">
-  <label class="custom-control-label" for="customCheck1">Vergelijk dit produkt.</label>
-</div></li>
-      </ul>
-      </div>
-    </div><br><br><br>
-    <div class="description">
-      <h5>Beschrijving:</h5><br>
-        {{$laptop->short_description}}
-    </div><br>
-    <table class="table">
-    <tbody>
-    <tr>
-      <th>Beknopte specificaties</th>
-      <td></td>
-    </tr>
-    <tr>
-      <td><a href="#">Schermdiagonaal</a></td>
-      <td>{{$laptop->summary}}</td>
-    </tr>
-    <tr>
-      <td><a href="#">Processor</a></td>
-      <td>Intel</td>
-    </tr>
-    <tr>
-      <td><a href="#">Ram-geheugen</a></td>
-      <td>GB</td>
-    </tr>
-    <tr>
-      <td><a href="#">Videokaart</a></td>
-      <td>Nvidia GeForce</td>
-    </tr>
-    <tr>
-      <td><a href="#">Opslagtype</a></td>
-      <td>SSD</td>
-    </tr>
-    <tr>
-      <td><a href="#">Bekijk alle specificaties</a></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table><br>
-<h3>Alternatieven</h3>
+<a href="{{route('addToCart',[$laptop->id])}}" id="winkelwagenBTN" class="btn btn-primary">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a>
+</div></center>
+<!-- <h3>Alternatieven</h3>
 <div class="card" style="width: 20rem;">
   <img class="card-img-top" src="{{$laptop->image_large}}" alt="Card image cap">
   <div class="card-body">
@@ -323,12 +373,12 @@
     <p class="card-text">{{ str_limit($laptop->short_description, $limit = 70, $end ='...')}}</p>
     <a href="#" class="">Ondek meer...</a><br>
     <a class="link" href="#">
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar">&#10133;</p>
-    Reviews</a>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar">&#9733;</p> -->
+    <!-- Reviews</a>
     <p class="card-text">
       <div class="price">999,-</div>
     </p>
@@ -341,11 +391,11 @@
     <p class="card-text">{{ str_limit($laptop->short_description, $limit = 70, $end ='...')}}</p>
     <a href="#" class="">Ondek meer...</a><br>
     <a class="link" href="#">
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar">&#10133;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar">&#9733;</p>
     Reviews</a>
     <p class="card-text">
       <div class="price">999,-</div>
@@ -359,32 +409,20 @@
     <p class="card-text">{{ str_limit($laptop->short_description, $limit = 70, $end ='...')}} </p>
     <a href="#" class="">Ondek meer...</a><br>
     <a class="link" href="#">
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar2">&#10133;</p>
-      <p class="ratingstar">&#10133;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar2">&#9733;</p>
+      <p class="ratingstar">&#9733;</p>
     Reviews</a>
     <p class="card-text">
       <div class="price">999,-</div>
     </p>
   </div>
-</div>
-<div class="reviews">
-<hr>
-<h5>Review</h5>
-<a class="link" href="#">Lees meer...</a>
-<hr>
-<h5>Review</h5>
-<a class="link" href="#">Lees meer...</a>
-<hr>
-<h5>Review</h5>
-<a class="link" href="#">Lees meer...</a>
-<hr>
-<a class="link" href="#">Meer reviews</a><br><br>
-</div>
-<h5>Specificaties</h5>
-<table class="table">
+</div> -->
+
+<!-- <h5>Specificaties</h5> -->
+<!-- <table class="table">
 <tbody>
 <tr>
   <th scope="row">Product  </th>
@@ -428,10 +466,6 @@
   <td></td>
   <td></td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
   <th scope="row">Beeldscherm</th>
   <td></td>
@@ -488,10 +522,6 @@
   <td></td>
   <td></td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
   <th>Processor</th>
   <td></td>
@@ -528,10 +558,6 @@
   <td><a href="#">&#10067; Cache</a></td>
   <td>6 MB</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Geheugen</th>
 <td></td>
@@ -556,10 +582,6 @@
 <td><a href="#">&#10067; Samenstelling geheugen</a></td>
 <td>2 x 4 GB</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Opslag</th>
 <td></td>
@@ -584,10 +606,6 @@
 <td><a href="#">&#10067; Formaat harde schijf</a></td>
 <td>M.2</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Videokaart</th>
 <td></td>
@@ -612,10 +630,6 @@
 <td><a href="#">&#10067; VR Ready</a></td>
 <td>--</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Draadloze verbindingen</th>
 <td></td>
@@ -640,10 +654,6 @@
 <td><a href="#">&#10067; Bluetooth-versie</a></td>
 <td>4.0</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Bedrade verbindingen</th>
 <td></td>
@@ -728,10 +738,6 @@
 <td><a href="#">&#10067; Optische aansluiting</a></td>
 <td>--</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Communicatie</th>
 <td></td>
@@ -744,10 +750,6 @@
 <td><a href="#">&#10067; Type dataverbinding</a></td>
 <td>Geen</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Audio</th>
 <td></td>
@@ -768,10 +770,6 @@
 <td><a href="#">&#10067; Ingebouwde microfoon</a></td>
 <td>&#10004;</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Camera</th>
 <td></td>
@@ -788,10 +786,6 @@
 <td><a href="#">&#10067; Beeld-definitie webcam</a></td>
 <td>HD Ready (720p)</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Bediening</th>
 <td></td>
@@ -836,10 +830,7 @@
 <td><a href="#">&#10067; Vingerafdruksensor</a></td>
 <td>--</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
+<tr>
 <th>Besturingsysteem</th>
 <td></td>
 </tr>
@@ -855,10 +846,7 @@
 <td><a href="#">&#10067; Taal besturingssysteem</a></td>
 <td>Nederlands, Engels, Duits, Meerdere talen in te stellen</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
+<tr>
 <th>Accu</th>
 <td></td>
 </tr>
@@ -877,10 +865,7 @@
 <td><a href="#">&#10067; Stroomconnector</a></td>
 <td>Standaard, Standaard USB</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
+<tr>
 <th>Gebruik</th>
 <td></td>
 </tr>
@@ -899,10 +884,6 @@
 <td><a href="#">&#10067; Veiligheidsklasse</a></td>
 <td>Basisklasse</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Overige</th>
 <td></td>
@@ -927,10 +908,6 @@
 <td><a href="#">&#10067; Kensington Lock</a></td>
 <td>--</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Fysieke eigenschappen</th>
 <td></td>
@@ -963,10 +940,6 @@
 <td><a href="#">&#10067; Bouwkwaliteit</a></td>
 <td>Basisklasse</td>
 </tr>
-<!-- </tbody>
-</table><br>
-<table class="table">
-<tbody> -->
 <tr>
 <th>Software</th>
 <td></td>
@@ -980,9 +953,8 @@
 <td style="font-size:20px;">&#10004;</td>
 </tr>
 </tbody>
-</table><br>
-<a href="#" id="winkelwagenBTN" class="btn btn-primary">In winkelwagen <img src="/img/Winkelwagentje.png" alt="" style="max-width:50px;"></a>
-</div></center>
+</table><br> -->
+
 
 
 

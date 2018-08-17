@@ -42,3 +42,8 @@ Route::get('/monitors/{monitor}', 'ProductCategorien\MonitorsController@show')->
 
 //reviews
 Route::post('/laptops/reviews/store/{id}', 'Reviews\LaptopReviewsController@store')->name('laptops.review.store');
+
+//cart
+Route::get('/cart/add/{id}', 'CartController@addToCart')->name('addToCart');
+Route::get('/cart/delete/{id}', 'CartController@destroy')->name('cart.destroy');
+Route::get('/cart', 'CartController@index')->name('cart.index');

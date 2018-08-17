@@ -26,9 +26,9 @@ class LaptopsTableSeeder extends Seeder
                 $apiUrl = 'https://api.bol.com/catalog/v4/lists/?ids=4770&limit=100&apikey=A1588DB3C75F426196E5C3A7A64887A9&MediaEntry=true&includeAttributes=true&format=json';  
             
                 $data = json_decode(file_get_contents($apiUrl), true);
-            
+
                 $laptops = Cache::forever('laptops', $data);
-            
+
                 echo "<p>De gegevens ontvangen van de API (laptops.bol.com) en zijn in de cache gezet.</p>";
 
                } catch(\Exception $e){
@@ -39,15 +39,15 @@ class LaptopsTableSeeder extends Seeder
         if(Laptop::count() > 0){
 
             echo "<p>Er staan minstens 1 rij in webshop.laptops. Om de gegevens vanuit de cache in te laden in de db. Maak de db leeg.</p>";
-        
+
         }else{
             $this->databasefeeder();
             echo "<p>de key laptops in de cache is geladen in de database</p>";
         }
     }
-        
 
-    public function databasefeeder(){ 
+
+    public function databasefeeder(){
 
         $data = Cache::get('laptops');
         $arrLength = count($data['products']);
@@ -76,7 +76,7 @@ class LaptopsTableSeeder extends Seeder
             'image_2'=> (isset($data['products'][$i]['media'][1]))? $data['products'][$i]['media'][1]['url'] : null,
             'image_3'=> (isset($data['products'][$i]['media'][2]))? $data['products'][$i]['media'][2]['url'] : null,
             ]);
-        } 
+        }
 
 
 
