@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ProductCategorien;
 
+use App\LaptopReview;
 use App\Laptop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -66,7 +67,10 @@ class LaptopsController extends Controller
     public function show(Laptop $laptop)
     {
 
-        return view('product_categorien.laptops.show',['laptop' => $laptop]);
+        $reviews = LaptopReview::where('laptop_id', $laptop->id)->orderBy('created_at', 'desc')->get();
+
+       
+        return view('product_categorien.laptops.show',['laptop' => $laptop, 'reviews' => $reviews]);
     }
 
     /**

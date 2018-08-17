@@ -52,14 +52,14 @@
 </div>
 
 
-<div class="container">
+<div class="container" style="width:80%;margin-left:auto;">
     @forelse($laptops as $laptop)
     <hr>
-    <div class="row mt-5">
-        <div class="col-4">
+    <div class="row mt-5 ml-auto" >
+        <div class="col-lg-4 ml-auto">
             <img class="card-img-top" src="{{$laptop->image_large}}"  alt="Product image cap">
         </div>
-        <div class="col-8">
+        <div class="col-lg-8">
             <h5 class="card-title">{{$laptop->title}}</h5>
             <p class="card-text">{{ str_limit($laptop->short_description, $limit = 250, $end ='...')}} 
                 <a href="{{ route('laptops.show', [$laptop->id]) }}">Meer...</a>
@@ -79,6 +79,9 @@
         <p>Er zijn helaas geen producten gevonden</p>
     </div>
     @endforelse
+    <div style="height:350px">
+        
+    </div>
 </div>
 
 

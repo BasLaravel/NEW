@@ -16,6 +16,15 @@ class Laptop extends Model
         'title',
         'short_description'
     ];
+
+
+    public function reviews()
+    {
+        return $this->hasMany('App\LaptopReview');
+       
+    }
+
+ 
     // protected $appends=['screendiameter'];
 
 

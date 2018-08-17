@@ -21,6 +21,37 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <!-- Styles -->
+    <style>
+
+/* #r1 span { float:right; position:relative; }
+#r1 span input {
+    position:absolute;
+    top:0px;
+    left:0px;
+    opacity:0;
+}
+#r1 span label {
+    display:inline-block;
+    width:30px;
+    height:30px;
+    text-align:center;
+    color:#FFF;
+    background:#ccc;
+    font-size:30px;
+    margin-right:2px;
+    line-height:30px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+}
+#r1 span:hover span label,
+#r1 span:hover  label,
+#r1 span.checked  label,
+#r1 span.checked span label {
+    background:#F90;
+    color:#FFF;
+} */
+
+    </style>
 
 </head>
 
@@ -66,7 +97,8 @@
       @endauth
       </li>
       <li class="nav-item dropdown" id= "dropdown1">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <div class="itemcount">0</div><img src="{{asset('img/Winkelwagentje.png')}}"
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <div class="itemcount">0</div>
+        <img src="{{asset('img/Winkelwagentje.png')}}"
          alt="" style="max-width:49px;max-height:49px;"></a>
         <div id= "dropdown-menu4" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Naar Winkelwagentje</a>
@@ -366,3 +398,30 @@ $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+<script>
+ // Check Radio-box
+ $(".rating input:radio").attr("checked", false);
+
+
+
+// $(".rating input").click(function () {
+//     $(".rating span").removeClass('checked');
+//     $(this).parent().addClass('checked');
+// });
+
+
+
+$('#r1 input').click(function(){
+  $("#r1 span").removeClass('checked');
+    $(this).parent().addClass('checked');
+});
+
+// $('input[name=ge]:radio').on('click', function(){
+//   $("input[name=ge]:radio").parents("span").removeClass('checked');
+//     $(this).parent().addClass('checked');
+// });
+
+
+
+</script>

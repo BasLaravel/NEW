@@ -18,8 +18,8 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        $arr  =[];
-         $i=0;
+        $arr=[];
+        $i=0;
         $model = array("Laptop","Desktop","Monitor");
         $q= $request->search;
     

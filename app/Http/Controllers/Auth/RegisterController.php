@@ -86,8 +86,8 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        
-        Mail::to($user)->send(new \App\Mail\PleaseConfirmYourEmail($user));
+        //gebruiken we niet omdat we gaan mailserver op de vps hebben.
+        //Mail::to($user)->send(new \App\Mail\PleaseConfirmYourEmail($user));
 
         return redirect('/');
     }

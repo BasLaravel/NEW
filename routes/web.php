@@ -39,3 +39,6 @@ Route::get('/desktops/{desktop}', 'ProductCategorien\DesktopsController@show')->
 Route::get('/monitors', 'ProductCategorien\MonitorsController@index')->name('monitors.index');
 Route::post('/monitors', 'ProductCategorien\MonitorSearchController@search')->name('monitors.index');
 Route::get('/monitors/{monitor}', 'ProductCategorien\MonitorsController@show')->name('monitors.show');
+
+//reviews
+Route::post('/laptops/reviews/store/{id}', 'Reviews\LaptopReviewsController@store')->name('laptops.review.store');

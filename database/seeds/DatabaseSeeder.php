@@ -11,10 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
+        $this->call([  
          LaptopsTableSeeder::class,
          DeskTopsTableSeeder::class,
-         MonitorsTableSeeder::class,
+         MonitorsTableSeeder::class, 
         ]);
     }
 }

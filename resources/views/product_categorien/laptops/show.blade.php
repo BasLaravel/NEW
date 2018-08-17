@@ -3,6 +3,219 @@
 @section('content')
 
 
+<!-- laptop-review-formulier -->
+<div class="container">
+  <div class="row">
+    <form action="{{ route('laptops.review.store', [$laptop->id]) }}" method="POST">
+    @csrf
+      <div class="form-row mb-5">
+        <div class="col-md-3">
+          <p>1. Aanrader?</p>
+        </div>
+        <div class="col-md-4">
+            <div class="form-check {{ $errors->has('aanrader') ? ' is-invalid' : '' }}">
+              <input class="form-check-input" type="radio" name="aanrader" id="radio_raad_aan" value="1" required>
+              <label class="form-check-label" for="radio_raadaan">
+                Ja, een aanrader.
+              </label>
+            </div> 
+            <div class="form-check {{ $errors->has('aanrader') ? ' is-invalid' : '' }}">
+                <input class="form-check-input" type="radio" name="aanrader" id="radio_raad_niet_aan" value="0">
+                <label class="form-check-label" for="radio_raad_niet_aan">
+                Nee, geen aanrader.
+              </label>
+            </div>
+            
+              <div class="form-check">
+               @if ($errors->has('aanrader'))
+            <span class="invalid-feedback">
+            <p><strong>{{ $errors->first('aanrader') }}</strong></p>  
+            </span>             
+          @endif   
+              
+              </div>
+        </div> 
+      </div>
+
+  <!-- checkboxes -->
+      <div class="form-row mt-5 mb-5">
+          <div class="col-sm-2">  
+          2. Beoordeling
+          </div>
+          <div class="col-sm-3 offset-sm-2"> 
+            <div  id="r1" class="rating {{ $errors->has('aanrader') ? ' is-invalid' : '' }}">
+              <p style="padding-left:7%">  <strong>Bedieningsgemak</strong>  </p>
+              <span>laag <input type="radio" name="be" id="str1" value="5" required><label for="str1"></label></span>
+              <span><input type="radio" name="be" id="str2" value="4" ><label for="str2"> </label></span>
+              <span><input type="radio" name="be" id="str3" value="3"><label for="str3"></label></span>
+              <span><input type="radio" name="be" id="str4" value="2"><label for="str4"></label></span>
+              <span><input type="radio" name="be" id="str5" value="1"><label for="str5"></label> hoog</span>
+            </div>
+          </div>
+          <div class="col-sm-3 offset-sm-1">
+            <div id="r2" class="rating">
+              <p style="padding-left:7%"> <strong>Gebruiksvriendelijkheid</strong>  </p>
+              <span>laag  <input type="radio" name="ge" id="ge1" value="5" required><label for="ge1"></label></span>
+              <span><input type="radio" name="ge" id="ge2" value="4"><label for="ge2"></label></span>
+              <span><input type="radio" name="ge" id="ge3" value="3"><label for="ge3"></label></span>
+              <span><input type="radio" name="ge" id="ge4" value="2"><label for="ge4"></label></span>
+              <span><input type="radio" name="ge" id="ge5" value="1"><label for="ge5"></label>  hoog</span>
+            </div>
+          </div>
+      </div>
+      <div class="form-row mt-5 mb-5">
+          <div class="col-sm-3 offset-sm-4">
+            <div class="rating">
+              <p style="padding-left:7%">  <strong>Snelheid</strong>   </p>
+              <span>laag  <input type="radio" name="sn" id="str1" value="5" required><label for="str1"></label></span>
+              <span><input type="radio" name="sn" id="str2" value="4"><label for="str2"></label></span>
+              <span><input type="radio" name="sn" id="str3" value="3"><label for="str3"></label></span>
+              <span><input type="radio" name="sn" id="str4" value="2"><label for="str4"></label></span>
+              <span><input type="radio" name="sn" id="str5" value="1"><label for="str5"></label>  hoog</span>
+            </div>
+          </div>
+          <div class="col-sm-3 offset-sm-1">
+            <div class="rating">
+              <p style="padding-left:7%">  <strong>Mogelijkheden</strong>  </p>
+              <span>laag <input type="radio" name="mo" id="str1" value="5" required><label for="str1"></label></span>
+              <span><input type="radio" name="mo" id="str2" value="4"><label for="str2"></label></span>
+              <span><input type="radio" name="mo" id="str3" value="3"><label for="str3"></label></span>
+              <span><input type="radio" name="mo" id="str4" value="2"><label for="str4"></label></span>
+              <span><input type="radio" name="mo" id="str5" value="1"><label for="str5"></label> hoog</span>
+            </div>
+          </div>
+      </div>
+
+<!-- plus -en minpunten -->
+    <div class="form-row mt-5">
+      <div class="col">
+        <div class="input-group mb-2">
+            <p>3. plus -en minpunten</p>
+        </div>
+      </div>
+      <div class="col ml-2">
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text" style="background-color:#90EE90;">+</div>
+            </div>
+            <input type="text" class="form-control" id="inlineFormInputGroup" name="postief_1" placeholder="positieve feedback">
+        </div>
+      </div>
+      <div class="col ml-3">
+        <div class="input-group mb-2">
+            <div class="input-roup-prepend">
+              <div class="input-group-text" style="background-color:#FF6347;">-</div>
+            </div>
+            <input type="text" class="form-control" id="inlineFormInputGroup" name="negatief_1" placeholder="minder leuke feedback">
+        </div>
+      </div>
+     </div> 
+     <div class="form-row">
+      <div class="col offset-4">
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text" style="background-color:#90EE90;">+</div>
+            </div>
+            <input type="text" class="form-control" id="inlineFormInputGroup" name="postief_2" placeholder="positieve feedback">
+        </div>
+      </div>
+      <div class="col ml-3">
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text" style="background-color:#FF6347;">-</div>
+            </div>
+            <input type="text" class="form-control" id="inlineFormInputGroup" name="negatief_2" placeholder="minder leuke feedback">
+        </div>
+      </div>
+     </div>
+     <div class="form-row mb-5"> 
+      <div class="col offset-4">
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text" style="background-color:#90EE90;">+</div>
+            </div>
+            <input type="text" class="form-control" id="inlineFormInputGroup" name="postief_3" placeholder="positieve feedback">
+        </div>
+      </div>
+      <div class="col ml-3">
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text" style="background-color:#FF6347;">-</div>
+            </div>
+            <input type="text" class="form-control" id="inlineFormInputGroup" name="negatief_3" placeholder="minder leuke feedback">
+        </div>
+      </div>
+     </div>
+
+     <!-- textarea -->
+
+      <div class="form-row mt-5 mb-5" >
+        <div class="col-md-4">
+          <p>4. Uw mening</p>
+        </div>
+        <div class="col-md-8">
+          <label for="exampleFormControlTextarea1"></label>
+          <textarea class="form-control {{ $errors->has('textarea') ? ' is-invalid' : '' }}" name="textarea" id="exampleFormControlTextarea1" rows="3"></textarea>
+          @if ($errors->has('textarea'))
+            <span class="invalid-feedback">
+              <strong>{{ $errors->first('textarea') }}</strong>
+            </span>             
+          @endif   
+        </div>
+      
+      </div>
+
+        <!-- naam -->
+      <div class="form-row mt-5 mb-5">
+        <div class="col-md-4">
+          <p>5. Uw Naam</p>
+        </div>
+        <div class="col-md-8">
+          <input type="text" name="naam" class="form-control" id="naam" aria-describedby="naam1" placeholder="Uw naam">
+          <small id="naam1" class="form-text text-muted">Als u dit veld niet invuld, zal de review anoniem worden verzonden.</small>
+        </div>
+      </div>
+
+      <!-- verzendknop -->
+      <div class="form-row mt-5 mb-5">
+        <div class="col-md-8 offset-4">
+          <button type="submit" class="btn btn-primary">Verzend</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- reviews-samenvatting -->
+<div class="container">
+<div class="row">
+
+  <div class="card col-md-6 offset-2">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
 
 <center><div class="container col-md-7 align-self-center">
   <h3 class="card-title">{{$laptop->title}}</h3>
