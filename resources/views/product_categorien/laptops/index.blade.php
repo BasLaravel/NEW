@@ -65,7 +65,7 @@
                 <a href="{{ route('laptops.show', [$laptop->id]) }}">Meer...</a>
             </p>
             <h5 align="right" class="card-title">{{$laptop->price}} Euro</h5>
-            <a href="{{route('addToCart',[$laptop->id])}}" class="btn btn-primary">In winkelwagen</a>
+            <a class="btn btn-primary shoppingcart" href="{{route('addToCart',[$laptop->ean])}}">In winkelwagen</a>
         </div>
     </div>
     <!-- opvulling als er 1 product wordt gevonden -->
@@ -111,27 +111,29 @@ function outputUpdate(vol) {
 
 }
 
+//  //producten toevoegen in de winkelwagen via een ajax request
+// $('.shoppingcart').on("click",function(e){
+//   e.preventDefault();
+//   //alert('tst');
+//   $.ajax({
+      
+//        url: "@if(isset($laptop)) {{route('addToCart',[$laptop->ean])}} @else  @endif",
+//        type: "GET",
+   
+//        success: function (data) {
+//         console.log(data);
+//         $('#shopping-items').load();
+       
+//        },
+//        error: function(xhr, ajaxOptions, thrownError){
+//           //what to do in error
+//        },
+//        timeout : 15000//timeout of the ajax call
+//   });
+// });
 
 
 
-
-
-
-
-
-
-// function outputUpdate(vol) {
-//     if(vol<700){
-//     document.querySelector('#volume').value = vol;
-//     document.querySelector('#f').style.backgroundColor = red;
-
-//     }else{
-//         document.querySelector('#volume').value = "alle prijzen";
-//     }
-
-// }
-// wordt niet gebruikt kan eventueel weg.
-// <div class="search-box">
 
 //     <search-laptop-merk></search-laptop-merk>
 

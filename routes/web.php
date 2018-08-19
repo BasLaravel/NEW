@@ -44,6 +44,6 @@ Route::get('/monitors/{monitor}', 'ProductCategorien\MonitorsController@show')->
 Route::post('/laptops/reviews/store/{id}', 'Reviews\LaptopReviewsController@store')->name('laptops.review.store');
 
 //cart
-Route::get('/cart/add/{id}', 'CartController@addToCart')->name('addToCart');
+Route::get('/cart/add/{ean}', 'CartController@addToCart')->name('addToCart');
 Route::get('/cart/delete/{id}', 'CartController@destroy')->name('cart.destroy');
 Route::get('/cart', 'CartController@index')->name('cart.index');

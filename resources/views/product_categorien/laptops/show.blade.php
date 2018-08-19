@@ -50,7 +50,7 @@
           <!-- <li><div class="price"> -->
 
           <!-- </div></li><br> -->
-          <li><a href="{{route('addToCart', [$laptop->id])}}" id="winkelwagenBTN" class="btn btn-primary">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a></li><br>
+          <li><a  href="{{route('addToCart', [$laptop->ean])}}" id="winkelwagenBTN" class="btn btn-primary shoppingcart">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a></li><br>
           <li>&#10004;<a href="#">Voor 23.59 uur besteld, morgen gratis bezorgd</a></li>
           <li>&#10004;<a href="#">Morgen gratis ophalen bij 3.000+ ophaalpunten</a></li>
           <li>&#10004;<a href="#">Gratis binnen 30 dagen te retourneren</a></li>
@@ -363,7 +363,7 @@
 
 
 
-<a href="{{route('addToCart',[$laptop->id])}}" id="winkelwagenBTN" class="btn btn-primary">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a>
+<a href="{{route('addToCart',[$laptop->ean])}}" id="winkelwagenBTN" class="btn btn-primary shoppingcart">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a>
 </div></center>
 <!-- <h3>Alternatieven</h3>
 <div class="card" style="width: 20rem;">
@@ -954,8 +954,6 @@
 </tr>
 </tbody>
 </table><br> -->
-
-
 
 
 

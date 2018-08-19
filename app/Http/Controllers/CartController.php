@@ -8,38 +8,55 @@ use Cart;
 
 class CartController extends Controller
 {
-    public function addToCart($id)
 
+  public function index()
+    {
+      $cart = Cart::content();
+
+      return view('cart.index',['data'=>$cart]);
+    }
+
+
+    public function addToCart(Request $request, $ean)
     {
 
-      $product = Laptop::find($id);
-
-      Cart::add(['id' => $product->id, 'name' => $product->title, 'qty' => 1, 'price' => 999,
+   // dd($request);
+      $product = $this->findProduct($ean);
+  
+      Cart::add(['id' => $product->ean, 'name' => $product->title, 'qty' => 1, 'price' => $product->price,
        'options' => ['product' => $product]]);
 
-      return back();
-
-
+       if($request->ajax()){
+         return response(Cart::count());
+       }
+       return back();
     }
+
+
+    public function findProduct($ean){
+     
+      $product=[];
+      $i=0;
+      $models = array("Laptop","Desktop","Monitor");
+
+      foreach($models as $key => $value){
+          $class = "App\\".$value;
+          $product = $class::where('ean',$ean)->get();
+          if(isset($product[0])){
+           return $product[0];
+          }
+          $i++;
+      }
+    }
+
 
     public function destroy($rowId)
     {
-
-
-      //dd('test');
-
         Cart::remove($rowId);
         return redirect()->back();
 
     }
 
-    public function index()
-    {
-
-    $cart = Cart::content();
-
-
-    return view('cart.index',['data'=>$cart]);
-    }
+    
 
 }

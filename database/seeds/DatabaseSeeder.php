@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([  
          LaptopsTableSeeder::class,
          DeskTopsTableSeeder::class,
-         MonitorsTableSeeder::class, 
+         MonitorsTableSeeder::class,
+         UsersTableSeeder::class, 
         ]);
     }
 }

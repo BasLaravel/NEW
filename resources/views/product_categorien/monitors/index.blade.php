@@ -48,10 +48,10 @@
         <div class="col-8">
             <h5 class="card-title">{{$monitor->title}}</h5>
             <p class="card-text">{{ str_limit($monitor->short_description, $limit = 250, $end ='...')}}
-                <!-- <a href="{{ route('monitors.show', [$monitor->id]) }}">Meer...</a> -->
+                <a href="{{ route('monitors.show', [$monitor->id]) }}">Meer...</a>
             </p>
             <h5 align="right" class="card-title">{{$monitor->price}} Euro</h5>
-            <!-- <a href="#" class="btn btn-primary">In winkelwagen</a> -->
+            <a href="{{route('addToCart', [$monitor->ean])}}" class="btn btn-primary shoppingcart">In winkelwagen</a>
         </div>
     </div>
     <!-- opvulling als er 1 product wordt gevonden -->
@@ -66,5 +66,25 @@
     </div>
     @endforelse
 </div>
+
+ <script>
+// // producten toevoegen in de winkelwagen via een ajax request
+// $('.shoppingcart').on("click",function(e){
+//   e.preventDefault();
+//   //alert('tst');
+//   $.ajax({
+//        url: "@if(isset($monitor)) {{route('addToCart',[$monitor->ean])}} @else  @endif",
+//        type: "GET",
+//        success: function (data) {
+//         console.log(data);
+//         $('#shopping-items').text(data);
+//        },
+//        error: function(xhr, ajaxOptions, thrownError){
+//           //what to do in error
+//        },
+//        timeout : 15000//timeout of the ajax call
+//   });
+// });
+ </script>
 
 @endsection
