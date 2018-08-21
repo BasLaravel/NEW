@@ -1,15 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\Reviews;
+namespace App\Http\Controllers\Account;
 
-use App\LaptopReview;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class LaptopReviewsController extends Controller
-{
-    public function store(Request $request, $id){
+use App\UsersExtendedInformation;
 
+class AccountController extends Controller
+{
+    public function index(){
+
+        return view('account.account-page');
+    }
+
+
+    public function persoonlijkformulier(){
+
+        $information = UsersExtendedInformation::where('user_id', auth()->id())->get();
+
+        //dd($information);
+
+        return view('account.persoonlijke-gegevens-formulier',[
+            'information' => $information[0],
+        ]);
+    }
+
+
+    public function store(Request $request){
 
         $this->validate(request(),[
             'aanrader'=> 'required',
@@ -48,5 +66,7 @@ class LaptopReviewsController extends Controller
             return back();
 
     }
+
+
 
 }

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class LaptopReview extends Model
 {
     protected $guarded =[];
+    protected $casts = ['aanrader' => 'boolean'];
+    protected $appends=['GemiddeldeCijfer'];
 
 
     public function owner()
@@ -20,4 +22,25 @@ class LaptopReview extends Model
         return $this->belongsTo('App\Laptop');
         
     }
+
+    // public function hasReview(){
+    //     return $this->where('user_id', auth()->id())->count();
+    // }
+
+
+  
+  //-------------------------------Attributen--------------------------------------------
+    
+  public function getGemiddeldeCijferAttribute() 
+  {
+      return (($this->bedieningsgemak+ $this->gebruiksvriendelijkheid +$this->snelheid + $this->mogelijkheid)*2)/4;
+
+  }
+
+
+
+
+
+
+
 }

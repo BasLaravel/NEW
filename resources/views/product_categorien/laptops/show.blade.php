@@ -4,7 +4,7 @@
 
 
 <div class="container">
-  <h3 class="card-title">{{$laptop->title}}</h3>
+  <h3 class="card-title">{{$laptop->title}} {{$laptop->UserMadeReview()}} {{Auth::id()}}</h3>
   <!-- <a class="link" href="#">
     <p class="ratingstar2">&#9733;</p>
     <p class="ratingstar2">&#9733;</p>
@@ -105,38 +105,22 @@
     </table><br>
 </div>
 
+<br>
+<hr style="height:1px;background-color:black;">
+<br>
+@include('includes.reviews.review-samenvatting')
 
-  <!-- reviews-samenvatting -->
-  <div class="container">
-    <div class="row" >
-      <div class="card col-md-6 description">
-        <div class="card-body">
-          <h5 class="card-title">Gemiddeld cijfer: 7 | {{$laptop->title}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">@if($reviews->count() > 0)
-              Totaal: {{$reviews->count()}} @if($reviews->count() == 1)review @else reviews @endif
-            @else Er zijn nog geen reviews 
-            @endif
-          </h6><br>
-          <p class="card-text">Gemiddeld cijfer Bedieningsgemak: 7</p>
-          <p class="card-text">Gemiddeld cijfer Gebruiksvriendelijkheid: 7</p>
-          <p class="card-text">Gemiddeld cijfer Snelheid: 7</p>
-          <p class="card-text">Gemiddeld cijfer Mogelijkheden: 7</p>
-          <a href="#" class="card-link">Geef een review</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<hr>
+<br>
+<hr style="height:1px;background-color:black;">
 
 <!-- alle-reviews -->
 <div class="container">
 @forelse($reviews as $review)
-  <div class="row mt-5 mb-5">
-      <div class="card col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Review door: {{$review->naam}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Gemiddels cijfer die deze gebruiker gaf: 8
+  <div class="row mt-5 mb-5" >
+      <div class="card col-md-8" style="border:2px solid black;">
+        <div class="card-body" >
+          <h5 class="card-title">Review door: {{$review->naam}} </h5>
+          <h6 class="card-subtitle mb-2 text-muted">Gemiddels cijfer die deze gebruiker gaf: {{$review->GemiddeldeCijfer}}
           </h6>
           <p class="card-text">Cijfer Bedieningsgemak: {{$review->bedieningsgemak *2}}</p>
           <p class="card-text">Cijfer Gebruiksvriendelijkheid: {{$review->gebruiksvriendelijkheid *2}}</p>
@@ -172,9 +156,14 @@
 <hr>
 
 @auth
+
+ @can('create', $laptop)
 <!-- laptop-review-formulier -->
+
 <div class="container">
   <div class="row">
+   
+
     <h2 class=>Geef uw mening en schrijf een review</h2>
 
     <form class="mt-4" action="{{ route('laptops.review.store', [$laptop->id]) }}" method="POST">
@@ -356,6 +345,16 @@
     </form>
   </div>
 </div>
+<hr>
+<br>
+@endcan
+
+@cannot('create', $laptop) 
+  <p><strong>U heeft al een review voor dit product geschreven.</strong>  </p>
+  <br>
+  <hr>
+@endcannot
+
 @else
 <p>Wilt u een review schrijven? <a href="{{route('login')}}">Log dan in...</a></p>
 @endauth

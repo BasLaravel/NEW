@@ -18,7 +18,7 @@
                     <output  for="fader" id="price_high" style="margin-left:auto;">{{$avg+100}}</output>
                 </p>
             </div>
-
+         
         <h6 class="mt-5">Merk</h6>
         @foreach($merken as $merk)
         <div class="form-check">

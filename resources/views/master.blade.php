@@ -87,10 +87,10 @@
         <li class="nav-item"><a class="navbar-brand" href="#"><img src="{{asset('img/login.png')}}" alt="" style="max-width:50px;max-height:40px;"></a></li>
        @auth
         <li class="nav-item"> 
-            <a class="nav-link" href="{{ url('/') }}">Home</a>
+            <a class="nav-link" class="nav-link" href="{{ url('/ ') }}">Home</a>
         </li>
-        <li class="nav-item nav-link">
-            {{ Auth::user()->email }}
+        <li class="nav-item">
+          <a class="nav-link"  href="{{route('account.index')}}">{{ Auth::user()->email }}</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}">{{ __('Logout') }}</a>

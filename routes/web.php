@@ -47,3 +47,9 @@ Route::post('/laptops/reviews/store/{id}', 'Reviews\LaptopReviewsController@stor
 Route::get('/cart/add/{ean}', 'CartController@addToCart')->name('addToCart');
 Route::get('/cart/delete/{id}', 'CartController@destroy')->name('cart.destroy');
 Route::get('/cart', 'CartController@index')->name('cart.index');
+
+//account
+Route::get('/account', 'Account\AccountController@index')->name('account.index');
+Route::get('/account/persoonlijke-gegevens', 'Account\AccountController@persoonlijkformulier')->name('account.persoonlijk.formulier');
+Route::post('/account/persoonlijke-gegevens', 'Account\AccountController@store')->name('account.persoonlijk.store');
+
