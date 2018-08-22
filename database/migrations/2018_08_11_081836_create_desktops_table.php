@@ -20,12 +20,6 @@ class CreateDesktopsTable extends Migration
             $table->bigInteger('ean')->unique();
             $table->mediumText('title');
             $table->double('price', 8, 2);
-
-                //in de toekomst bijvoegen:
-            // $table->mediumInteger('prijs');
-            // $table->mediumInteger('levertijd');
-            // $table->boolean('leverbaar');
-            
             $table->string('specsTag');
             $table->string('processor');
             $table->longText('short_description');

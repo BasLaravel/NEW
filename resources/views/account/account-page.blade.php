@@ -10,7 +10,8 @@
                     Accountoverzicht
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">  <a href="{{route('account.persoonlijk.formulier')}}">Persoonlijke Gegevens</a></li>
+                    <li class="list-group-item">  <a href="{{route('account.adres.show')}}">Persoonlijke Gegevens</a></li>
+                    <li class="list-group-item">  <a href="{{route('account.inlog.show')}}">Inlog Gegevens</a></li>
                 </ul>
             </div>
         </div>

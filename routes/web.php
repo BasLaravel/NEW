@@ -50,6 +50,8 @@ Route::get('/cart', 'CartController@index')->name('cart.index');
 
 //account
 Route::get('/account', 'Account\AccountController@index')->name('account.index');
-Route::get('/account/persoonlijke-gegevens', 'Account\AccountController@persoonlijkformulier')->name('account.persoonlijk.formulier');
-Route::post('/account/persoonlijke-gegevens', 'Account\AccountController@store')->name('account.persoonlijk.store');
+Route::get('/account/persoonlijke-gegevens', 'Account\AccountController@adres')->name('account.adres.show');
+Route::post('/account/persoonlijke-gegevens', 'Account\AccountController@adresstore')->name('account.adres.store');
 
+Route::get('/account/inlog-gegevens', 'Account\AccountController@inlog')->name('account.inlog.show');
+Route::post('/account/inlog-gegevens/{user}', 'Account\AccountController@inlogstore')->name('account.inlog.store');

@@ -24,6 +24,16 @@
 
     <!-- Styles -->
     <style>
+ #flash{
+   position:fixed;
+    right: 25px;
+    bottom: 50px;
+    width:300px;
+    height:150px;
+    border-radius:10px;
+    padding:7px;
+ 
+}
 
 /* #r1 span { float:right; position:relative; }
 #r1 span input {
@@ -90,7 +100,8 @@
             <a class="nav-link" class="nav-link" href="{{ url('/ ') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  href="{{route('account.index')}}">{{ Auth::user()->email }}</a>
+          <a class="nav-link"  href="{{route('account.index')}}">@if(isset(Auth::user()->adres->voor_naam)) {{Auth::user()->adres->voor_naam}}
+          @else {{Auth::user()->email}} @endif</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}">{{ __('Logout') }}</a>
@@ -330,8 +341,7 @@
 
 
 
-    <div id="app" v-cloak>
-
+    <div id="app" v-cloak>   
         <main  class="py-4">
 
           <div id="app">
@@ -339,11 +349,13 @@
           </div>
 
 
+
+
+
         @if (Session::has('message'))
-        <div id="flash" class="alert alert-info" v-show="flashSession">{{ Session::get('message') }} </div>
+        <div id="flash" class="bg-light">{{ Session::get('message') }} </div>
         @endif
-        <div id="flash-vue"  v-bind:class="status"  v-show="flashVue" v-text="tekst"></div>
-        <div class="loader" v-if="window.load"></div>
+       
 
         </main>
 
@@ -411,6 +423,8 @@ src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" int
 
 
 <script type="text/javascript">
+$('#flash').delay(5000).fadeOut(); 
+
 $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
   if (!$(this).next().hasClass('show')) {
     $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
