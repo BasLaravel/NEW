@@ -4,7 +4,7 @@
 
 
 <div class="container">
-  <h3 class="card-title">{{$laptop->title}} {{$laptop->UserMadeReview()}} {{Auth::id()}}</h3>
+  <h3 class="card-title">{{$laptop->title}}</h3>
   <!-- <a class="link" href="#">
     <p class="ratingstar2">&#9733;</p>
     <p class="ratingstar2">&#9733;</p>

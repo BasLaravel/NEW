@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('master');
-})->name('home');
+//aanbiedingen hoofdpagina
+Route::get('/', 'SpecialOffersController@index')->name('home' );
 
+//login en registreerfuncties
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index');
@@ -55,3 +55,5 @@ Route::post('/account/persoonlijke-gegevens', 'Account\AccountController@adresst
 
 Route::get('/account/inlog-gegevens', 'Account\AccountController@inlog')->name('account.inlog.show');
 Route::post('/account/inlog-gegevens/{user}', 'Account\AccountController@inlogstore')->name('account.inlog.store');
+
+

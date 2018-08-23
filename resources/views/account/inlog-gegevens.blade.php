@@ -11,7 +11,7 @@
 
         <div class="form-group row col-md-4">
             <label for="email">Email*</label>
-            <input type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email"
+            <input type="text" aria-describedby="wachtwoord" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email"
              value="{{(isset($inlog->email)) ? "$inlog->email":""}}" name="email">
             @if ($errors->has('email'))
                     <span class="invalid-feedback">
@@ -23,6 +23,7 @@
           <div class="form-group row col-md-4">
             <label for="wachtwoord">Nieuw wachtwoord*</label>
             <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="wachtwoord" name="password">
+             <small id="wachtwoord" class="form-text text-muted">Minimaal 6 karakters</small>
              @if ($errors->has('password'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('password') }}</strong>
@@ -41,3 +42,6 @@
 
 
 @endsection
+
+
+     

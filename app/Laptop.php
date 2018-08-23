@@ -30,21 +30,10 @@ class Laptop extends Model
        
     }
 
-    
-
-
- 
-    // protected $appends=['screendiameter'];
 
 
 
-    // public function getScreenDiameterAttribute() 
-    // {
-    //   $toExplode= $this->summary;
-    //   $array = explode("|",$toExplode);
-    //   return $array[1];
-    // }
-
+  
 
 
     
