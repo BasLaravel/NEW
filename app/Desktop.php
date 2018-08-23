@@ -9,6 +9,7 @@ class Desktop extends Model
     use FullTextSearch;
 
     protected $guarded =[];
+    protected $casts = ['korting' => 'boolean'];
 
     protected $searchable = [
         'title',

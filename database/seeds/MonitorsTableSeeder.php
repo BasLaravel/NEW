@@ -74,6 +74,7 @@ class MonitorsTableSeeder extends Seeder
             'title'=> $data['products'][$i]['title'],
             'subtitle'=> (isset($data['products'][$i]['subtitle']))? $data['products'][$i]['subtitle'] : null,
             'price' => $data['products'][$i]['offerData']['offers'][0]['price'],
+            'korting' => 0,
             'specsTag' => $data['products'][$i]['specsTag'],
             'resolution' => (isset($resolution))? $resolution : null,
             'screen_diameter'=> (isset($screendiameter))? $screendiameter : null,

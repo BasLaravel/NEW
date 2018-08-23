@@ -64,6 +64,7 @@ class DeskTopsTableSeeder extends Seeder
             'ean' => $data['products'][$i]['ean'],
             'title'=> $data['products'][$i]['title'],
             'price' => $data['products'][$i]['offerData']['offers'][0]['price'],
+            'korting' => 0,
             'specsTag' => $data['products'][$i]['specsTag'],
             'processor' => $data['products'][$i]['summary'],
             'short_description'=> $data['products'][$i]['shortDescription'],

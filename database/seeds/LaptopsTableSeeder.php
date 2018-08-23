@@ -66,6 +66,7 @@ class LaptopsTableSeeder extends Seeder
             'ean' => $data['products'][$i]['ean'],
             'title'=> $data['products'][$i]['title'],
             'price' => $data['products'][$i]['offerData']['offers'][0]['price'],
+            'korting' => 0,
             'specsTag' => $data['products'][$i]['specsTag'],
             'processor' => (isset($processor))? $processor : null,
             'screen_diameter'=> (isset($screendiameter))? $screendiameter : null,

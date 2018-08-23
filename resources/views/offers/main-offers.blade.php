@@ -14,11 +14,7 @@
                     <img class="card-img-top" src="{{asset($offer->image_large)}}" height=200px; alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{$offer->categorie}} {{$offer->price}} {{$offer->ean}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{$offer->title}} @if($offer->ean) 
-                         @php  $t = 'key'.$offer->ean     @endphp
-                            ${{!!'key'.$offer->ean!!}}
-                        iii @else niet
-                            @endif</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{$offer->title}} </h6>
                         <a href="{{ route($offer->categorie.'.show', [$offer->id]) }}">Meer...</a>
                     </div>
                 </div>

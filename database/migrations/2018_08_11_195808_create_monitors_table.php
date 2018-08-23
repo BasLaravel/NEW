@@ -21,6 +21,7 @@ class CreateMonitorsTable extends Migration
             $table->mediumText('title');
             $table->mediumText('subtitle')->nullable();;
             $table->double('price', 8, 2);
+            $table->boolean('korting');
 
                 //in de toekomst bijvoegen:
             // $table->mediumInteger('prijs');

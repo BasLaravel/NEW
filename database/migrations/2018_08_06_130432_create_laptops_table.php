@@ -20,6 +20,7 @@ class CreateLaptopsTable extends Migration
             $table->bigInteger('ean')->unique();
             $table->string('title');
             $table->double('price', 8, 2);
+            $table->boolean('korting');
 
                 //in de toekomst bijvoegen:
             // $table->mediumInteger('prijs');
