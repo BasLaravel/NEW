@@ -13,12 +13,18 @@
                  @if(isset($old['priced']) && ($old['priced']>10)) value={{$old['priced']}}
                 @else value={{$max+500}} @endif
                  >
+                 <p>
+                   <label for="amount">Price range:</label>
+                   <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                 </p>
+
+            <!-- <div id="slider-range"></div>
                 <p style="display:flex;">
                     <output for="fader" id="price_low">{{$avg-100}}</output>
                     <output  for="fader" id="price_high" style="margin-left:auto;">{{$avg+100}}</output>
-                </p>
+                </p> -->
             </div>
-         
+
         <h6 class="mt-5">Merk</h6>
         @foreach($merken as $merk)
         <div class="form-check">
@@ -80,7 +86,7 @@
     </div>
     @endforelse
     <div style="height:350px">
-        
+
     </div>
 </div>
 
@@ -116,14 +122,14 @@ function outputUpdate(vol) {
 //   e.preventDefault();
 //   //alert('tst');
 //   $.ajax({
-      
+
 //        url: "@if(isset($laptop)) {{route('addToCart',[$laptop->ean])}} @else  @endif",
 //        type: "GET",
-   
+
 //        success: function (data) {
 //         console.log(data);
 //         $('#shopping-items').load();
-       
+
 //        },
 //        error: function(xhr, ajaxOptions, thrownError){
 //           //what to do in error

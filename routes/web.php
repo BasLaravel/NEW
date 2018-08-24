@@ -46,8 +46,11 @@ Route::post('/laptops/reviews/store/{id}', 'Reviews\LaptopReviewsController@stor
 //cart
 Route::get('/cart/add/{ean}', 'CartController@addToCart')->name('addToCart');
 Route::get('/cart/delete/{id}', 'CartController@destroy')->name('cart.destroy');
+Route::get('/cart/update', 'CartController@update')->name('cart.update');
 Route::get('/cart', 'CartController@index')->name('cart.index');
 
+//order
+Route::get('/order', 'OrderController@index')->name('order.index')->middleware('auth');
 //account
 Route::get('/account', 'Account\AccountController@index')->name('account.index');
 Route::get('/account/persoonlijke-gegevens', 'Account\AccountController@adres')->name('account.adres.show');
@@ -55,5 +58,3 @@ Route::post('/account/persoonlijke-gegevens', 'Account\AccountController@adresst
 
 Route::get('/account/inlog-gegevens', 'Account\AccountController@inlog')->name('account.inlog.show');
 Route::post('/account/inlog-gegevens/{user}', 'Account\AccountController@inlogstore')->name('account.inlog.store');
-
-

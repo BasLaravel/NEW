@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <title>NEW</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/LogoNEW.png')}}" style="max-width:20px;">
 
@@ -16,11 +17,13 @@
     <script src="{{ asset('js/app.js') }}" ></script>
 
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- Styles -->
     <style>
@@ -32,7 +35,7 @@
     height:150px;
     border-radius:10px;
     padding:7px;
- 
+
 }
 
 /* #r1 span { float:right; position:relative; }
@@ -65,6 +68,11 @@
 
     </style>
 
+  <title>jQuery UI Slider - Range slider</title>
+
+
+
+
 </head>
 
 <body>
@@ -96,7 +104,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="navbar-brand" href="#"><img src="{{asset('img/login.png')}}" alt="" style="max-width:50px;max-height:40px;"></a></li>
        @auth
-        <li class="nav-item"> 
+        <li class="nav-item">
             <a class="nav-link" class="nav-link" href="{{ url('/ ') }}">Home</a>
         </li>
         <li class="nav-item">
@@ -118,6 +126,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div id="shopping-items" class="itemcount">@inject('cart', 'Gloudemans\Shoppingcart\Cart'){{$cart->count()}}</div><img src="{{asset('img/Winkelwagentje.png')}}" style="max-width:49px;max-height:49px;"></a>
           <div id= "dropdown-menu4" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a id="winkelwagenBTN2" class="dropdown-item" href="{{ route('cart.index') }}">Naar Winkelwagentje</a>
               @if ($cart->count() == 0)
               @else
               @foreach($cart->content() as $product)
@@ -140,7 +149,7 @@
               </div>
               @endforeach
               @endif
-              <a id="winkelwagenBTN2" class="dropdown-item" href="{{ route('cart.index') }}">Naar Winkelwagentje</a>
+
           </div>
         </li>
 
@@ -335,13 +344,13 @@
 </div>
 
 <center><div class=""><img src="{{asset('img/plaatje.png')}}" alt="" style="max-width:500px;"><br>
-<h4 style="color:#018179;">Voor <strong style="color:#f39200;">23:59</strong> besteld, morgen <strong style="color:#f39200;">GRATIS</strong> in huis.</h4> </div></center>
+<h4 style="color:#018179;">Voor <strong style="color:#f39200;">23:59</strong> besteld, morgen <strong style="color:#f39200;">GRATIS</strong> thuis bezorgd.</h4> </div></center>
 
 
 
 
 
-    <div id="app" v-cloak>   
+    <div id="app" v-cloak>
         <main  class="py-4">
 
           <div id="app">
@@ -355,7 +364,7 @@
         @if (Session::has('message'))
         <div id="flash" class="bg-light">{{ Session::get('message') }} </div>
         @endif
-       
+
 
         </main>
 
@@ -423,7 +432,7 @@ src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" int
 
 
 <script type="text/javascript">
-$('#flash').delay(5000).fadeOut(); 
+$('#flash').delay(5000).fadeOut();
 
 $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
   if (!$(this).next().hasClass('show')) {
@@ -441,9 +450,24 @@ $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
   return false;
 });
 
-
-
 </script>
+<script>
+// $( function() {
+//   $( "#slider-range" ).slider({
+//     range: true,
+//     min: 0,
+//     max: 5000,
+//     values: [ 300, 1000 ],
+//     slide: function( event, ui ) {
+//       $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+//     }
+//   });
+//   $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+//     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+// } );
+// </script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
 

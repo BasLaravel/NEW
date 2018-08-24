@@ -32,15 +32,21 @@
 
 }
 
-#shoppingcart p{
+#shoppingcart ul li{
   color: black;
   font-size: 15px;
+  display: inline-block;
+  margin: 20px;
 
 }
 
-#shoppingcart h1{
-  color: black;
-  font-size: 20px;
+.colleft {
+  text-align: right;
+
+}
+
+.colright {
+  padding: 0px 20px;
 
 }
 
@@ -49,6 +55,106 @@
   color: black;
   padding: 5px;
   margin: 5px;
+
+}
+
+.optionMenu {
+  margin: 10px;
+  padding: 10px;
+  border: black 1px solid;
+  border-radius: 5px;
+
+}
+
+#container3 {
+  padding: 10px;
+
+}
+
+.container4 {
+  padding: 65px;
+
+}
+
+.radio-btn {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio-btn input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-btn:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-btn input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-btn input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-btn .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.container4 a{
+  padding: 10px;
+
+}
+
+.container5 ul li{
+  text-align: left;
+
+}
+
+#colom4 {
+  max-width: 20%;
+  float: right;
+  text-align: left;
+  margin: 10px;
+  font-size: 60px;
 
 }
 
@@ -109,12 +215,23 @@
 }
 
 #cart2 {
-  background: #f39200;
-  color: white;
-  max-width: 50%;
-  padding: 10px;
-  text-align: center;
+  background: #95ebe6;
+  color: black;
+  padding: 120px;
 
+}
+
+.overview {
+  background: #95ebe6;
+  padding: 10px;
+  margin: 10px;
+  max-width: 600px;
+  border-radius: 10px;
+
+}
+
+#cart2 tr{
+  padding: 10px;
 
 }
 
@@ -123,6 +240,14 @@
   background: #f39200;
   float: right;
   top: 55px;
+  overflow: scroll;
+  max-height: 800px;
+
+
+}
+
+.Totaltable {
+  float: right;
 
 }
 
@@ -173,7 +298,7 @@
 }
 
 .dropdown-submenu:hover .dropdown-menu {display: block;}
-/* 
+/*
 .dropdown:hover>#dropdown-menu1 {
   display: block;
 } */

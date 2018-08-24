@@ -17,12 +17,13 @@ class CartController extends Controller
     }
 
 
+
     public function addToCart(Request $request, $ean)
     {
 
    // dd($request);
       $product = $this->findProduct($ean);
-  
+
       Cart::add(['id' => $product->ean, 'name' => $product->title, 'qty' => 1, 'price' => $product->price,
        'options' => ['product' => $product]]);
 
@@ -34,7 +35,7 @@ class CartController extends Controller
 
 
     public function findProduct($ean){
-     
+
       $product=[];
       $i=0;
       $models = array("Laptop","Desktop","Monitor");
@@ -50,6 +51,8 @@ class CartController extends Controller
     }
 
 
+
+
     public function destroy($rowId)
     {
         Cart::remove($rowId);
@@ -57,6 +60,30 @@ class CartController extends Controller
 
     }
 
-    
+    public function update(Request $request)
+    {
+
+      //return response($request);
+
+      //dd($rowId);
+       // $qty = $request->qty;
+       // $prodId = $request->prodId;
+
+
+        Cart::update($request->id, $request->qty);
+
+        $price = Cart::get($request->id);
+        $count = Cart::count();
+        $total = Cart::total();
+        $subtotal = Cart::subtotal();
+
+
+        return response()->json(['count' => $count, 'total' => $total, 'subtotal' => $subtotal, 'price'=>$price]);
+
+        //return back();
+        // $cartItems = Cart::content();
+        // return view('cart.upCart', compact('cartItems')->width('status', 'cart updated'));
+
+    }
 
 }
