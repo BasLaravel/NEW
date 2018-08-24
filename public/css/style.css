@@ -1,3 +1,20 @@
+body{
+  margin-bottom:100px;
+}
+
+
+
+#flash{
+  position:fixed;
+   right: 25px;
+   bottom: 50px;
+   width:300px;
+   height:150px;
+   border-radius:10px;
+   padding:7px;
+
+}
+
 .navbar {
   background: #018179;
   border-bottom: black 1px solid;

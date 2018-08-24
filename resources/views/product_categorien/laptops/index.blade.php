@@ -70,7 +70,7 @@
             <p class="card-text">{{str_limit($laptop->short_description, $limit = 250, $end ='...')}}
                 <a href="{{ route('laptops.show', [$laptop->id]) }}">Meer...</a>
             </p>
-            <h5 align="right" class="card-title">{{$laptop->price}} Euro</h5>
+            <h5 align="right" class="card-title">€ {{$laptop->price}},-</h5>
             <a class="btn btn-primary shoppingcart" href="{{route('addToCart',[$laptop->ean])}}">In winkelwagen</a>
         </div>
     </div>

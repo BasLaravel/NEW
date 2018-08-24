@@ -27,16 +27,7 @@
 
     <!-- Styles -->
     <style>
- #flash{
-   position:fixed;
-    right: 25px;
-    bottom: 50px;
-    width:300px;
-    height:150px;
-    border-radius:10px;
-    padding:7px;
 
-}
 
 /* #r1 span { float:right; position:relative; }
 #r1 span input {
@@ -67,10 +58,6 @@
 } */
 
     </style>
-
-  <title>jQuery UI Slider - Range slider</title>
-
-
 
 
 </head>
@@ -163,7 +150,7 @@
       </button>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto ml-auto">
+      <ul class="navbar-nav" style="margin-left:250px;">
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Categorieën
         </a>
@@ -468,7 +455,7 @@ $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
 // </script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> -->
 
 
 

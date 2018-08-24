@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([  
          LaptopsTableSeeder::class,
-         LaptopReviewsTableSeeder::class,
+         //LaptopReviewsTableSeeder::class,
          DeskTopsTableSeeder::class,
          MonitorsTableSeeder::class,
          UsersTableSeeder::class, 

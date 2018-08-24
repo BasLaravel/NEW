@@ -17,7 +17,6 @@
           <p class="card-text">Gemiddeld cijfer Gebruiksvriendelijkheid: {{$score_gebruiksvriendelijkheid}}</p>
           <p class="card-text">Gemiddeld cijfer Snelheid: {{$score_snelheid}}</p>
           <p class="card-text">Gemiddeld cijfer Mogelijkheden: {{$score_mogelijkheid}}</p>
-          <strong>Een review schrijven? </strong><a href="{{route('login')}}" class="card-link">Log dan in ...</a>
         </div>
       </div>
     </div>

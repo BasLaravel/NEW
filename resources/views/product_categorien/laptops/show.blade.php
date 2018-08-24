@@ -50,6 +50,7 @@
           <!-- <li><div class="price"> -->
 
           <!-- </div></li><br> -->
+          <li><h2>€ {{$laptop->price}},-</h2></li>
           <li><a  href="{{route('addToCart', [$laptop->ean])}}" id="winkelwagenBTN" class="btn btn-primary shoppingcart">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a></li><br>
           <li>&#10004;<a href="#">Voor 23.59 uur besteld, morgen gratis bezorgd</a></li>
           <li>&#10004;<a href="#">Morgen gratis ophalen bij 3.000+ ophaalpunten</a></li>
@@ -65,7 +66,7 @@
 <div class="container">
     <div class="description">
       <h5>Beschrijving:</h5><br>
-        {{!!$laptop->long_description!!}}
+        {{!! $laptop->long_description !!}}
     </div><br>
         <table class="table">
         <tbody>

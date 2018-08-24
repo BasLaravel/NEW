@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- Styles -->
 
+
 </head>
 
 <body>
@@ -37,39 +38,45 @@
     </nav>
   </div>
   <center><div class = "container4">
-    <a href="#">Mijn account</a>  <a href="#">Bestelstatus</a>  <a href="#">klantenservice</a>
+    <a href="{{route('account.index')}}">Mijn account</a> 
+     <!-- <a href="#">Bestelstatus</a>  <a href="#">klantenservice</a> -->
   </div>
+  <div class="container">
     @inject('cart', 'Gloudemans\Shoppingcart\Cart')
     @if($cart->total() > 0)
       @foreach($data as $product)
     <div class = "overview">
-  <table>
-      <tr>
-        <th colspan="2"><h6>{{$product->options->product->title}}</h6></th>
-        <td></td>
-      </tr>
-      <tr>
-        <td class = "colleft">Aantal:{{$product->qty}}</td>
-        <td class = "colright">€ {{$product->options->product->price*$product->qty}} ,-</td>
-      </tr>
-      <tr>
-        <td class = "colleft">Verzendkosten:</td>
-        <td class = "colright">Gratis</td>
-      </tr>
-      <tr>
-        <td  class = "colleft">Totaal:</td>
-        <td  class = "colright">€<span id="total">{{$cart->subtotal()}}</span>,-</td>
-      </tr>
-  </table>
+      <table>
+          <tr>
+            <th colspan="2"><h6>{{$product->options->product->title}}</h6></th>
+            <td></td>
+          </tr>
+          <tr>
+            <td class = "colleft">Aantal:{{$product->qty}}</td>
+            <td class = "colright">€ {{$product->options->product->price*$product->qty}} ,-</td>
+          </tr>
+          <tr>
+            <td class = "colleft">Verzendkosten:</td>
+            <td class = "colright">Gratis</td>
+          </tr>
+      </table>
 </div><br>
 @endforeach
 @endif
+<div ><div class="col-md-4 offset-4" id="total"><strong>Totaal bedrag: € {{$cart->subtotal()}},-</strong>  
+</div></div>
+</div>
+
+
+
+
 
   <div class = "container5">
   <ul>
   <li class="optionMenu" style="max-width: 50%;">
     <div id="container3"  class = "container3">
       <form class="mt-4" action="{{route('account.adres.store')}}" method="POST" >
+        @csrf
           <div class="">
               <p class="" style="margin-bottom:4px;">Aanhef*</p>
               <div class="form-check form-check-inline">
@@ -119,6 +126,7 @@
                       </span>
                     @endif
               </div>
+</div>
               <div class="form-group row col-md-4">
                <label for="country">Land*</label>
                <input type="text" class="form-control{{ $errors->has('land') ? ' is-invalid' : '' }}" id="country" value="{{(isset($information->land)) ? "$information->land":""}}"
@@ -129,7 +137,8 @@
                        </span>
                      @endif
              </div>
-            </div>
+             
+            
             <div class="form-row mt-3">
               <div class="form-group col-md-3">
                 <label for="postcode">Postcode*</label>
@@ -195,7 +204,7 @@
           <li class="optionMenu" style="max-width: 50%;">Kies bezorg moment<label class="radio-btn">Vandaag<input type="radio" name="delivery" checked><span class="checkmark"></span></label><label class="radio-btn">Morgen<input type="radio" name="delivery"><span class="checkmark"></span></label><input type="radio" name="delivery" value="">Overmorgen</p></li> -->
           <center><a class="btn" href="{{ route('cart.index') }}">terug naar winkelwagentje</a></center>
 
-    </div></center>
+    <!-- </div></center>
     <center><div class="container2">
       <a href="#">Algemene voorwaarden </a>
       <a href="#">Privacy</a>
@@ -207,7 +216,14 @@
       <a href="#"><img src="{{asset('img/Linkedin.png')}}" alt="" style = "max-width:40px;"></a>
       <a href="#"><img src="{{asset('img/Twitter.png')}}" alt="" style = "max-width:30px;"></a>
       <a href="#"><img src="{{asset('img/Youtube.png')}}" alt="" style = "max-width:50px;"></a>
-    </div></center>
+    </div></center> -->
+
+     @if (Session::has('message'))
+        <div id="flash" class="bg-light">{{ Session::get('message') }} </div>
+        @endif
 
   </body>
+
 </html>
+
+<script>$('#flash').delay(5000).fadeOut();</script>

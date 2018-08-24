@@ -50,7 +50,7 @@
             <p class="card-text">{{ str_limit($monitor->short_description, $limit = 250, $end ='...')}}
                 <a href="{{ route('monitors.show', [$monitor->id]) }}">Meer...</a>
             </p>
-            <h5 align="right" class="card-title">{{$monitor->price}} Euro</h5>
+            <h5 align="right" class="card-title">€ {{$monitor->price}},-</h5>
             <a href="{{route('addToCart', [$monitor->ean])}}" class="btn btn-primary shoppingcart">In winkelwagen</a>
         </div>
     </div>

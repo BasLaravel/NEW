@@ -38,6 +38,7 @@ class AccountController extends Controller
     }
 
 
+
     public function adresstore(Request $request){
 
         //dd($request);
@@ -82,6 +83,7 @@ class AccountController extends Controller
 
     }
 
+    
     public function inlog(){
 
 

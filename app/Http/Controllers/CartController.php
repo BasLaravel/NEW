@@ -9,6 +9,7 @@ use Cart;
 class CartController extends Controller
 {
 
+
   public function index()
     {
       $cart = Cart::content();
@@ -21,7 +22,6 @@ class CartController extends Controller
     public function addToCart(Request $request, $ean)
     {
 
-   // dd($request);
       $product = $this->findProduct($ean);
 
       Cart::add(['id' => $product->ean, 'name' => $product->title, 'qty' => 1, 'price' => $product->price,
@@ -32,6 +32,7 @@ class CartController extends Controller
        }
        return back();
     }
+
 
 
     public function findProduct($ean){
@@ -63,13 +64,6 @@ class CartController extends Controller
     public function update(Request $request)
     {
 
-      //return response($request);
-
-      //dd($rowId);
-       // $qty = $request->qty;
-       // $prodId = $request->prodId;
-
-
         Cart::update($request->id, $request->qty);
 
         $price = Cart::get($request->id);
@@ -79,10 +73,6 @@ class CartController extends Controller
 
 
         return response()->json(['count' => $count, 'total' => $total, 'subtotal' => $subtotal, 'price'=>$price]);
-
-        //return back();
-        // $cartItems = Cart::content();
-        // return view('cart.upCart', compact('cartItems')->width('status', 'cart updated'));
 
     }
 

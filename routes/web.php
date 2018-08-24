@@ -51,6 +51,7 @@ Route::get('/cart', 'CartController@index')->name('cart.index');
 
 //order
 Route::get('/order', 'OrderController@index')->name('order.index')->middleware('auth');
+
 //account
 Route::get('/account', 'Account\AccountController@index')->name('account.index');
 Route::get('/account/persoonlijke-gegevens', 'Account\AccountController@adres')->name('account.adres.show');

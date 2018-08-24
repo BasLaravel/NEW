@@ -10,9 +10,9 @@ use App\Monitor;
 class SpecialOffersController extends Controller
 {
 
-    public function cacheOffers(){
-        \Cache::forget('offers');
 
+    public function cacheOffers(){
+        //\Cache::forget('offers');
 
     if(!\Cache::get('offers')){
 
@@ -23,8 +23,11 @@ class SpecialOffersController extends Controller
             $class = "App\\".$value;
             $all = $class::all(); 
                 for($h=0; $h<$all->count(); $h++){
-                    $all[$h]->korting = false;
-                    $all[$h]->save();
+                    if($all[$h]->korting == true){
+                        $all[$h]->price = round(1/0.9*$all[$h]->price);
+                        $all[$h]->korting = false;
+                        $all[$h]->save();
+                    }
                 }
         }
         //selecter 6 random producten en zet korting op true
@@ -35,11 +38,12 @@ class SpecialOffersController extends Controller
             for($j=0; $j<2; $j++){
                 $offers[$i] = $class::where('id',rand(1,97))->get(); 
                 $offers[$i][0]->update(['korting' => true]);
+                $offers[$i][0]->update(['price' => round($offers[$i][0]->price*0.9)]);
                 $i++;
             }
         }
 
-           \Cache::set('offers', $offers, 5); // 1440 = 24 hours in minutes
+           \Cache::set('offers', $offers, 1440); // 1440 = 24 hours in minutes
 
     }
  
@@ -56,9 +60,6 @@ class SpecialOffersController extends Controller
 
        //dd($offer);
        //\View::share('key'.$offer[0][0]->ean, $offer[0][0]->price);
-    
-
-       
 
 
        return view('offers.main-offers',[
