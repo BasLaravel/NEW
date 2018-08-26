@@ -66,7 +66,7 @@ class LaptopsController extends Controller
      */
     public function show(Laptop $laptop)
     {
-
+        $laptop->increment('aantal_views');
         $reviews = LaptopReview::where('laptop_id', $laptop->id)->orderBy('created_at', 'desc')->get();
 
         //dd($reviews[0]->GemiddeldeCijfer);

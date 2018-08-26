@@ -21,6 +21,7 @@ class CreateDesktopsTable extends Migration
             $table->mediumText('title');
             $table->double('price', 8, 2);
             $table->boolean('korting');
+            $table->bigInteger('aantal_views')->default(0);
             $table->string('specsTag');
             $table->string('processor');
             $table->longText('short_description');

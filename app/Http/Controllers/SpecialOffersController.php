@@ -11,6 +11,23 @@ class SpecialOffersController extends Controller
 {
 
 
+
+    public function index(){
+ 
+       $offers = $this->cacheOffers();
+       $populairProducts = $this->getPopulairProducts();
+
+       //dd($offer);
+       //\View::share('key'.$offer[0][0]->ean, $offer[0][0]->price);
+
+       return view('offers.main-offers',[
+           'offers' => $offers,
+           'populairProducts' => $populairProducts,
+           ]);
+
+
+    }
+
     public function cacheOffers(){
         //\Cache::forget('offers');
 
@@ -53,19 +70,23 @@ class SpecialOffersController extends Controller
 
 
 
+    public function getPopulairProducts(){
+        $array=[];
+        $model = array("Laptop","Desktop","Monitor");
 
-    public function index(){
- 
-       $offers = $this->cacheOffers();
+        foreach($model as $key => $value){
+            $class = "App\\".$value;
+            $all = $class::where('aantal_views','>','0')->orderBy('aantal_views','desc')->limit(2)->get()->toArray(); 
+        
+            $array=array_merge($array , $all);
+        }
 
-       //dd($offer);
-       //\View::share('key'.$offer[0][0]->ean, $offer[0][0]->price);
-
-
-       return view('offers.main-offers',[
-           'offers' => $offers,
-           ]);
-
-
+        $array = collect($array)->sortByDesc('aantal_views')->take(5);
+         return $array;
     }
+
+  
+
+
+
 }

@@ -12,7 +12,7 @@
 */
 
 //aanbiedingen hoofdpagina
-Route::get('/', 'SpecialOffersController@index')->name('home' );
+Route::get('/', 'SpecialOffersController@index')->name('home');
 
 //login en registreerfuncties
 Auth::routes();

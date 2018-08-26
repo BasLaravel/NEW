@@ -15,6 +15,7 @@ class DesktopsController extends Controller
      */
     public function index()
     {
+        
         $desktops = Desktop::all()->sortBy('specsTag');
         //$screendiameter = Laptop::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();;
         $processor = Desktop::select('processor')->distinct()->orderBy('processor','desc')->get();;
@@ -57,6 +58,7 @@ class DesktopsController extends Controller
      */
     public function show(Desktop $desktop)
     {
+        $desktop->increment('aantal_views');
         return view('product_categorien.desktops.show',['desktop' => $desktop]);
     }
 

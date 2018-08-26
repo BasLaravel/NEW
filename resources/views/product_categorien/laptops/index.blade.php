@@ -7,8 +7,8 @@
         <!-- prijsschuif -->
         <input type="hidden" name ="old_price" value="{{$max+500}}">
         <h6 class="mt-5">Richtprijs</h6>
-            <div  style="width:80%;">
-                <input id="prijs" type="range" min="{{$min}}" max="{{$max+500}}" name="price"  id="fader"
+            <div >
+                <input style="width:90%;" id="prijs" type="range" min="{{$min}}" max="{{$max+500}}" name="price"  id="fader"
                  step="10" oninput="outputUpdate(value)" onmouseup='this.form.submit()'
                  @if(isset($old['priced']) && ($old['priced']>10)) value={{$old['priced']}}
                 @else value={{$max+500}} @endif
@@ -17,12 +17,12 @@
                    <label for="amount">Price range:</label>
                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
                  </p>
-
-            <!-- <div id="slider-range"></div>
+            </div>
+            <div id="slider-range" style="margin-top:-50px;">
                 <p style="display:flex;">
                     <output for="fader" id="price_low">{{$avg-100}}</output>
                     <output  for="fader" id="price_high" style="margin-left:auto;">{{$avg+100}}</output>
-                </p> -->
+                </p>
             </div>
 
         <h6 class="mt-5">Merk</h6>
@@ -57,7 +57,6 @@
     </form>
 </div>
 
-
 <div class="container" style="width:80%;margin-left:auto;">
     @forelse($laptops as $laptop)
     <hr>
@@ -90,10 +89,7 @@
     </div>
 </div>
 
-
-
 <script>
-
 
 $(document).ready(function(){
 

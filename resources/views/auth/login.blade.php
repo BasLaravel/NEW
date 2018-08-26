@@ -11,6 +11,14 @@
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                         @csrf
 
+                        <div class="form-group">
+                            @if (Request::has('url'))
+                                <input type="hidden" name="url" value="{{ Request::get('url') }}">
+                            @else
+                                <input type="hidden" name="url" value="">
+                            @endif
+                        </div>
+
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Adres') }}</label>
 

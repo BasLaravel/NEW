@@ -21,6 +21,8 @@ class CreateLaptopsTable extends Migration
             $table->string('title');
             $table->double('price', 8, 2);
             $table->boolean('korting');
+            $table->bigInteger('aantal_views')->default(0);
+        
 
                 //in de toekomst bijvoegen:
             // $table->mediumInteger('prijs');

@@ -57,6 +57,7 @@ class MonitorsController extends Controller
      */
     public function show(Monitor $monitor)
     {
+        $monitor->increment('aantal_views');
         return view('product_categorien.monitors.show',['monitor' => $monitor]);
     }
 

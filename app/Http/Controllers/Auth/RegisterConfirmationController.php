@@ -19,13 +19,13 @@ class RegisterConfirmationController extends Controller
                 
         }catch(\Exception $e){
     
-            //session()->flash('message', 'token niet herkend');
-            return redirect('/');
+            session()->flash('message', 'token niet herkend');
+            return redirect()->route('home');
         }
        
     
-               // session()->flash('message', 'Uw account is geactiveerd');
-            return redirect('/');
+            session()->flash('message', 'Uw account is geactiveerd');
+            return redirect()->route('home');
         }
     
 }

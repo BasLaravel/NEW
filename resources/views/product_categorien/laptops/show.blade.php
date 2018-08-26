@@ -161,7 +161,7 @@
  @can('create', $laptop)
 <!-- laptop-review-formulier -->
 
-<div class="container">
+<div id="formulier" class="container">
   <div class="row">
    
 
@@ -357,12 +357,11 @@
 @endcannot
 
 @else
-<p>Wilt u een review schrijven? <a href="{{route('login')}}">Log dan in...</a></p>
+<p>Wilt u een review schrijven? <a href="{{route('login')}}?url={{Request::path()}}">Log dan in...</a></p>
 @endauth
 
-
-
-
+<br>
+<br>
 <a href="{{route('addToCart',[$laptop->ean])}}" id="winkelwagenBTN" class="btn btn-primary shoppingcart">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a>
 </div></center>
 <!-- <h3>Alternatieven</h3>
