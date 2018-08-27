@@ -19,7 +19,7 @@ class RegisterConfirmationController extends Controller
                 
         }catch(\Exception $e){
     
-            session()->flash('message', 'token niet herkend');
+            session()->flash('message', 'Wij konden u helaas niet registreren.');
             return redirect()->route('home');
         }
        
