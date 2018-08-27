@@ -203,6 +203,7 @@
           <li class="optionMenu" style="max-width: 50%;"><input type="radio" name="" value="" checked> Factuuradres is het zelfde als het bezorgadres</li>
           <li class="optionMenu" style="max-width: 50%;">Kies bezorg moment<label class="radio-btn">Vandaag<input type="radio" name="delivery" checked><span class="checkmark"></span></label><label class="radio-btn">Morgen<input type="radio" name="delivery"><span class="checkmark"></span></label><input type="radio" name="delivery" value="">Overmorgen</p></li> -->
           <center><a class="btn" href="{{ route('cart.index') }}">terug naar winkelwagentje</a></center>
+          <center><a class="btn" href="{{ route('prepare.payment') }}">betalen</a></center>
 
     <!-- </div></center>
     <center><div class="container2">

@@ -19,6 +19,7 @@ class PleaseConfirmYourEmail extends Mailable
     public function __construct($user)
     {
         $this->user = $user;
+    
     }
 
     /**

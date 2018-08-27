@@ -22,11 +22,13 @@ class UsersTableSeeder extends Seeder
         User::create([
             'email' => $bas[0],
             'password' => Hash::make($bas[1]),
+            'confirmation_token' => str_limit(md5($bas[0]).str_random(),39),
         ]);
 
         User::create([
             'email' => $jasper[0],
             'password' => Hash::make($jasper[1]),
+            'confirmation_token' => str_limit(md5($jasper[0]).str_random(),39),
         ]);
 
         echo "2 users zijn aangemaakt";

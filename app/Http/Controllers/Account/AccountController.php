@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Carbon;
 use App\User;
 use App\UsersExtendedInformation;
+use Illuminate\Support\Facades\Mail;
 
 class AccountController extends Controller
 {
@@ -121,6 +122,18 @@ class AccountController extends Controller
 
     }
 
+
+    public function newBevestigingsMail(){
+      
+        $user = auth()->user();
+       
+
+        Mail::to($user->email)->send(new \App\Mail\PleaseConfirmYourEmail($user));
+
+        session()->flash('message', 'Er is een nieuwe email verstuurd');
+
+        return back();
+    }
 
 
 }

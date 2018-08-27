@@ -2,7 +2,11 @@
 
 @section('account')
 <div style="margin-left:55px;">
-<h2>Persoonlijke Gegevens</h2>
+ <h2>Persoonlijke Gegevens</h2>
+ <p>@if(isset(Auth::user()->confirmed) && Auth::user()->confirmed) <span style="font-size:30px;color:green;"> &#10004; </span>Uw account is geactiveerd
+          @else <span style="font-size:30px;color:red;"> &#10008; </span> 
+          Uw account is nog niet geactiveerd, bevestig door op de link in de bevestigings e-mail te klikken die wij u hebben gestuurd. </p> 
+     <p><a href="{{route('account.adres.mailer')}}">Stuur mij een nieuwe bevestigings e-mail</a></p> @endif      
 <h5>Vul hier alvast uw gegevens in zodat u makkelijk kunt bestellen.</h5>
 
 <form class="mt-4" action="{{route('account.adres.store')}}" method="POST" >
