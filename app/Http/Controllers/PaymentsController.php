@@ -16,7 +16,7 @@ class PaymentsController extends Controller
             ],
             "description" => "My first API payment",
             'redirectUrl' => route('payment.success'),
-            'webhookUrl'   => route('payment.webhook'),
+            'webhookUrl'   => route('webhooks.mollie'),
             ]);
 
         // dd($payment);
@@ -46,10 +46,10 @@ class PaymentsController extends Controller
         }
 
 
-        
+
         public function success(){
 
-            return view('account.cart.after-payment');
+            return view('cart.after-payment');
         }
 
 

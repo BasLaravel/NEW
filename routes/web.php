@@ -52,7 +52,10 @@ Route::get('/cart', 'CartController@index')->name('cart.index');
 //order en betaling
 Route::get('/order', 'OrderController@index')->name('order.index')->middleware('auth');
 Route::get('/order/betaling', 'PaymentsController@preparePayment')->name('prepare.payment');
-Route::post('/webhooks/mollie', 'PaymentsController@handle')->name('payment.webhook');
+//Route::post('/webhooks/mollie', 'PaymentsController@handle')->name('payment.webhook');
+
+Route::name('webhooks.mollie')->post('webhooks/mollie', 'PaymentsController@handle');
+
 Route::get('/order/betaling/success', 'PaymentsController@success')->name('payment.success');
 
 //account
