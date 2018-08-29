@@ -75,10 +75,15 @@ body{
 
 }
 
+.image {
+  padding: 100px;
+
+}
+
 .optionMenu {
+  background: lightgrey;
   margin: 10px;
   padding: 10px;
-  border: black 1px solid;
   border-radius: 5px;
 
 }
@@ -232,18 +237,156 @@ body{
 }
 
 #cart2 {
-  background: #95ebe6;
+  background: lightgrey;
   color: black;
-  padding: 120px;
+  padding: 20px 100px 120px 100px;
+
+}
+
+.btn2 {
+  background: #f39200;
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  border: none;
+  margin: 10px;
+  max-height: 50px;
+  cursor: pointer;
+
+}
+
+.btn3 {
+  background: #f39200;
+  padding: 16px;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  margin: 10px;
+  top: 100px;
+  cursor: pointer;
+
+}
+
+.btn2:hover {
+  background: #018179;
+  color: white;
+  text-decoration: none;
+
+}
+
+.btn3:hover {
+  background: #018179;
+  color: white;
+  text-decoration: none;
+
+
+}
+
+#Navcart {
+  border: 3px #f39200 solid;
+  width: 100%;
+  background: grey;
+  color: white;
+
+}
+
+#Navcart2 {
+  border: 3px #018179 solid;
+  width: 100%;
+  background: grey;
+  color: white;
+
+}
+
+.arrow {
+  border-color: transparent transparent transparent #f39200;
+  border-style:solid;
+  border-width:35px;
+  width:0;
+  height:0;
+  left: 1120px;
+  top: 288px;
+
+}
+
+.arrow2 {
+  border-color: transparent transparent transparent #018179;
+  border-style:solid;
+  border-width:35px;
+  width:0;
+  height:0;
+  left: 1483px;
+  top: 185px;
+
+}
+
+.cartnav {
+  background: #f39200;
+  width: 33%;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+
+}
+
+.cartnav2 {
+  background: #f39200;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+
+}
+
+.cartnav3 {
+  width: 33%;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+
+}
+
+.cartnav4 {
+  background: #018179;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  font-size: 30px;
+
+}
+
+.ordernav {
+  width: 33%;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+
+}
+
+
+.ordernav2 {
+  width: 33%;
+  background: #018179;
+  text-align: center;
+  padding: 11px;
+  font-size: 20px;
+
+}
+
+.confnav {
+  width: 33%;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
 
 }
 
 .overview {
-  background: #95ebe6;
+  background: white;
   padding: 10px;
   margin: 10px;
   max-width: 600px;
-  border-radius: 10px;
 
 }
 
@@ -260,14 +403,7 @@ body{
   overflow: scroll;
   max-height: 800px;
 
-
 }
-
-.Totaltable {
-  float: right;
-
-}
-
 
 #winkelwagenBTN2 {
   color: black;
@@ -497,20 +633,45 @@ a {
 .table tr td{
   text-align: left;
   width: 800px
-}
-
-.price {
-  color: black;
-  background: #f39200;
-  height: 100px;
-  width: 100px;
-  padding: 27px 15px;
-  font-weight: 900;
-  border-radius: 50%;
-  /* border-radius: 5px; */
-  font-size: 30px;
 
 }
+
+.starburst {
+	display:block;
+	width:6em;
+	height:6em;
+	background:#fe0;
+	-webkit-transform:rotate(-30deg);
+	-moz-transform:rotate(-30deg);
+	rotation:-30deg;
+	position:relative;
+	top:2em;
+	left:2em;
+	text-align:center;
+	text-decoration:none;
+	color:#000;
+	font-weight:bold;
+	font-family:Arial, sans-serif;
+}
+
+.starburst span {
+	display:block;
+	width:6em;
+	height:6em;
+	background:#f39200;
+	-webkit-transform:rotate(30deg);
+	-moz-transform:rotate(30deg);
+	rotation:22.5deg;
+}
+
+ .rotated {
+   transform: rotate(-60deg);
+   top: 30px;
+   left: 20px;
+   z-index: 10;
+   position: absolute;
+
+ }
 
 .ratingstar2 {
   display: inline-block;

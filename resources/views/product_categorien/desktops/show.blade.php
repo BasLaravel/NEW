@@ -50,7 +50,15 @@
           <!-- <li><div class="price"> -->
 
           <!-- </div></li><br> -->
-          <li><h2>€ {{$desktop->price}},-</h2></li>
+          <li><center><a href="#" class="starburst">
+                       <span>
+                         <span>
+                           <span>
+                             <h3 style="color:white;" class="rotated">€{{$desktop->price}}</h3>
+                           </span>
+                         </span>
+                       </span>
+                     </a></center><br><br></li>
           <li><a href="{{route('addToCart', [$desktop->ean])}}" id="winkelwagenBTN" class="btn btn-primary shoppingcart">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a></li><br>
           <li>&#10004;<a href="#">Voor 23.59 uur besteld, morgen gratis bezorgd</a></li>
           <li>&#10004;<a href="#">Morgen gratis ophalen bij 3.000+ ophaalpunten</a></li>
@@ -82,7 +90,7 @@
           <td><a href="#">Processor</a></td>
           <td>{{$desktop->processor}}</td>
         </tr>
-      
+
       </tbody>
     </table><br>
 </div>
@@ -93,4 +101,3 @@
 
 
 @endsection
-

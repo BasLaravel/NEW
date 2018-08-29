@@ -50,7 +50,15 @@
           <!-- <li><div class="price"> -->
 
           <!-- </div></li><br> -->
-          <li><h2>€ {{$laptop->price}},-</h2></li>
+          <li><center><a href="#" class="starburst">
+                       <span>
+                         <span>
+                           <span>
+                             <h3 style="color:white;" class="rotated">€{{$laptop->price}}</h3>
+                           </span>
+                         </span>
+                       </span>
+                     </a></center><br><br></li>
           <li><a  href="{{route('addToCart', [$laptop->ean])}}" id="winkelwagenBTN" class="btn btn-primary shoppingcart">In winkelwagen <img src="{{asset('img/Winkelwagentje.png')}}" alt="" style="max-width:50px;"></a></li><br>
           <li>&#10004;<a href="#">Voor 23.59 uur besteld, morgen gratis bezorgd</a></li>
           <li>&#10004;<a href="#">Morgen gratis ophalen bij 3.000+ ophaalpunten</a></li>
@@ -127,7 +135,7 @@
           <p class="card-text">Cijfer Gebruiksvriendelijkheid: {{$review->gebruiksvriendelijkheid *2}}</p>
           <p class="card-text">Cijfer Snelheid: {{$review->snelheid *2}}</p>
           <p class="card-text">Cijfer Mogelijkheden: {{$review->mogelijkheid *2}}</p>
-          
+
           <div class="card-header">
               Plus -en Minpunten
           </div>
@@ -163,7 +171,7 @@
 
 <div id="formulier" class="container">
   <div class="row">
-   
+
 
     <h2 class=>Geef uw mening en schrijf een review</h2>
 
@@ -179,31 +187,31 @@
               <label class="form-check-label" for="radio_raadaan">
                 Ja, een aanrader.
               </label>
-            </div> 
+            </div>
             <div class="form-check {{ $errors->has('aanrader') ? ' is-invalid' : '' }}">
                 <input class="form-check-input" type="radio" name="aanrader" id="radio_raad_niet_aan" value="0">
                 <label class="form-check-label" for="radio_raad_niet_aan">
                 Nee, geen aanrader.
               </label>
             </div>
-            
+
               <div class="form-check">
                @if ($errors->has('aanrader'))
             <span class="invalid-feedback">
-            <p><strong>{{ $errors->first('aanrader') }}</strong></p>  
-            </span>             
-          @endif   
-              
+            <p><strong>{{ $errors->first('aanrader') }}</strong></p>
+            </span>
+          @endif
+
               </div>
-        </div> 
+        </div>
       </div>
 
   <!-- checkboxes -->
       <div class="form-row mt-5 mb-5">
-          <div class="col-sm-2">  
+          <div class="col-sm-2">
           2. Beoordeling
           </div>
-          <div class="col-sm-3 offset-sm-2"> 
+          <div class="col-sm-3 offset-sm-2">
             <div  id="r1" class="rating {{ $errors->has('aanrader') ? ' is-invalid' : '' }}">
               <p style="padding-left:7%">  <strong>Bedieningsgemak</strong>  </p>
               <span>laag <input type="radio" name="be" id="str1" value="1" required><label for="str1"></label></span>
@@ -270,7 +278,7 @@
             <input type="text" class="form-control" id="inlineFormInputGroup" name="negatief_1" placeholder="minder leuke feedback">
         </div>
       </div>
-     </div> 
+     </div>
      <div class="form-row">
       <div class="col offset-4">
         <div class="input-group mb-2">
@@ -289,7 +297,7 @@
         </div>
       </div>
      </div>
-     <div class="form-row mb-5"> 
+     <div class="form-row mb-5">
       <div class="col offset-4">
         <div class="input-group">
             <div class="input-group-prepend">
@@ -320,10 +328,10 @@
           @if ($errors->has('textarea'))
             <span class="invalid-feedback">
               <strong>{{ $errors->first('textarea') }}</strong>
-            </span>             
-          @endif   
+            </span>
+          @endif
         </div>
-      
+
       </div>
 
         <!-- naam -->
@@ -350,7 +358,7 @@
 <br>
 @endcan
 
-@cannot('create', $laptop) 
+@cannot('create', $laptop)
   <p><strong>U heeft al een review voor dit product geschreven.</strong>  </p>
   <br>
   <hr>

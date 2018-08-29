@@ -330,7 +330,7 @@
   </nav>
 </div>
 
-<center><div class=""><img src="{{asset('img/plaatje.png')}}" alt="" style="max-width:500px;"><br>
+<center><div class="image"><img src="{{asset('img/plaatje.png')}}" alt="" style="max-width:500px;"><br>
 <h4 style="color:#018179;">Voor <strong style="color:#f39200;">23:59</strong> besteld, morgen <strong style="color:#f39200;">GRATIS</strong> thuis bezorgd.</h4> </div></center>
 
 

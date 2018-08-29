@@ -4,7 +4,12 @@
 @section('content')
 
 <div id="cart2" class="container align-self-center">
-<h1 style="font-weight:bold;">Winkelwagentje <img src="{{asset('img/Winkelwagentje2.png')}}" style="max-width:100px;"></h1>
+<center><div id="Navcart" class="row">
+  <div class="cartnav"><p>Winkelwagen</p></div>
+  <div class="ordernav"><p>Bestellen</p></div>
+  <div class="confnav"><p>Bevestiging</p></div>
+</div></center>
+<h1 class="cartnav2" style="font-weight:bold;">Winkelwagentje <img src="{{asset('img/Winkelwagentje.png')}}" style="max-width:50px;"></h1><br>
 @if ($data->count() == 0)
 <p>Er zitten geen producten in uw winkelwagentje.</p>
 @else
@@ -26,27 +31,26 @@
     </tr>
   </table>
   </div>
-  <hr class="my-4">
   @endforeach
   @endif
-    <a class="btn btn-primary btn-lg" href="{{ route('home') }}" role="button">Verder winkelen</a>
     @inject('cart', 'Gloudemans\Shoppingcart\Cart')
     @if($cart->total() > 0)
-    <table class="Totaltable">
+    <table class="table">
       <tr>
         <td class = "colleft">Verzendkosten:</td>
         <td class = "colright">Gratis</td>
       </tr>
       <tr>
         <td  class = "colleft">Totaal:</td>
-       <td  class = "colright">€<span id="total">{{$cart->subtotal()}}</span>,-</td>
-      </tr>
+        <td  class = "colright">€<span id="total">{{$cart->subtotal()}}</span>,-</td>
+     </tr>
       <tr>
-        <td></td>
-        <td><a class="btn btn-primary btn-lg" href="{{ route('order.index') }}" role="button">Verder naar bestellen</a></td>
+        <td><a class="btn2" class="btn btn-primary btn-lg" href="{{ route('order.index') }}" role="button">Verder naar bestellen</a></td>
+          @endif
+        <td><a class="btn2" class="btn btn-primary btn-lg" href="{{ route('home') }}" role="button">Verder winkelen</a></td>
       </tr>
     </table>
-    @endif
+
 
 <script>
 

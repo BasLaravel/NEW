@@ -38,44 +38,53 @@
     </nav>
   </div>
   <center><div class = "container4">
-    <a href="{{route('account.index')}}">Mijn account</a> 
+    <a href="{{route('account.index')}}">Mijn account</a>
      <!-- <a href="#">Bestelstatus</a>  <a href="#">klantenservice</a> -->
   </div>
-  <div class="container">
-    @inject('cart', 'Gloudemans\Shoppingcart\Cart')
-    @if($cart->total() > 0)
-      @foreach($data as $product)
-    <div class = "overview">
-      <table>
-          <tr>
-            <th colspan="2"><h6>{{$product->options->product->title}}</h6></th>
-            <td></td>
-          </tr>
-          <tr>
-            <td class = "colleft">Aantal:{{$product->qty}}</td>
-            <td class = "colright">€ {{$product->options->product->price*$product->qty}} ,-</td>
-          </tr>
-          <tr>
-            <td class = "colleft">Verzendkosten:</td>
-            <td class = "colright">Gratis</td>
-          </tr>
-      </table>
-</div><br>
-@endforeach
-@endif
-<div ><div class="col-md-4 offset-4" id="total"><strong>Totaal bedrag: € {{$cart->subtotal()}},-</strong>  
-</div></div>
-</div>
-
-
-
-
-
   <div class = "container5">
   <ul>
   <li class="optionMenu" style="max-width: 50%;">
     <div id="container3"  class = "container3">
+      <center><div id="Navcart2" class="row">
+        <div class="cartnav3"><p>Winkelwagen</p></div>
+        <div class="ordernav2"><p>Bestellen</p></div>
+        <div class="confnav"><p>Bevestiging</p></div>
+      </div></center>
+      <h1 class="cartnav4" style="font-weight:bold;">Bestellen</h1><br>
+        <center><div class = "overview">
+          <h2>Productoverzicht</h2>
+          @inject('cart', 'Gloudemans\Shoppingcart\Cart')
+          @if($cart->total() > 0)
+            @foreach($data as $product)
+        <table class="table">
+        <tr>
+          <th colspan="2"><h5>{{$product->options->product->title}}</h5></th>
+          <td></td>
+        </tr>
+        <tr>
+          <td class = "colleft">Aantal:</td>
+          <td class = "colright">{{$product->qty}}</td>
+        </tr>
+        <tr>
+          <td class = "colleft">prijs:</td>
+          <td class = "colright">€ {{$product->options->product->price*$product->qty}} ,-</td>
+        </tr>
+        @endforeach
+        @endif
+        <tr>
+          <td class = "colleft" style="font-weight: bold;">Verzendkosten:</td>
+          <td class = "colright" style="font-weight: bold;">Gratis</td>
+        </tr>
+        <tr>
+          <td  class = "colleft" style="font-weight: bold;">Totaal:</td>
+          <td  class = "colright" style="font-weight: bold;">€<span id="total">{{$cart->subtotal()}}</span>,-</td>
+        </tr>
+    </table>
+
+  </div></center><br>
+
       <form class="mt-4" action="{{route('account.adres.store')}}" method="POST" >
+        <h1 style="text-align:center;color:white;">Adresgegevens</h1>
         @csrf
           <div class="">
               <p class="" style="margin-bottom:4px;">Aanhef*</p>
@@ -95,16 +104,16 @@
                       </span>
                     @endif
           </div>
-           <div class="form-row mt-3">
-              <div class="form-group col-md-4">
-                <label for="naam">Naam*</label>
-                <input type="text" class="form-control{{$errors->has('voor_naam') ? ' is-invalid' : '' }}"  id="naam"  name="voor_naam"
-                 value="{{(isset($information->voor_naam)) ? "$information->voor_naam":""}}" required>
-                    @if ($errors->has('voor_naam'))
-                      <span class="invalid-feedback">
-                      <p><strong>{{ $errors->first('voor_naam') }}</strong></p>
-                      </span>
-                    @endif
+         <div class="form-row mt-3">
+            <div class="form-group col-md-4">
+              <label for="naam">Naam*</label>
+              <input type="text" class="form-control{{$errors->has('voor_naam') ? ' is-invalid' : '' }}"  id="naam"  name="voor_naam"
+               value="{{(isset($information->voor_naam)) ? "$information->voor_naam":""}}" required>
+                  @if ($errors->has('voor_naam'))
+                    <span class="invalid-feedback">
+                    <p><strong>{{ $errors->first('voor_naam') }}</strong></p>
+                    </span>
+                  @endif
               </div>
               <div class="form-group col-md-2">
                 <label for="tussenvoegsel">Tussenvoegsel</label>
@@ -127,18 +136,17 @@
                     @endif
               </div>
 </div>
+              </div>
               <div class="form-group row col-md-4">
                <label for="country">Land*</label>
                <input type="text" class="form-control{{ $errors->has('land') ? ' is-invalid' : '' }}" id="country" value="{{(isset($information->land)) ? "$information->land":""}}"
                name="land" required>
                @if ($errors->has('land'))
-                       <span class="invalid-feedback">
-                       <p><strong>{{ $errors->first('land') }}</strong></p>
-                       </span>
-                     @endif
-             </div>
-             
-            
+               <span class="invalid-feedback">
+               <p><strong>{{ $errors->first('land') }}</strong></p>
+               </span>
+              @endif
+              </div>
             <div class="form-row mt-3">
               <div class="form-group col-md-3">
                 <label for="postcode">Postcode*</label>
@@ -194,18 +202,22 @@
                       </span>
                     @endif
             </div>
-            <button class="btn" type="submit"> Wijzig adresgegevens</button>
 
+            <center><tr>
+              <td><button class="btn2" type="submit"> Wijzig adresgegevens</button></td>
+              <td><a class="btn3" href="{{ route('cart.index') }}">terug naar winkelwagentje</a></td>
+              <td><a class="btn3" href="{{ route('prepare.payment') }}">betalen</a></td>
+            </tr></center>
 
     </form>
       </div><br>
           <!-- <li class="optionMenu" style="max-width: 50%;"><input type="radio" name="" value="" checked> Ophalen <br> Bij een ophaalpunt bij u in de buurt.</li>
           <li class="optionMenu" style="max-width: 50%;"><input type="radio" name="" value="" checked> Factuuradres is het zelfde als het bezorgadres</li>
           <li class="optionMenu" style="max-width: 50%;">Kies bezorg moment<label class="radio-btn">Vandaag<input type="radio" name="delivery" checked><span class="checkmark"></span></label><label class="radio-btn">Morgen<input type="radio" name="delivery"><span class="checkmark"></span></label><input type="radio" name="delivery" value="">Overmorgen</p></li> -->
-          <center><a class="btn" href="{{ route('cart.index') }}">terug naar winkelwagentje</a></center>
-          <center><a class="btn" href="{{ route('prepare.payment') }}">betalen</a></center>
 
-         
+
+
+
 
     <!-- </div></center>
     <center><div class="container2">
@@ -214,7 +226,8 @@
       <a href="#">Coockies</a><br>
       © 2018 - NEW B.V <br>
       Beoordeling van klanten:
-      <div class="item4">
+      </div></center>
+      <!-- <center><div class="item4">
       <a href="#"><img src="{{asset('img/Facebook.png')}}" alt="" style = "max-width:20px;"></a>
       <a href="#"><img src="{{asset('img/Linkedin.png')}}" alt="" style = "max-width:40px;"></a>
       <a href="#"><img src="{{asset('img/Twitter.png')}}" alt="" style = "max-width:30px;"></a>
