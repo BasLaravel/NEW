@@ -52,14 +52,15 @@ Route::get('/cart', 'CartController@index')->name('cart.index');
 //order en betaling
 Route::get('/order', 'OrderController@index')->name('order.index')->middleware('auth');
 Route::get('/order/betaling', 'PaymentsController@preparePayment')->name('prepare.payment');
-//Route::post('/webhooks/mollie', 'PaymentsController@handle')->name('payment.webhook');
 
-Route::post('/webhooks/mollie', 'PaymentsController@handle');
+
+Route::post('/webhooks/mollie', 'PaymentsController@handle')->name('payment.webhook');;
 
 Route::get('/order/betaling/success', 'PaymentsController@success')->name('payment.success');
 
 //account
 Route::get('/account', 'Account\AccountController@index')->name('account.index');
+Route::get('/account/orders', 'Account\AccountController@orderIndex')->name('account.order.index');
 Route::get('/account/persoonlijke-gegevens/mailer', 'Account\AccountController@newBevestigingsMail')->name('account.adres.mailer');
 Route::get('/account/persoonlijke-gegevens', 'Account\AccountController@adres')->name('account.adres.show');
 Route::post('/account/persoonlijke-gegevens', 'Account\AccountController@adresstore')->name('account.adres.store');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon;
 use App\User;
+use App\Order;
 use App\UsersExtendedInformation;
 use Illuminate\Support\Facades\Mail;
 
@@ -133,6 +134,41 @@ class AccountController extends Controller
         session()->flash('message', 'Er is een nieuwe email verstuurd');
 
         return back();
+    }
+
+
+    public function orderIndex(){
+
+        $orders = Order::all()->where('user_id',auth()->id())->sortByDesc('created_at');
+
+        $product_array=[];
+        $i=0;
+       
+        foreach($orders as $order){
+            foreach($order->orderItems as $item){
+
+                $models = array("Laptop","Desktop","Monitor");
+        
+                foreach($models as $key => $value){
+                    $class = "\\App\\".$value;
+                    $product = $class::where('product_id',$item->product_id)->get()->toArray();
+                        if(!empty($product)){
+                            $product_array[$i] = $product;
+                            $i++;
+                            continue;
+                        }
+                }
+                
+            }   
+        }
+
+//dd($product_array);
+
+        return view('account.orders',[
+            'orders' => $product_array,
+        ]);
+
+
     }
 
 

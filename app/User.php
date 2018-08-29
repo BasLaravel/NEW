@@ -35,6 +35,12 @@ class User extends Authenticatable
         return $this->hasOne('App\UsersExtendedInformation');
     }
 
+    public function bestellingen()
+    {
+        return $this->hasMany('App\Order');
+       
+    }
+
 
 
 }

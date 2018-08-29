@@ -1,12 +1,14 @@
 @component('mail::message')
 # Introduction
 
-Confirmeer uw email-adres aub.
+<p>Bedankt voor het aanmelden bij NEW de moderne elektronica webshop</p>
+<p>Om uw account te activeren druk op de knop "Bevestig account"</p>
+
 
 @component('mail::button', ['url' => url('http://bas.codeaap.nl/NEW/public/register/confirm?token='.$user->confirmation_token)])
-Confirm email
+Bevestig account
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+Bedankt namens het:<br>
+{{ config('app.name') }} team
 @endcomponent

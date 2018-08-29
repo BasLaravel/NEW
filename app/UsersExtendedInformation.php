@@ -16,6 +16,14 @@ class UsersExtendedInformation extends Model
         
     }
 
+    public function thisAdres(){
+
+        $adres =$this->straat_naam.' '.$this->huisnummer.'<br>'.$this->postcode.' '.$this->plaats_naam.'<br>'.$this->land; 
+        return $adres;
+    }
+
+   
+
 
 
 

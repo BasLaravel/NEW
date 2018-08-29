@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Cart;
 use App\Order;
 use App\OrderItems;
+use Illuminate\Support\Facades\Mail;
 
 
 class PaymentsController extends Controller
@@ -42,9 +43,11 @@ class PaymentsController extends Controller
         
             "description" => "My first API payment",
             
-            "redirectUrl" => "http://bas.codeaap.nl/NEW/public/order/betaling/success?id=.$order->id",
+            //"redirectUrl" => "http://bas.codeaap.nl/NEW/public/order/betaling/success?id=$order->id",
+
+            "redirectUrl" => url("/order/betaling/success?id=$order->id"),
         
-            "webhookUrl" => route('mollie.webhook'),
+            //"webhookUrl" => route('mollie.webhook'),
         
             ]);
         
@@ -61,11 +64,7 @@ class PaymentsController extends Controller
 
         public function handle(Request $request) {
 
-            // $order = Order::where('payment_id', $request)->get();
-            // $order->payment_status = 'paid';
-            // $order->save;
-
-            file_put_contents('webhook1.log',$request->all());
+           //wordt niet gebruikt
 
             if (! $request->has('id')) {
                 file_put_contents('webhook2.log',$request->all());
@@ -76,25 +75,21 @@ class PaymentsController extends Controller
     
             if($payment->isPaid()) {
 
-                file_put_contents('webhook3.log',$request->all());
-
-               
-
             }
         }
 
 
-
-       
-        
-
-
         public function success(Request $request){
 
-            $order_id = Order::findOrFail($request->id);
+            $order = Order::findOrFail($request->id);
+            $cart = Cart::content();
+
+            Mail::to($order->user->email)->send(new \App\Mail\OrderBevestiging($order, $cart));
+
+            Cart::destroy();
            
             return view('cart.after-payment',[
-                'order' => $order_id
+                'order' => $order
             ]);
         }
 

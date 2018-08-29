@@ -89,7 +89,7 @@ class RegisterController extends Controller
         //gebruiken we niet omdat we gaan mailserver op de vps hebben.
         Mail::to($user)->send(new \App\Mail\PleaseConfirmYourEmail($user));
 
-        session()->flash('message', 'Wij hebben u een bevestigins email gestuurd');
+        session()->flash('message', 'Wij hebben u een bevestigings email gestuurd');
        
         return redirect('/');
     }
