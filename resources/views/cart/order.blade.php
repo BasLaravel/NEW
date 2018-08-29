@@ -205,6 +205,15 @@
           <center><a class="btn" href="{{ route('cart.index') }}">terug naar winkelwagentje</a></center>
           <center><a class="btn" href="{{ route('prepare.payment') }}">betalen</a></center>
 
+          <form action="http://bas.codeaap.nl/NEW/public/webhooks/mollie" method="post">
+
+             <label for="naam">Naam*</label>
+                <input type="text" class="form-control{{$errors->has('voor_naam') ? ' is-invalid' : '' }}"  id="naam"  name="voor_naam"
+                 value="{{(isset($information->voor_naam)) ? "$information->voor_naam":""}}" required>
+                 <button class="btn" type="submit"> test</button>
+          
+          </form>
+
     <!-- </div></center>
     <center><div class="container2">
       <a href="#">Algemene voorwaarden </a>

@@ -3,6 +3,6 @@
 @section('content')
 
 
-<p>Bedankt u heeft betaald.</p>
+<p>Bedankt u heeft betaald. {{$order}}</p>
 
 @endsection
