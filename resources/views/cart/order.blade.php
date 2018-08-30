@@ -85,6 +85,7 @@
 
       <form class="mt-4" action="{{route('account.adres.store')}}" method="POST" >
         <h1 style="text-align:center;color:white;">Adresgegevens</h1>
+        <h3 style="text-align:center;color:black;">Controleer uw gegevens of vul deze in.</h3>
         @csrf
           <div class="">
               <p class="" style="margin-bottom:4px;">Aanhef*</p>
@@ -104,7 +105,8 @@
                       </span>
                     @endif
           </div>
-         <div class="form-row mt-3">
+
+          <div class="form-row mt-3">
             <div class="form-group col-md-4">
               <label for="naam">Naam*</label>
               <input type="text" class="form-control{{$errors->has('voor_naam') ? ' is-invalid' : '' }}"  id="naam"  name="voor_naam"
@@ -135,8 +137,8 @@
                       </span>
                     @endif
               </div>
-</div>
-              </div>
+            </div>
+            
               <div class="form-group row col-md-4">
                <label for="country">Land*</label>
                <input type="text" class="form-control{{ $errors->has('land') ? ' is-invalid' : '' }}" id="country" value="{{(isset($information->land)) ? "$information->land":""}}"
@@ -206,7 +208,11 @@
             <center><tr>
               <td><button class="btn2" type="submit"> Wijzig adresgegevens</button></td>
               <td><a class="btn3" href="{{ route('cart.index') }}">terug naar winkelwagentje</a></td>
-              <td><a class="btn3" href="{{ route('prepare.payment') }}">betalen</a></td>
+              @if(isset($information)) 
+              <td>
+                <a class="btn3" href="{{ route('prepare.payment') }}" >betalen</a>
+              </td>
+              @else  @endif  
             </tr></center>
 
     </form>

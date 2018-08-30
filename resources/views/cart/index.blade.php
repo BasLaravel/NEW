@@ -14,7 +14,7 @@
 <p>Er zitten geen producten in uw winkelwagentje.</p>
 @else
 @foreach($data as $product)
-  <div id="shoppingcart" class="row" style="background:white!important;">
+  <div id="shoppingcart" class="row" style="background:white!important;padding:15px;">
 <table>
     <tr>
       <th colspan="3"><h6>{{$product->options->product->title}}</h6></th>
@@ -30,9 +30,13 @@
       <td width="20%" align="center">€  <span class ="colom4"> {{$product->options->product->price*$product->qty}}</span>,-</td>
     </tr>
   </table>
+  
   </div>
+  <br>
+  <!-- <hr style="height:1px;background-color:black;"> -->
   @endforeach
   @endif
+  
     @inject('cart', 'Gloudemans\Shoppingcart\Cart')
     @if($cart->total() > 0)
     <table class="table">
@@ -45,9 +49,16 @@
         <td  class = "colright">€<span id="total">{{$cart->subtotal()}}</span>,-</td>
      </tr>
       <tr>
-        <td><a class="btn2" class="btn btn-primary btn-lg" href="{{ route('order.index') }}" role="button">Verder naar bestellen</a></td>
+        
           @endif
         <td><a class="btn2" class="btn btn-primary btn-lg" href="{{ route('home') }}" role="button">Verder winkelen</a></td>
+
+        @if($cart->total() > 0)
+       <td><a class="btn2" class="btn btn-primary btn-lg" href="{{ route('order.index') }}" role="button">Verder naar bestellen</a></td>
+       @else
+
+       @endif
+
       </tr>
     </table>
 
