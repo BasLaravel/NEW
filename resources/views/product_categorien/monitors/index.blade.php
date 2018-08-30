@@ -32,13 +32,10 @@
             <label class="form-check-label" for="{{$resolution->resolution}}"></label>
         </div>
         @endforeach
-
     </form>
 </div>
 
-
 <div class="container" >
-
     @forelse($monitors as $monitor)
     <hr>
     <div class="row mt-5">
@@ -57,7 +54,6 @@
     <!-- opvulling als er 1 product wordt gevonden -->
     @if($loop->count == 1)
     <div style="height:350px;">
-
     </div>
     @endif
     @empty
@@ -66,25 +62,5 @@
     </div>
     @endforelse
 </div>
-
- <script>
-// // producten toevoegen in de winkelwagen via een ajax request
-// $('.shoppingcart').on("click",function(e){
-//   e.preventDefault();
-//   //alert('tst');
-//   $.ajax({
-//        url: "@if(isset($monitor)) {{route('addToCart',[$monitor->ean])}} @else  @endif",
-//        type: "GET",
-//        success: function (data) {
-//         console.log(data);
-//         $('#shopping-items').text(data);
-//        },
-//        error: function(xhr, ajaxOptions, thrownError){
-//           //what to do in error
-//        },
-//        timeout : 15000//timeout of the ajax call
-//   });
-// });
- </script>
 
 @endsection

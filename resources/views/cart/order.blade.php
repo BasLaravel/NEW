@@ -39,14 +39,14 @@
      <!-- <a href="#">Bestelstatus</a>  <a href="#">klantenservice</a> -->
   </div>
   <div class = "container5">
-  <ul>
-  <div class="optionMenu" style="max-width: 50%;">
-    <div id="container3"  class = "container3">
+    <div class="optionMenu" style="max-width: 50%;">
+     <!-- <div id="container3"  class = "container3"> -->
       <center><div id="Navcart2" class="row">
         <div class="cartnav3"><p>Winkelwagen</p></div>
         <div class="ordernav2"><p>Bestellen</p></div>
         <div class="confnav"><p>Bevestiging</p></div>
-      </div></center>
+        </div>
+      </center>
       <h1 class="cartnav4" style="font-weight:bold;">Bestellen</h1><br>
       <center><div class = "overview">
         <h2>Productoverzicht</h2>
@@ -80,10 +80,10 @@
       </div></center><br>
       <form class="mt-4" action="{{route('account.adres.store')}}" method="POST" >
         <h1 style="text-align:center;color:white;">Adresgegevens</h1>
-        <h3 style="text-align:center;color:black;">Controleer uw gegevens of vul deze in.</h3>
+        <h3 style="text-align:center;color:black;margin-bottom:20px;">Controleer uw gegevens of vul deze in.</h3>
         @csrf
-          <div class="">
-              <p class="" style="margin-bottom:4px;">Aanhef*</p>
+        <div class="form-row mb-4">
+              <p class="col-md-2" style="margin-bottom:4px;">Aanhef*</p>
               <div class="form-check form-check-inline">
                 <input class="form-check-input{{ $errors->has('aanhef') ? ' is-invalid' : '' }}" type="radio" name="aanhef" id="man" value="dhr"
                 @if(isset($information->aanhef) && ($information->aanhef == 'dhr')) checked @else  @endif required>
@@ -132,15 +132,17 @@
                     @endif
               </div>
             </div>
-            <div class="form-group row col-md-4">
-               <label for="country">Land*</label>
-               <input type="text" class="form-control{{ $errors->has('land') ? ' is-invalid' : '' }}" id="country" value="{{(isset($information->land)) ? "$information->land":""}}"
-               name="land" required>
-               @if ($errors->has('land'))
-               <span class="invalid-feedback">
-               <p><strong>{{ $errors->first('land') }}</strong></p>
-               </span>
-               @endif
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="country">Land*</label>
+                <input type="text" class="form-control{{ $errors->has('land') ? ' is-invalid' : '' }}" id="country" value="{{(isset($information->land)) ? "$information->land":""}}"
+                name="land" required>
+                @if ($errors->has('land'))
+                <span class="invalid-feedback">
+                <p><strong>{{ $errors->first('land') }}</strong></p>
+                </span>
+                @endif
+              </div>
             </div>
             <div class="form-row mt-3">
               <div class="form-group col-md-3">
@@ -165,36 +167,43 @@
                     @endif
               </div>
             </div>
-            <div class="form-group row col-md-4">
-              <label for="straat">Straatnaam*</label>
-              <input type="text" class="form-control{{ $errors->has('straat_naam') ? ' is-invalid' : '' }}" id="straat" placeholder="" value="{{(isset($information->straat_naam)) ? "$information->straat_naam":""}}"
-              name="straat_naam" required>
-              @if ($errors->has('straat_naam'))
-                      <span class="invalid-feedback">
-                      <p><strong>{{ $errors->first('straat_naam') }}</strong></p>
-                      </span>
-                    @endif
+            <div class="form-row">
+              <div class="form-group  col-md-4">
+                <label for="straat">Straatnaam*</label>
+                <input type="text" class="form-control{{ $errors->has('straat_naam') ? ' is-invalid' : '' }}" id="straat" placeholder="" value="{{(isset($information->straat_naam)) ? "$information->straat_naam":""}}"
+                name="straat_naam" required>
+                @if ($errors->has('straat_naam'))
+                        <span class="invalid-feedback">
+                        <p><strong>{{ $errors->first('straat_naam') }}</strong></p>
+                        </span>
+                      @endif
+              </div>
             </div>
-            <div class="form-group row col-md-4">
-              <label for="plaats">Plaatsnaam*</label>
-              <input type="text" class="form-control{{ $errors->has('plaats_naam') ? ' is-invalid' : '' }}" id="plaats" placeholder="" value="{{(isset($information->plaats_naam)) ? "$information->plaats_naam":""}}"
-              name="plaats_naam" required>
-              @if ($errors->has('plaats_naam'))
-                      <span class="invalid-feedback">
-                      <p><strong>{{ $errors->first('plaats_naam') }}</strong></p>
-                      </span>
-                    @endif
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="plaats">Plaatsnaam*</label>
+                <input type="text" class="form-control{{ $errors->has('plaats_naam') ? ' is-invalid' : '' }}" id="plaats" placeholder="" value="{{(isset($information->plaats_naam)) ? "$information->plaats_naam":""}}"
+                name="plaats_naam" required>
+                @if ($errors->has('plaats_naam'))
+                        <span class="invalid-feedback">
+                        <p><strong>{{ $errors->first('plaats_naam') }}</strong></p>
+                        </span>
+                      @endif
+              </div>
             </div>
-            <div class="form-group row col-md-4">
-              <label for="tel">Telefoonnummer*</label>
-              <input type="text" class="form-control{{ $errors->has('telefoonnummer') ? ' is-invalid' : '' }}" id="tel" placeholder="" style="" value="{{(isset($information->telefoonnummer)) ? "$information->telefoonnummer":""}}"
-              name="telefoonnummer" required>
-              @if ($errors->has('telefoonnummer'))
-                      <span class="invalid-feedback">
-                      <p><strong>{{ $errors->first('telefoonnummer') }}</strong></p>
-                      </span>
-                    @endif
-            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="tel">Telefoonnummer*</label>
+                <input type="text" class="form-control{{ $errors->has('telefoonnummer') ? ' is-invalid' : '' }}" id="tel" placeholder="" style="" value="{{(isset($information->telefoonnummer)) ? "$information->telefoonnummer":""}}"
+                name="telefoonnummer" required>
+                @if ($errors->has('telefoonnummer'))
+                        <span class="invalid-feedback">
+                        <p><strong>{{ $errors->first('telefoonnummer') }}</strong></p>
+                        </span>
+                      @endif
+              </div>
+           </div>
+            
         <center><tr>
           <td><button class="btn2" type="submit"> Wijzig adresgegevens</button></td>
           <td><a class="btn3" href="{{ route('cart.index') }}">terug naar winkelwagentje</a></td>
@@ -205,7 +214,7 @@
           @else
           @endif
         </tr></center>
-    </form>
+      </form>
   </div>
 </div><br>
           <!-- <li class="optionMenu" style="max-width: 50%;"><input type="radio" name="" value="" checked> Ophalen <br> Bij een ophaalpunt bij u in de buurt.</li>

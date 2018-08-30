@@ -23,10 +23,6 @@ class LaptopReview extends Model
         
     }
 
-    // public function hasReview(){
-    //     return $this->where('user_id', auth()->id())->count();
-    // }
-
 
   
   //-------------------------------Attributen--------------------------------------------

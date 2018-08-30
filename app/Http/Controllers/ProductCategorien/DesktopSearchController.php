@@ -11,8 +11,7 @@ class DesktopSearchController extends Controller
     public function search(Request $request)
     {
     
-     $old=[];
-    //$screendiameter = Laptop::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();
+    $old=[];
     $processor = Desktop::select('processor')->distinct()->orderBy('processor','desc')->get();
     $merken = Desktop::select('specsTag')->distinct()->orderBy('specsTag')->get();
 
@@ -39,5 +38,5 @@ class DesktopSearchController extends Controller
         'processor' => $processor,
         'old'=> $old
         ]);
-}
+    }   
 }

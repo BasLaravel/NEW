@@ -147,7 +147,6 @@
             <il class="list-group-item">- {{$review->negatieve_feedback_2}}</il>
             <il class="list-group-item">- {{$review->negatieve_feedback_3}}</il>
           </ul>
-
           <div class="card-header">
               Mening
           </div>
@@ -165,18 +164,14 @@
 <hr>
 
 @auth
-
  @can('create', $laptop)
 <!-- laptop-review-formulier -->
-
 <div id="formulier" class="container">
   <div class="row">
-
-
     <h2 class=>Geef uw mening en schrijf een review</h2>
-
     <form class="mt-4" action="{{ route('laptops.review.store', [$laptop->id]) }}" method="POST">
     @csrf
+    <!-- aanrader ja of nee -->
       <div class="form-row mb-5">
         <div class="col-md-3">
           <p>1. Aanrader?</p>
@@ -194,18 +189,15 @@
                 Nee, geen aanrader.
               </label>
             </div>
-
-              <div class="form-check">
-               @if ($errors->has('aanrader'))
-            <span class="invalid-feedback">
-            <p><strong>{{ $errors->first('aanrader') }}</strong></p>
-            </span>
-          @endif
-
-              </div>
+            <div class="form-check">
+                @if ($errors->has('aanrader'))
+                <span class="invalid-feedback">
+                <p><strong>{{ $errors->first('aanrader') }}</strong></p>
+                </span>
+                @endif
+            </div>
         </div>
       </div>
-
   <!-- checkboxes -->
       <div class="form-row mt-5 mb-5">
           <div class="col-sm-2">
@@ -317,7 +309,6 @@
      </div>
 
      <!-- textarea -->
-
       <div class="form-row mt-5 mb-5" >
         <div class="col-md-4">
           <p>4. Uw mening</p>
@@ -331,7 +322,6 @@
             </span>
           @endif
         </div>
-
       </div>
 
         <!-- naam -->

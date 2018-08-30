@@ -52,10 +52,7 @@ Route::get('/cart', 'CartController@index')->name('cart.index');
 //order en betaling
 Route::get('/order', 'OrderController@index')->name('order.index')->middleware('auth');
 Route::get('/order/betaling', 'PaymentsController@preparePayment')->name('prepare.payment');
-
-
 Route::post('/webhooks/mollie', 'PaymentsController@handle')->name('payment.webhook');;
-
 Route::get('/order/betaling/success', 'PaymentsController@success')->name('payment.success');
 
 //account
@@ -64,7 +61,6 @@ Route::get('/account/orders', 'Account\AccountController@orderIndex')->name('acc
 Route::get('/account/persoonlijke-gegevens/mailer', 'Account\AccountController@newBevestigingsMail')->name('account.adres.mailer');
 Route::get('/account/persoonlijke-gegevens', 'Account\AccountController@adres')->name('account.adres.show');
 Route::post('/account/persoonlijke-gegevens', 'Account\AccountController@adresstore')->name('account.adres.store');
-
 Route::get('/account/inlog-gegevens', 'Account\AccountController@inlog')->name('account.inlog.show');
 Route::post('/account/inlog-gegevens/{user}', 'Account\AccountController@inlogstore')->name('account.inlog.store');
 

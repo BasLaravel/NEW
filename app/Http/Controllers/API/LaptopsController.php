@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 
 class LaptopsController extends Controller
 {
-    /**
+    /**Being used to get new product categories after it works. The code will be saved in a seeder::CLASS;
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

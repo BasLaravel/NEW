@@ -75,27 +75,20 @@
     <div class="description">
       <h5>Beschrijving:</h5><br>
         {{!!$desktop->long_description!!}}
-    </div><br>
-        <table class="table">
-        <tbody>
-        <tr>
-          <th>Beknopte specificaties</th>
-          <td></td>
-        </tr>
-        <!-- <tr>
-          <td><a href="#">Schermdiagonaal</a></td>
-          <td>{{$desktop->screen_diameter}}</td>
-        </tr> -->
-        <tr>
-          <td><a href="#">Processor</a></td>
-          <td>{{$desktop->processor}}</td>
-        </tr>
-
-      </tbody>
+        </div><br>
+          <table class="table">
+          <tbody>
+          <tr>
+            <th>Beknopte specificaties</th>
+            <td></td>
+          </tr>
+          <tr>
+            <td><a href="#">Processor</a></td>
+            <td>{{$desktop->processor}}</td>
+          </tr>
+        </tbody>
     </table><br>
 </div>
-
-
 
 
 

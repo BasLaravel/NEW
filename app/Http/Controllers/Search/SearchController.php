@@ -18,9 +18,8 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-       
         $arr  =[];
-         $i=0;
+        $i=0;
         $model = array("Laptop","Desktop","Monitor");
 
         $q= $request->search;
@@ -31,14 +30,9 @@ class SearchController extends Controller
             $i++;
        }
 
-//dd($arr);
         return view('search_results',[
             'search' => $arr,
             ]);
-
-
-
-
     }
 
     /**

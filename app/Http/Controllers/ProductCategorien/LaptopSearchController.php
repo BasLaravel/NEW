@@ -11,7 +11,6 @@ class LaptopSearchController extends Controller
     public function search(Request $request)
     {   
        
-        //dd($request->old_price);
         $laptops = Laptop::all();
         $min=round($laptops->min('price'));
         $max=round($laptops->max('price'));
@@ -46,7 +45,6 @@ class LaptopSearchController extends Controller
             }
         }
         
-
         $laptops = Laptop::whereIn('specsTag',$brands)->where(function($query) use ($screen_diameter){
 
             foreach($screen_diameter as $diameter){
@@ -70,8 +68,5 @@ class LaptopSearchController extends Controller
             'priced' => $priced
             ]);
     }
-
-
-   
 
 }

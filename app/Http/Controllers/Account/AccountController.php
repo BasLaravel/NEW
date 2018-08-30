@@ -19,10 +19,12 @@ class AccountController extends Controller
     }
 
 
+
     public function index(){
 
         return view('account.account-page');
     }
+
 
 
     public function adres(){
@@ -31,8 +33,6 @@ class AccountController extends Controller
         if(!isset($information[0])){
             $information[0] = null;
         }
-
-        //dd($information);
 
         return view('account.adres-gegevens',[
             'information' => $information[0],
@@ -43,7 +43,6 @@ class AccountController extends Controller
 
     public function adresstore(Request $request){
 
-        //dd($request);
         $this->validate(request(),[
             'user_id'=> 'numeric',
             'aanhef'=> 'required|in:dhr,mevr',
@@ -59,10 +58,8 @@ class AccountController extends Controller
             'telefoonnummer'  => 'required|string|min:8|max:12',
         ]);
 
-
         $c = array(" ","-");
         
-
         UsersExtendedInformation::updateOrCreate([
             'user_id' => auth()->id(),
         ],[
@@ -82,12 +79,12 @@ class AccountController extends Controller
             session()->flash('message', 'Dank u! Uw gegevens zijn succesvol ontvangen.');
            
             return back();
-
     }
 
     
-    public function inlog(){
 
+
+    public function inlog(){
 
         $email = User::where('id', auth()->id())->get();
 
@@ -97,9 +94,10 @@ class AccountController extends Controller
     }
 
 
+
+
     public function inlogstore(Request $request, User $user){
 
-       
         $this->validate(request(),[
             'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
         ]);
@@ -124,11 +122,12 @@ class AccountController extends Controller
     }
 
 
+
+
     public function newBevestigingsMail(){
       
         $user = auth()->user();
        
-
         Mail::to($user->email)->send(new \App\Mail\PleaseConfirmYourEmail($user));
 
         session()->flash('message', 'Er is een nieuwe email verstuurd');
@@ -136,6 +135,8 @@ class AccountController extends Controller
         return back();
     }
 
+
+    
 
     public function orderIndex(){
 
@@ -161,8 +162,6 @@ class AccountController extends Controller
                 
             }   
         }
-
-//dd($product_array);
 
         return view('account.orders',[
             'orders' => $product_array,

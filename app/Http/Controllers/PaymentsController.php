@@ -14,7 +14,6 @@ class PaymentsController extends Controller
 
     public function preparePayment(){
 
-      
         $order = Order::create([
             'user_id' => auth()->id(),
             'payment_id' =>  0,
@@ -92,12 +91,6 @@ class PaymentsController extends Controller
                 'order' => $order
             ]);
         }
-
-
-
-        
-
-
 
 
 }

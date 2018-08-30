@@ -1,5 +1,5 @@
 @component('mail::message')
-# Introduction
+# Welkom bij NEW!
 
 <p>Bedankt voor het aanmelden bij NEW de moderne elektronica webshop</p>
 <p>Om uw account te activeren druk op de knop "Bevestig account"</p>

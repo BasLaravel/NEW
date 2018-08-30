@@ -30,10 +30,12 @@ class User extends Authenticatable
     protected $cast = ['confirmed'=> 'boolean'];
 
 
+
     public function adres()
     {
         return $this->hasOne('App\UsersExtendedInformation');
     }
+    
 
     public function bestellingen()
     {

@@ -96,10 +96,4 @@
       </tbody>
     </table><br>
 </div>
-
-
-
-
-
-
 @endsection

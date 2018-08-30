@@ -25,17 +25,11 @@ class Laptop extends Model
        
     }
 
+
     public function UserMadeReview()
     {
         return $this->reviews()->where('user_id', auth()->id())->count();
        
     }
-
-
-
-
-  
-
-
     
 }

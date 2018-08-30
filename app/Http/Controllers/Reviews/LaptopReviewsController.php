@@ -10,7 +10,6 @@ class LaptopReviewsController extends Controller
 {
     public function store(Request $request, $id){
 
-
         $this->validate(request(),[
             'aanrader'=> 'required',
             'be'=> 'required',

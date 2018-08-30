@@ -16,8 +16,5 @@ class Monitor extends Model
         'short_description'
     ];
 
-    
 
-
-    
 }

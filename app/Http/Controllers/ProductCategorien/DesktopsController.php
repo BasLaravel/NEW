@@ -15,7 +15,6 @@ class DesktopsController extends Controller
      */
     public function index()
     {
-        
         $desktops = Desktop::all()->sortBy('specsTag');
         //$screendiameter = Laptop::select('screen_diameter')->distinct()->orderBy('screen_diameter')->get();;
         $processor = Desktop::select('processor')->distinct()->orderBy('processor','desc')->get();;

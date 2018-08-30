@@ -17,7 +17,6 @@ class OrderController extends Controller
             $information[0] = null;
         }
 
-        //dd($information);
         $cart = Cart::content();
 
         return view('cart.order',[
@@ -25,7 +24,5 @@ class OrderController extends Controller
             'information' => $information[0],
         ]);
     }
-
-
 
 }

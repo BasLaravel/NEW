@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="container">
     @foreach($search as $search)
         @foreach($search as $search)
@@ -16,14 +15,10 @@
                     <p class="card-text">{{ str_limit($search->short_description, $limit = 250, $end ='...')}}
                         <a href="{{ route($search->categorie.'.show', [$search->id]) }}">Meer...</a>
                     </p>
-                    
                 </div>
             </div>
         @endforeach
     @endforeach
 </div>
-
-
-
 
 @endsection

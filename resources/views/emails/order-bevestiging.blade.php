@@ -1,5 +1,5 @@
 @component('mail::message')
-# Introduction
+# Besteloverzicht
 
  <strong> <center>
     <p>Beste @if($order->user->adres->aanhef == 'dhr') Meneer @else Mevrouw @endif

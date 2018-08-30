@@ -69,8 +69,6 @@ class LaptopsController extends Controller
         $laptop->increment('aantal_views');
         $reviews = LaptopReview::where('laptop_id', $laptop->id)->orderBy('created_at', 'desc')->get();
 
-        //dd($reviews[0]->GemiddeldeCijfer);
-
         if($reviews->count()>0){
            $aanrader = $this->aanrader($reviews); 
            $score_bedieningsgemak = $this->scoreBedieningsgemak($reviews);
@@ -85,7 +83,6 @@ class LaptopsController extends Controller
             $score_mogelijkheid = false;
         }
 
-        
         return view('product_categorien.laptops.show',[
             'laptop' => $laptop,
             'reviews' => $reviews,
@@ -184,6 +181,7 @@ class LaptopsController extends Controller
              return number_format($score_gebruiksvriendelijkheid, 1, '.', '');
         }
 
+
         public function scoreSnelheid($reviews){
             $total_score = 0;
             $count = 0;
@@ -196,6 +194,7 @@ class LaptopsController extends Controller
              return number_format($score_snelheid, 1, '.', '');
         }
 
+
         public function scoreMogelijkheid($reviews){
             $total_score = 0;
             $count = 0;
@@ -207,12 +206,5 @@ class LaptopsController extends Controller
              $score_mogelijkheid = $total_score/$count;
              return number_format($score_mogelijkheid, 1, '.', '');
         }
-
-
-    
-
-
-
-
 
 }

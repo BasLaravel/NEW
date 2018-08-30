@@ -10,8 +10,7 @@ class MonitorSearchController extends Controller
 {
     public function search(Request $request)
     {
-        //dd($request->processor);
-
+      
         $old=[];
         $screendiameter = Monitor::select('screen_diameter')->whereNotNull('screen_diameter')->distinct()->orderBy('screen_diameter')->get();
         $resolution = Monitor::select('resolution')->whereNotNull('resolution')->distinct()->orderBy('resolution','asc')->get();
